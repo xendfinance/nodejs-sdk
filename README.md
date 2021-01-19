@@ -1,6 +1,8 @@
-# User Guide
+# XendFinance SDK
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+This repository contains the Xend Finance Client library. XendFinanceJS makes it easy for developers, who may not be deeply familiar with smart contract development, to interact with the various components of Xend Finance Protocol.
+
+This library will help developers build applications ontop of the Xend Finance smart contract.
 
 
 
@@ -36,16 +38,16 @@ Jest tests are set up to run with `npm test` or `yarn test`.
 
 #### Setup Files
 
-This is the folder structure we set up for you:
+This is the folder structure
 
 ```txt
 /src
-  index.tsx       # EDIT THIS
+  index.tsx       
 /test
-  blah.test.tsx   # EDIT THIS
+  blah.test.tsx   
 .gitignore
 package.json
-README.md         # EDIT THIS
+README.md         
 tsconfig.json
 ```
 
