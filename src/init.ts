@@ -1,4 +1,5 @@
 import { ChainId } from "./utils/constants";
+import { CreateWallet } from "./utils/web3";
 
 class XendFinance {
 
@@ -8,6 +9,10 @@ class XendFinance {
   //
   constructor(chainId: ChainId) {
     this.chainId = chainId
+  }
+
+  async createWallet() {
+    return await CreateWallet(this.chainId);
   }
 
   esusu() {

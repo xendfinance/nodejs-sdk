@@ -1,6 +1,6 @@
 
-import XendFinance from './init';
-import { ChainId } from './utils/constants';
+import XendFinance from '../src/init';
+import { ChainId } from '../src/utils/constants';
 
 describe('Initializing SDK', () => {
 
@@ -17,6 +17,12 @@ describe('Initializing SDK', () => {
 
   test('chain id is mainnet', () => {
     expect(initializer.chainId).toBe(ChainId.MAINNET)
+  })
+
+  test('wallet should not be null', async () => {
+    let wallet = await initializer.createWallet()
+    console.log(wallet, ' the wallet')
+    expect(wallet).not.toBeNull();
   })
 
 
