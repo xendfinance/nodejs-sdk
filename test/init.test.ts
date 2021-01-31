@@ -1,6 +1,6 @@
 
-import XendFinance from './init';
-import { ChainId } from './utils/constants';
+import XendFinance from '../src/init';
+import { ChainId } from '../src/utils/constants';
 
 describe('Initializing SDK', () => {
 
