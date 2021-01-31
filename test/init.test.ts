@@ -25,5 +25,4 @@ describe('Initializing SDK', () => {
     expect(wallet).not.toBeNull();
   })
 
-
 })
