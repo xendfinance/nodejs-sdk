@@ -19,5 +19,10 @@ describe('Initializing SDK', () => {
     expect(initializer.chainId).toBe(ChainId.MAINNET)
   })
 
+  test('wallet should not be null', async () => {
+    let wallet = await initializer.createWallet()
+    console.log(wallet, ' the wallet')
+    expect(wallet).not.toBeNull();
+  })
 
 })

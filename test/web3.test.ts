@@ -1,3 +1,4 @@
+import { ChainId } from '../src/utils/constants';
 import { CreateWallet, RetrieveWallet } from '../src/utils/web3';
 
 const privateKey = '0x12ae19093123cc3947745fbe40a1517c909e9e5526280ec018c17dc2261b3cf8';
@@ -5,10 +6,10 @@ const privateKey = '0x12ae19093123cc3947745fbe40a1517c909e9e5526280ec018c17dc226
 describe('Create Wallet and Retrieve wallet', () => {
   it('creates a wallet and returns the address and private key', async () => {
 
-    const wallet = await CreateWallet();
+    const wallet = await CreateWallet(ChainId.MAINNET);
 
     expect(wallet).not.toBeNull();
-    
+
     console.log(wallet);
   });
 
@@ -17,7 +18,7 @@ describe('Create Wallet and Retrieve wallet', () => {
     const wallet = await RetrieveWallet(privateKey);
 
     expect(wallet).not.toBeNull();
-    
+
     console.log(wallet);
   });
 });
