@@ -1,12 +1,16 @@
 import { ChainId } from '../src/utils/constants';
-import { CreateWallet, RetrieveWallet } from '../src/utils/web3';
+import XendFinance from '../src/init';
 
 const privateKey = '0x12ae19093123cc3947745fbe40a1517c909e9e5526280ec018c17dc2261b3cf8';
 
 describe('Create Wallet and Retrieve wallet', () => {
   it('creates a wallet and returns the address and private key', async () => {
 
-    const wallet = await CreateWallet(ChainId.MAINNET);
+
+    let initializer = new XendFinance(ChainId.MAINNET, privateKey);
+
+
+    const wallet = await initializer.createWallet();
 
     expect(wallet).not.toBeNull();
 
@@ -15,8 +19,10 @@ describe('Create Wallet and Retrieve wallet', () => {
 
   it('retrieves a wallet using the private key and returns the wallet object', async () => {
 
-    const wallet = await RetrieveWallet(privateKey);
+    let initializer = new XendFinance(ChainId.MAINNET, privateKey);
 
+    const wallet = await initializer.retrieveWallet();
+    
     expect(wallet).not.toBeNull();
 
     console.log(wallet);
