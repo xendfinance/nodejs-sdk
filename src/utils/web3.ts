@@ -1,7 +1,6 @@
 import Web3 from 'web3';
-import { ChainId, PROVIDERS } from './constants'
-
-let provider : string;
+import { ChainId } from './constants'
+import {checkChainId} from './helpers'
 
 /** this functions creates a web3 instance and sets a provider */
 const InstantiateWeb3 = (provider: string) => {
@@ -16,9 +15,9 @@ const InstantiateWeb3 = (provider: string) => {
 
 export const CreateWallet = async (chainId: ChainId) => {
 
-    chainId === 1 ? provider = PROVIDERS.MAINENT  ? chainId === 3  ? provider = PROVIDERS.ROPSTEN ? chainId === 4 ? provider = PROVIDERS.RINKEBY : provider = PROVIDERS.LOCALHOST : 
+    let provider : any = checkChainId(chainId);
 
-    let web3 = InstantiateWeb3(PROVIDERS.LOCALHOST);
+    let web3 = InstantiateWeb3(provider);
 
     const wallet = await web3.eth.accounts.create();
 
@@ -30,7 +29,9 @@ export const CreateWallet = async (chainId: ChainId) => {
 
 export const RetrieveWallet = async (chainId: ChainId, privateKey: string) => {
 
-    let web3 = InstantiateWeb3(PROVIDERS.LOCALHOST);
+    let provider : any = checkChainId(chainId);
+
+    let web3 = InstantiateWeb3(provider);
 
     const wallet = await web3.eth.accounts.privateKeyToAccount(privateKey);
 
