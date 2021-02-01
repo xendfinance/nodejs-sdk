@@ -1,6 +1,6 @@
 import Web3 from 'web3';
 import { ChainId } from './constants'
-import {checkChainId} from './helpers'
+import { checkChainId } from './helpers'
 
 /** this functions creates a web3 instance and sets a provider */
 const InstantiateWeb3 = (provider: string) => {
@@ -15,7 +15,7 @@ const InstantiateWeb3 = (provider: string) => {
 
 export const CreateWallet = async (chainId: ChainId) => {
 
-    let provider : any = checkChainId(chainId);
+    let provider: any = checkChainId(chainId);
 
     let web3 = InstantiateWeb3(provider);
 
@@ -29,7 +29,7 @@ export const CreateWallet = async (chainId: ChainId) => {
 
 export const RetrieveWallet = async (chainId: ChainId, privateKey: string) => {
 
-    let provider : any = checkChainId(chainId);
+    let provider: any = checkChainId(chainId);
 
     let web3 = InstantiateWeb3(provider);
 
