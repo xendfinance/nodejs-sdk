@@ -15,7 +15,7 @@ const InstantiateWeb3 = (provider: string) => {
 
 export const CreateWallet = async (chainId: ChainId) => {
 
-    let provider: any = checkChainId(chainId);
+    let provider: string = checkChainId(chainId);
 
     let web3 = InstantiateWeb3(provider);
 
@@ -29,7 +29,7 @@ export const CreateWallet = async (chainId: ChainId) => {
 
 export const RetrieveWallet = async (chainId: ChainId, privateKey: string) => {
 
-    let provider: any = checkChainId(chainId);
+    let provider: string = checkChainId(chainId);
 
     let web3 = InstantiateWeb3(provider);
 
