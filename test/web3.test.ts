@@ -7,24 +7,24 @@ describe('Create Wallet and Retrieve wallet', () => {
   it('creates a wallet and returns the address and private key', async () => {
 
 
-    let initializer = new XendFinance(ChainId.MAINNET, privateKey);
+    let initializer = new XendFinance(ChainId.MAINNET);
 
 
     const wallet = await initializer.createWallet();
 
     expect(wallet).not.toBeNull();
 
-    console.log(wallet);
+    // console.log(wallet);
   });
 
   it('retrieves a wallet using the private key and returns the wallet object', async () => {
 
-    let initializer = new XendFinance(ChainId.MAINNET, privateKey);
+    let initializer = new XendFinance(ChainId.MAINNET);
 
-    const wallet = await initializer.retrieveWallet();
-    
+    const wallet = await initializer.retrieveWallet(privateKey);
+
     expect(wallet).not.toBeNull();
 
-    console.log(wallet);
+    // console.log(wallet);
   });
 });

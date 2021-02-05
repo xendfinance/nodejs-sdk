@@ -2,7 +2,7 @@ import { ChainId, PROVIDERS } from './constants'
 
 export const checkChainId = (chainId: ChainId) => {
 
-    let provider;
+    let provider = "";
 
     if (chainId === 1) {
         provider = PROVIDERS.MAINENT
