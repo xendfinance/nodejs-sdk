@@ -2,15 +2,16 @@ import { ChainId, PROVIDERS } from './constants'
 
 export const checkChainId = (chainId: ChainId) => {
 
+
     let provider = "";
 
-    if (chainId === 1) {
+    if (chainId === ChainId.MAINNET) {
         provider = PROVIDERS.MAINENT
     }
-    if (chainId === 3) {
+    if (chainId === ChainId.ROPSTEN) {
         provider = PROVIDERS.ROPSTEN
     }
-    if (chainId === 4) {
+    if (chainId === ChainId.RINKEBY) {
         provider = PROVIDERS.RINKEBY
     }
     if (chainId === null) {

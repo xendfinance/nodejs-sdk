@@ -31,12 +31,13 @@ export default async function (args: Args) {
 
     let signedTx = serializedSignedTransaction(data, ESUSU.ESUSU_SERVICE, privateKey)
 
+    console.log(signedTx, ' the signed tx')
+
     let web3 = new Web3(provider);
-    let sdf = await web3.eth.sendSignedTransaction('0x' + signedTx.toString('hex')).on('receipt', (receipt: any) => {
+    await web3.eth.sendSignedTransaction('0x' + signedTx.toString('hex')).on('receipt', (receipt: any) => {
       console.log(receipt, ' receipt')
     });
 
-    console.log(sdf, ' the one the returned')
 
     return {}
 

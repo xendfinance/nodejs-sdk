@@ -9,7 +9,7 @@ export default function (data: any, contractAddress: string, privateKey: string)
   let rawTx = {
     nonce: '0x00',
     gasPrice: '0x09184e72a000',
-    gasLimit: '0x493E0',
+    gasLimit: '0x1',
     to: contractAddress,
     value: '0x00',
     data
