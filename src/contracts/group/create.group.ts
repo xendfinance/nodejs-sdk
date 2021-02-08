@@ -29,7 +29,7 @@ export default async function (args: Args) {
     const data = await contract.methods.CreateGroup(groupName, groupSymbol).encodeABI();
 
 
-    let signedTx = serializedSignedTransaction(data, ESUSU.ESUSU_SERVICE, privateKey)
+    let signedTx = await serializedSignedTransaction(data, ESUSU.ESUSU_SERVICE, privateKey)
 
     console.log(signedTx, ' the signed tx')
 

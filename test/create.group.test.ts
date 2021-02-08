@@ -36,6 +36,8 @@ describe('creates a new group', () => {
       groupName,
       groupSymbol
     });
+
+    console.log(provider, 'provider');
     let responseDataType = typeof response;
 
     expect(responseDataType).toBe("object");
