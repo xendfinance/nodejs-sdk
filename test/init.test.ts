@@ -26,6 +26,6 @@ describe('Initializing SDK', () => {
     let wallet = await initializer.createWallet()
     // console.log(wallet, ' the wallet')
     expect(wallet).not.toBeNull();
-  })
+  }, 1000)
 
 })

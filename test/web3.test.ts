@@ -15,7 +15,7 @@ describe('Create Wallet and Retrieve wallet', () => {
     expect(wallet).not.toBeNull();
 
     // console.log(wallet);
-  });
+  }, 1000);
 
   it('retrieves a wallet using the private key and returns the wallet object', async () => {
 
@@ -26,5 +26,6 @@ describe('Create Wallet and Retrieve wallet', () => {
     expect(wallet).not.toBeNull();
 
     // console.log(wallet);
-  });
+  }, 1000);
+
 });

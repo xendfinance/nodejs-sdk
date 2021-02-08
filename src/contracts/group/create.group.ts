@@ -28,22 +28,27 @@ export default async function (args: Args) {
 
     const data = await contract.methods.CreateGroup(groupName, groupSymbol).encodeABI();
 
+    let signedTx = await serializedSignedTransaction(data, ESUSU.ESUSU_SERVICE, privateKey, provider)
 
-    let signedTx = await serializedSignedTransaction(data, ESUSU.ESUSU_SERVICE, privateKey)
 
-    console.log(signedTx, ' the signed tx')
-
+    console.log(signedTx, 'signed transaction')
     let web3 = new Web3(provider);
     await web3.eth.sendSignedTransaction('0x' + signedTx.toString('hex')).on('receipt', (receipt: any) => {
       console.log(receipt, ' receipt')
     });
 
 
-    return {}
+    return {
+      status: true,
+      msg: ""
+    }
 
   } catch (error) {
     console.error(error);
-    return {}
+    return {
+      status: false,
+      msg: ''
+    }
   }
 
 }
