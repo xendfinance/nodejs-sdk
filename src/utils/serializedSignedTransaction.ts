@@ -34,8 +34,8 @@ export default async function (data: any, contractAddress: string, privateKey: s
 
   let rawTx = {
     nonce: nonce,
-    gasLimit: web3.utils.toHex(45000),
-    gasPrice: web3.utils.toHex(20e9), // 10 Gwei
+    gasLimit: web3.utils.toHex(4500000),
+    gasPrice: web3.utils.toHex(50e9), // 10 Gwei
     to: contractAddress,
     value: '0x00',
     data
