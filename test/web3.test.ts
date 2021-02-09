@@ -7,7 +7,7 @@ describe('Create Wallet and Retrieve wallet', () => {
   it('creates a wallet and returns the address and private key', async () => {
 
 
-    let initializer = new XendFinance(ChainId.RINKEBY);
+    let initializer = new XendFinance(ChainId.RINKEBY, 'private key');
 
 
     const wallet = await initializer.createWallet();
@@ -19,9 +19,9 @@ describe('Create Wallet and Retrieve wallet', () => {
 
   it('retrieves a wallet using the private key and returns the wallet object', async () => {
 
-    let initializer = new XendFinance(ChainId.RINKEBY);
+    let initializer = new XendFinance(ChainId.RINKEBY, 'private key');
 
-    const wallet = await initializer.retrieveWallet(privateKey);
+    const wallet = await initializer.retrieveWallet();
 
     expect(wallet).not.toBeNull();
 

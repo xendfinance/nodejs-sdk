@@ -1,3 +1,4 @@
+
 import Web3 from 'web3';
 import serializedSignedTransaction from "../../utils/serializedSignedTransaction";
 import createContract from "../create.contract";
@@ -23,6 +24,7 @@ export default async function (args: Args) {
   const { privateKey, provider, groupName, groupSymbol } = args;
 
   try {
+
     // create the data and encode abi
     const contract = await createContract(provider, EsusuService.abi, ESUSU.ESUSU_SERVICE);
 
@@ -30,13 +32,8 @@ export default async function (args: Args) {
 
     let signedTx = await serializedSignedTransaction(data, ESUSU.ESUSU_SERVICE, privateKey, provider)
 
-
-    console.log(signedTx, 'signed transaction')
     let web3 = new Web3(provider);
-    await web3.eth.sendSignedTransaction('0x' + signedTx.toString('hex')).on('receipt', (receipt: any) => {
-      console.log(receipt, ' receipt')
-    });
-
+    await web3.eth.sendSignedTransaction('0x' + signedTx.toString('hex')).on('receipt', console.log);
 
     return {
       status: true,
@@ -44,7 +41,9 @@ export default async function (args: Args) {
     }
 
   } catch (error) {
+
     console.error(error);
+
     return {
       status: false,
       msg: ''

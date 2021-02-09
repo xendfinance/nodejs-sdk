@@ -15,7 +15,7 @@ describe('get groups', () => {
     let data = {
       provider,
       privateKey,
-      groupId: 1
+      groupId: 2
     }
 
     let groups = await getGroup(data)

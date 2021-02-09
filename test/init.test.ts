@@ -7,7 +7,7 @@ import { ChainId } from '../src/utils/constants';
 
 describe('Initializing SDK', () => {
 
-  let initializer = new XendFinance(ChainId.RINKEBY);
+  let initializer = new XendFinance(ChainId.RINKEBY, 'private key');
 
   test('the initializer is an instance of the correct class', () => {
     expect(initializer).toBeInstanceOf(XendFinance);

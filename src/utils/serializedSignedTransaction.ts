@@ -8,6 +8,7 @@ export default async function (
   privateKey: string,
   provider: string
 ) {
+
   let pk = Buffer.from(privateKey, 'hex');
 
   /***
@@ -56,4 +57,5 @@ export default async function (
   let serializedTransaction = transaction.serialize();
 
   return serializedTransaction;
+
 }

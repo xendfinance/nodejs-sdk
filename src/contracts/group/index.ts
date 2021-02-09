@@ -1,16 +1,18 @@
 import { ChainId } from "../../utils/constants"
 import { checkChainId } from "../../utils/helpers";
 import createGroup from "./create.group";
+import getGroup from "./get.groups";
 
 
-const privateKey = 'fd0c10d724f6ccca84650a28ba8235e2e1a89a5240a5d5bc8ca25a688ecfc417';
 
 class Group {
 
   provider: string;
+  privateKey: string;
 
-  constructor(chainId: ChainId) {
+  constructor(chainId: ChainId, privateKey: string) {
     this.provider = checkChainId(chainId);
+    this.privateKey = privateKey;
   }
 
   /**
@@ -18,12 +20,19 @@ class Group {
    * @param groupName 
    * @param groupSymbol 
    */
-  createGroup(groupName: string, groupSymbol: string) {
-    return createGroup({
-      privateKey,
+  async createGroup(groupName: string, groupSymbol: string) {
+    return await createGroup({
+      privateKey: this.privateKey,
       provider: this.provider,
       groupName,
       groupSymbol
+    })
+  }
+
+  async getGroup(groupId: number) {
+    return await getGroup({
+      provider: this.provider,
+      groupId
     })
   }
 
