@@ -10,14 +10,6 @@ export default async function (
 ) {
 
   let pk = Buffer.from(privateKey, 'hex');
-
-  /***
-   *
-   *   i need a way to get the provider the user selected on initialization here.. so that i dont manually pass in the provider url
-   *
-   * Also you have to specify a timeout for the transaction
-   *
-   */
   let web3 = new Web3(provider);
 
   let account = await web3.eth.accounts.privateKeyToAccount(privateKey);
@@ -56,6 +48,10 @@ export default async function (
 
   let serializedTransaction = transaction.serialize();
 
-  return serializedTransaction;
+  return new Promise((resolve, reject) => {
+    web3.eth.sendSignedTransaction('0x' + serializedTransaction.toString("hex"))
+      .once('receipt', resolve)
+      .catch(reject)
+  })
 
 }

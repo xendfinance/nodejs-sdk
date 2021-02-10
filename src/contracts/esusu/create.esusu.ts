@@ -1,8 +1,8 @@
-import Web3 from 'web3';
+// import Web3 from 'web3';
 import createContract from "../create.contract";
 import EsusuService from '../abis/EsusuService.json';
 import { ESUSU } from '../addresses/rinkeby';
-import serializedSignedTransaction from "../../utils/serializedSignedTransaction";
+import serializedSignedTransaction from "../../utils/sendSignedTransaction";
 
 type EsusuCycle = {
   provider: string
@@ -27,10 +27,7 @@ export default async function (args: EsusuCycle) {
 
     const signedTx = await serializedSignedTransaction(data, ESUSU.ESUSU_SERVICE, privateKey, provider);
 
-    let web3 = new Web3(provider);
-    await web3.eth.sendSignedTransaction('0x' + signedTx.toString('hex')).on('receipt', console.log);
-
-    return {}
+    return signedTx;
 
   } catch (err) {
     console.error(err);

@@ -7,7 +7,7 @@ import abi from './abi';
 const address = "0x0d393dE80744Df016424AeC57ecfE39a414E13cc";
 const provider = checkChainId(ChainId.RINKEBY);
 
-describe('contract creation function', () => {
+describe.skip('contract creation function', () => {
 
   test('should return an object having property called methods', async () => {
 
