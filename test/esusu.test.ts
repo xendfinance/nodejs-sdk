@@ -11,9 +11,23 @@ describe('esusu tests', () => {
 
   jest.setTimeout(300000);
 
+
+
+
+
+
+
+  // SETUP
+
   const esusu = new Esusu(ChainId.RINKEBY, privateKey);
 
   const cycleStartTimeForTest = (new Date(new Date().getTime() + (4 * 60000)).getTime() / 1000).toFixed(0); // timestamp for current test. 3 minutes from current time
+
+
+
+
+
+  ////////////////////////////////////////////////////////////
 
   it.skip('creates an esusu cycle successfully', async () => {
 
@@ -31,10 +45,12 @@ describe('esusu tests', () => {
 
   })
 
-  it('returns recently created cycle', async () => {
+
+  ////////////////////////////////////////////////////////////
+
+  it.skip('returns recently created cycle', async () => {
 
     const count = await esusu.getCreatedCyclesCount();
-
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
 
     const info = await esusu.esusuInformation(esusuId);
@@ -44,10 +60,25 @@ describe('esusu tests', () => {
     expect(infoDatatype).toBe("object");
     expect(info.CycleStartTimeInSeconds).toEqual(cycleStartTimeForTest);
 
-
-
-
   }, 4000)
+
+
+  ////////////////////////////////////////////////////////////
+
+  it('address joins successfully', async () => {
+
+    const count = await esusu.getCreatedCyclesCount();
+    const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
+
+    const response: any = await esusu.joinEsusu(esusuId);
+    console.log(response, ' my response');
+
+    const responseDataType = typeof response;
+
+    expect(responseDataType).toBe("object");
+    expect(response.status).toEqual(true)
+
+  })
 
 
 })

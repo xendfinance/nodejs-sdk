@@ -4,6 +4,7 @@ import createEsusu from './create.esusu';
 import createdCyclesCount from "./created.cycles.count";
 import esusuId from "./esusu.id";
 import esusuInfo from "./esusu.info";
+import joinEsusu from "./join.esusu";
 
 type EsusuCycleData = {
   groupId: number
@@ -25,6 +26,14 @@ export default class Esusu {
 
 
 
+  //////////////////////////////////////////////////////////////////////
+
+
+  /**
+   * Create an Esusu cycle
+   * @param args 
+   */
+
   async createEsusu(args: EsusuCycleData) {
     return await createEsusu({
       ...args,
@@ -34,18 +43,70 @@ export default class Esusu {
     })
   }
 
-  // retrieve the number of cycles the account with the initialized private key has created
+
+
+  //////////////////////////////////////////////////////////////////////
+
+
+  /**
+   * Get number of cycles an address creates
+   * retrieve the number of cycles the account with the initialized 
+   * private key has created
+   */
+
   async getCreatedCyclesCount() {
     return createdCyclesCount(this.provider, this.privateKey);
   }
 
-  // get the id of an esusu cycle by passing the position of the cycle in the list of cycles created by a particular client address
+
+
+  //////////////////////////////////////////////////////////////////////
+
+
+  /**
+   * Get cycle id
+   * @param positionOfCycle 
+   * get the id of an esusu cycle by passing the position of the cycle in 
+   * the list of cycles created by a particular client address
+   */
+
   async getCycleIdFromCreatedCyclesList(positionOfCycle: number) {
     return await esusuId(positionOfCycle, this.provider, this.privateKey);
   }
 
+
+
+  //////////////////////////////////////////////////////////////////////
+
+
+  /**
+   * Get Esusu cycle information
+   * @param esusuId 
+   */
+
   async esusuInformation(esusuId: number) {
     return esusuInfo(esusuId, this.provider);
   }
+
+
+
+  //////////////////////////////////////////////////////////////////////
+
+
+
+  /**
+   * Join an Esusu cycle
+   * @param cycleId 
+   */
+
+  async joinEsusu(cycleId: number) {
+    return joinEsusu(cycleId, this.provider, this.privateKey);
+  }
+
+
+
+
+  //////////////////////////////////////////////////////////////////////
+
 
 }
