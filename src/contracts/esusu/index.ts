@@ -1,11 +1,12 @@
 import { ChainId } from "../../utils/constants";
 import { checkChainId } from "../../utils/helpers";
-import createEsusu from './create.esusu';
+import createEsusu from './create';
 import createdCyclesCount from "./created.cycles.count";
 import esusuId from "./esusu.id";
-import esusuInfo from "./esusu.info";
-import joinEsusu from "./join.esusu";
+import esusuInfo from "./info";
+import joinEsusu from "./join";
 import member from "./member";
+import start from "./start";
 
 type EsusuCycleData = {
   groupId: number
@@ -103,6 +104,18 @@ export default class Esusu {
   async joinEsusu(cycleId: number) {
     return joinEsusu(cycleId, this.provider, this.privateKey);
   }
+
+
+
+  ////////////////////////////////////////////////////////////////////////////
+
+
+
+  async start(cycleId: number) {
+    return start(cycleId, this.provider, this.privateKey);
+  }
+
+
 
 
 

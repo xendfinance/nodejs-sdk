@@ -4,8 +4,8 @@ import DAITokenAbi from '../abis/DaiContract.json';
 import { ESUSU } from '../addresses/localhost';
 import sendSignedTransaction from '../../utils/sendSignedTransaction';
 import privateKeyToAddress from "../../utils/privateKeyToAddress";
-import esusuInfo from './esusu.info';
-import member from "./member";
+import esusuInfo from './info';
+
 
 export default async function (
   cycleId: number,
@@ -24,21 +24,9 @@ export default async function (
 
 
 
-    // check if client is already a member of this esusu cycle
-    const isMember = await member(cycleId, privateKey, provider);
-    if (isMember) {
-      throw new Error(`client already a member of cycle with id - ${cycleId}`);
-    }
-
-
-
-
-
-
     // get the esusu with the cycleID passed to this function.
     // the esusu cycle amount is needed to approve the transaction
     const esusu_cycle = await esusuInfo(cycleId, provider);
-    console.log(esusu_cycle, 'cycle')
 
 
 
@@ -56,13 +44,17 @@ export default async function (
     const signedTx = await sendSignedTransaction(data, ESUSU.ESUSU_SERVICE, privateKey, provider);
 
 
-    return signedTx;
+    return {
+      status: true,
+      data: signedTx
+    };
 
 
   } catch (error) {
     console.error(error);
     return {
-      status: false
+      status: false,
+      data: error
     }
   }
 }
