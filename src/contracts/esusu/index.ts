@@ -5,10 +5,11 @@ import createdCyclesCount from "./created.cycles.count";
 import esusuId from "./esusu.id";
 import esusuInfo from "./esusu.info";
 import joinEsusu from "./join.esusu";
+import member from "./member";
 
 type EsusuCycleData = {
   groupId: number
-  depositAmount: number
+  depositAmount: any
   payoutIntervalInSeconds: number
   startTimeInSeconds: number
   maxMembers: number
@@ -107,6 +108,11 @@ export default class Esusu {
 
 
   //////////////////////////////////////////////////////////////////////
+
+
+  async isMemberOfCycle(cycleId: number) {
+    return member(cycleId, this.privateKey, this.provider);
+  }
 
 
 }

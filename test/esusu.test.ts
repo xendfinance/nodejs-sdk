@@ -3,11 +3,11 @@ import Esusu from '../src/contracts/esusu';
 import { ChainId } from '../src/utils/constants';
 
 
-// const provider = 'https://rinkeby.infura.io/v3/e9c4665d91a343e295308d5995ff5a72';
+// the private key without the '0x' in front of it
+const privateKey = '7a22cfd45ebddc524cee4d0552f3255b5e42dee7b2d766fd7737ab8cd18a72d8';
+// const privateKey2 = '3c55580b730a298702479f6652844d3498d3df57dd21d8f6316e5e45c59c7236';
 
-const privateKey = 'fd0c10d724f6ccca84650a28ba8235e2e1a89a5240a5d5bc8ca25a688ecfc417';
-
-describe('esusu tests', () => {
+describe('Esusu:', () => {
 
   jest.setTimeout(300000);
 
@@ -19,7 +19,8 @@ describe('esusu tests', () => {
 
   // SETUP
 
-  const esusu = new Esusu(ChainId.RINKEBY, privateKey);
+  const esusu = new Esusu(ChainId.MAINNET, privateKey);
+  // const esusu2 = new Esusu(ChainId.MAINNET, privateKey2)
 
   const cycleStartTimeForTest = (new Date(new Date().getTime() + (4 * 60000)).getTime() / 1000).toFixed(0); // timestamp for current test. 3 minutes from current time
 
@@ -29,11 +30,12 @@ describe('esusu tests', () => {
 
   ////////////////////////////////////////////////////////////
 
-  it.skip('creates an esusu cycle successfully', async () => {
+
+  it('creates an esusu cycle successfully', async () => {
 
     let response = await esusu.createEsusu({
       groupId: 1,
-      depositAmount: 15,
+      depositAmount: "5",
       payoutIntervalInSeconds: 120, // 2 minutes
       maxMembers: 5,
       startTimeInSeconds: Number(cycleStartTimeForTest), // 4 minutes from current time
@@ -46,9 +48,13 @@ describe('esusu tests', () => {
   })
 
 
+
+
+
   ////////////////////////////////////////////////////////////
 
-  it.skip('returns recently created cycle', async () => {
+
+  it('returns recently created cycle', async () => {
 
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
@@ -63,15 +69,18 @@ describe('esusu tests', () => {
   }, 4000)
 
 
+
+
+
   ////////////////////////////////////////////////////////////
 
-  it('address joins successfully', async () => {
+
+  it('first address joins successfully', async () => {
 
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
 
     const response: any = await esusu.joinEsusu(esusuId);
-    console.log(response, ' my response');
 
     const responseDataType = typeof response;
 
@@ -79,6 +88,27 @@ describe('esusu tests', () => {
     expect(response.status).toEqual(true)
 
   })
+
+
+  ////////////////////////////////////////////////////////////
+
+
+  // it('second address joins successfully', async () => {
+
+  //   console.log('doing the second address')
+
+  //   const count = await esusu.getCreatedCyclesCount();
+  //   const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
+
+  //   const response2: any = await esusu2.joinEsusu(esusuId);
+  //   console.log('done with the second address')
+
+  //   const response2DataType = typeof response2;
+
+  //   expect(response2DataType).toBe("object");
+  //   expect(response2.status).toEqual(true)
+
+  // })
 
 
 })

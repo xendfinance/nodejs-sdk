@@ -15,6 +15,15 @@ class Group {
     this.privateKey = privateKey;
   }
 
+
+
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
   /**
    * Create Group
    * @param groupName 
@@ -28,6 +37,15 @@ class Group {
       groupSymbol
     })
   }
+
+
+
+  ///////////////////////////////////////////////////////////////////////
+
+  /**
+   * Get back a groups information using the group's ID
+   * @param groupId 
+   */
 
   async getGroup(groupId: number) {
     return await getGroup({

@@ -1,6 +1,6 @@
 import createContract from "../create.contract";
 import EsusuStorage from '../abis/EsusuStorage.json';
-import { ESUSU } from '../addresses/rinkeby';
+import { ESUSU } from '../addresses/localhost';
 import privateKeyToAddress from "../../utils/privateKeyToAddress";
 
 

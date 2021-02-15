@@ -1,5 +1,5 @@
 
-import { ESUSU } from "../addresses/rinkeby";
+import { ESUSU } from "../addresses/localhost";
 import EsusuAdpter from '../abis/EsusuAdapter.json';
 import createContract from "../create.contract";
 

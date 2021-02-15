@@ -1,8 +1,7 @@
 
-// import Web3 from 'web3';
 import serializedSignedTransaction from "../../utils/sendSignedTransaction";
 import createContract from "../create.contract";
-import { ESUSU } from '../addresses/rinkeby';
+import { ESUSU } from '../addresses/localhost';
 import EsusuService from '../abis/EsusuService.json';
 
 
@@ -32,11 +31,10 @@ export default async function (args: Args) {
 
     let signedTx = await serializedSignedTransaction(data, ESUSU.ESUSU_SERVICE, privateKey, provider)
 
-    console.log(signedTx, ' the returnedj suff')
-
     return {
       status: true,
-      msg: ""
+      msg: "",
+      data: signedTx
     }
 
   } catch (error) {
@@ -45,7 +43,8 @@ export default async function (args: Args) {
 
     return {
       status: false,
-      msg: ''
+      msg: '',
+      data: error
     }
   }
 
