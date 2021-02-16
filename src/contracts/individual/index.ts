@@ -3,6 +3,7 @@ import flexibleDeposit from './flexible-deposit';
 import fixedDeposit from './fixed-deposit';
 import fixedDepositInfo from './get-fixed-deposit-record'
 import { checkChainId } from '../../utils/helpers';
+import flexibleDepositInfo from './get-flexible-deposit-record';
 
 type FixedDepositData = {
   depositAmount: any;
@@ -58,4 +59,12 @@ export default class Individual {
   async fixedDepositInformation() {
       return fixedDepositInfo(this.privateKey, this.provider);
   }
+
+   /**
+   * Get flexible deposit information for a particular address
+   */
+
+  async flexibleDepositInformation() {
+    return flexibleDepositInfo(this.privateKey, this.provider);
+}
 }
