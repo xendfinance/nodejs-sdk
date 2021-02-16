@@ -2,23 +2,14 @@ import { ChainId, PROVIDERS } from './constants'
 
 export const checkChainId = (chainId: ChainId) => {
 
-    let provider;
+    switch (chainId) {
+        case ChainId.MAINNET:
+            return PROVIDERS.LOCALHOST;
 
-    if (chainId === 1) {
-        provider = PROVIDERS.MAINENT
-    }
-    if (chainId === 3) {
-        provider = PROVIDERS.ROPSTEN
-    }
-    if (chainId === 4) {
-        provider = PROVIDERS.RINKEBY
-    }
-    if (chainId === null) {
-        provider = PROVIDERS.LOCALHOST
-    } else {
-        provider = PROVIDERS.LOCALHOST
-    }
+        case ChainId.RINKEBY:
+            return PROVIDERS.RINKEBY;
 
-    return provider;
+        default: return PROVIDERS.LOCALHOST;
+    }
 
 }

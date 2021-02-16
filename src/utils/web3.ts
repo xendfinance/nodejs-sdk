@@ -3,7 +3,7 @@ import { ChainId } from './constants'
 import { checkChainId } from './helpers'
 
 /** this functions creates a web3 instance and sets a provider */
-const InstantiateWeb3 = (provider: string) => {
+export const InstantiateWeb3 = (provider: string) => {
 
     let web3 = new Web3(provider);
 
