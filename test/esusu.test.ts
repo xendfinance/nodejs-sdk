@@ -22,23 +22,25 @@ describe('Esusu:', () => {
   const esusu = new Esusu(ChainId.MAINNET, privateKey);
   const esusu2 = new Esusu(ChainId.MAINNET, privateKey2)
 
-  const cycleStartTimeForTest = (new Date(new Date().getTime() + (4 * 60000)).getTime() / 1000).toFixed(0); // timestamp for current test. 3 minutes from current time
+  const cycleStartTimeForTest = (new Date(new Date().getTime() + (3 * 60000)).getTime() / 1000).toFixed(0); // timestamp for current test. 3 minutes from current time
 
 
 
+  // function for waiting
+  const waitTime = (minutes: number) => new Promise(resolve => setTimeout(resolve, minutes * 60 * 1000));
 
 
   ////////////////////////////////////////////////////////////
 
 
-  it.skip('creates an esusu cycle successfully', async () => {
+  it('creates an esusu cycle successfully', async () => {
 
     let response = await esusu.createEsusu({
       groupId: 1,
       depositAmount: "5",
       payoutIntervalInSeconds: 120, // 2 minutes
       maxMembers: 5,
-      startTimeInSeconds: Number(cycleStartTimeForTest), // 4 minutes from current time
+      startTimeInSeconds: Number(cycleStartTimeForTest), // 3 minutes from current time
     })
 
     let responseDataType = typeof response;
@@ -60,12 +62,11 @@ describe('Esusu:', () => {
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
 
     const info = await esusu.esusuInformation(esusuId);
-    console.log(info)
 
     const infoDatatype = typeof info;
 
     expect(infoDatatype).toBe("object");
-    // expect(info.CycleStartTimeInSeconds).toEqual(cycleStartTimeForTest);
+    expect(info.CycleStartTimeInSeconds).toEqual(cycleStartTimeForTest);
 
   })
 
@@ -76,7 +77,7 @@ describe('Esusu:', () => {
   ////////////////////////////////////////////////////////////
 
 
-  it.skip('first address joins successfully', async () => {
+  it('first address joins successfully', async () => {
 
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
@@ -94,7 +95,7 @@ describe('Esusu:', () => {
   ////////////////////////////////////////////////////////////
 
 
-  it.skip('second address joins successfully', async () => {
+  it('second address joins successfully', async () => {
 
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
@@ -109,22 +110,85 @@ describe('Esusu:', () => {
   })
 
 
-  it.skip('starts the esusu cycle successfully', async () => {
-    // jest.useFakeTimers();
+  ////////////////////////////////////////////////////////////////////////////////////
+
+
+  it('starts the esusu cycle successfully', async () => {
 
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
 
 
+    // wait for 4 minutes
+    await waitTime(4);
 
     //
     const response = await esusu.start(esusuId);
-    console.log(response, ' the start response')
 
     expect(response.status).toEqual(true);
 
 
-    // jest.runAllTimers();
+  })
+
+
+
+
+  ////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+  test('first account withdraws roi', async () => {
+
+    const count = await esusu.getCreatedCyclesCount();
+    const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
+
+    // wait for 3 minutes
+    await waitTime(3);
+
+    const response = await esusu.withdrawInterest(esusuId);
+
+    expect(response.status).toEqual(true);
+
+  })
+
+
+  ////////////////////////////////////////////////////////////////////////////////
+
+
+  test('first account withdraws capital', async () => {
+
+    const count = await esusu.getCreatedCyclesCount();
+    const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
+
+    // wait for 1 minutes
+    await waitTime(1);
+
+    const response = await esusu.withdrawCapital(esusuId);
+
+    expect(response.status).toEqual(true);
+
+  })
+
+
+
+
+
+  ////////////////////////////////////////////////////////////
+
+
+  it('returns recently created cycle', async () => {
+
+    const count = await esusu.getCreatedCyclesCount();
+    const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
+
+    const info = await esusu.esusuInformation(esusuId);
+
+    console.log(info, ' the last info')
+
+    const infoDatatype = typeof info;
+
+    expect(infoDatatype).toBe("object");
 
   })
 
