@@ -1,7 +1,13 @@
 import { ChainId } from '../../utils/constants';
-import depositFlexible from './flexible-deposit';
+import flexibleDeposit from './flexible-deposit';
+import fixedDeposit from './fixed-deposit';
 import { checkChainId } from '../../utils/helpers';
 
+type FixedDepositData = {
+  depositAmount: any;
+  depositDate: number;
+  lockPeriod: number;
+};
 export default class Individual {
   provider: string;
   privateKey: string;
@@ -15,10 +21,26 @@ export default class Individual {
 
   /**
    * Deposit in Flexible savings
+   * @param depositAmount
+   */
+
+  async flexibleDeposit(depositAmount: any) {
+    return await flexibleDeposit(this.provider, this.privateKey, depositAmount);
+  }
+
+  /**
+   * Deposit in Flexible savings
    * @param args
    */
 
-  async depositFlexible(depositAmount: any) {
-    return await depositFlexible(this.provider, this.privateKey, depositAmount);
+  async fixedDeposit(args: FixedDepositData) {
+    return await fixedDeposit({
+      ...args,
+      depositDate: args.depositDate,
+      depositAmount: args.depositAmount,
+      lockPeriod: args.lockPeriod,
+      provider: this.provider,
+      privateKey: this.privateKey,
+    });
   }
 }
