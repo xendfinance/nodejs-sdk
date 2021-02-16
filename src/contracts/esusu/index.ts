@@ -57,7 +57,7 @@ export default class Esusu {
    */
 
   async getCreatedCyclesCount() {
-    return createdCyclesCount(this.provider, this.privateKey);
+    return await createdCyclesCount(this.provider, this.privateKey);
   }
 
 
@@ -87,7 +87,7 @@ export default class Esusu {
    */
 
   async esusuInformation(esusuId: number) {
-    return esusuInfo(esusuId, this.provider);
+    return await esusuInfo(esusuId, this.provider);
   }
 
 
@@ -102,7 +102,7 @@ export default class Esusu {
    */
 
   async joinEsusu(cycleId: number) {
-    return joinEsusu(cycleId, this.provider, this.privateKey);
+    return await joinEsusu(cycleId, this.provider, this.privateKey);
   }
 
 
@@ -112,7 +112,7 @@ export default class Esusu {
 
 
   async start(cycleId: number) {
-    return start(cycleId, this.provider, this.privateKey);
+    return await start(cycleId, this.provider, this.privateKey);
   }
 
 
