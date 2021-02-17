@@ -6,6 +6,7 @@ export enum ChainId {
   RINKEBY = 4,
   GÖRLI = 5,
   KOVAN = 42,
+  LOCALHOST = 0
 }
 
 export enum SavingStrategyType  {
