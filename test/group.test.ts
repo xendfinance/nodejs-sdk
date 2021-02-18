@@ -1,8 +1,7 @@
 import Group from '../src/contracts/group';
 import { ChainId } from '../src/utils/constants';
 
-const privateKey = '7a22cfd45ebddc524cee4d0552f3255b5e42dee7b2d766fd7737ab8cd18a72d8';
-// const privateKey = '0x7a22cfd45ebddc524cee4d0552f3255b5e42dee7b2d766fd7737ab8cd18a72d8';
+const privateKey = 'f6e9e581e3f768917445e8e22e61f3f62e60d09cc154459cf32a11e20b54f184';
 
 
 describe.skip('Group tests ->', () => {
@@ -38,7 +37,6 @@ describe.skip('Group tests ->', () => {
     const group = await new Group(ChainId.MAINNET, privateKey);
 
     let response = await group.getGroup(1);
-    console.log(response)
 
     let groupDatatype = typeof response;
 
