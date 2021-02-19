@@ -35,6 +35,7 @@ export default async function (  provider: string,
     }
 
   } catch (error) {
+    console.error(error);
     return {
     status: false,
       data: error
