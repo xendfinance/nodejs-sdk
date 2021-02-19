@@ -1,5 +1,5 @@
 import { Transaction } from 'ethereumjs-tx';
-// import Common from 'ethereumjs-common';
+//import Common from 'ethereumjs-common';
 import Web3 from 'web3';
 
 export default async function (
@@ -24,11 +24,11 @@ export default async function (
   });
 
   // const customCommon = Common.forCustomChain(
-  //   'rinkeby',
+  //   'mainnet',
   //   {
-  //     name: 'rinkeby',
-  //     networkId: 4,
-  //     chainId: 4,
+  //     name: 'mainnet',
+  //     networkId: 1,
+  //     chainId: 1,
   //   },
   //   'petersburg'
   // );
