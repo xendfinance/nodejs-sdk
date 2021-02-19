@@ -5,6 +5,7 @@ import fixedDepositInfo from './get-fixed-deposit-record'
 import { checkChainId } from '../../utils/helpers';
 import flexibleDepositInfo from './get-flexible-deposit-record';
 import fixedWithdrawal from './fixed-withdrawal';
+import flexibleWithdrawal from './flexible-withdrawal';
 
 type FixedDepositData = {
   depositAmount: any;
@@ -70,7 +71,7 @@ export default class Individual {
 }
 
   /**
-   * Get flexible deposit information for a particular address
+   * withdraw from fixed deposit
    */
 
     //////////////////////////////////////////////////////////////////////
@@ -78,4 +79,14 @@ export default class Individual {
   async fixedDepositWithdrawal(recordId: number) {
     return fixedWithdrawal(this.privateKey, this.provider, recordId);
 }
+
+/**
+   * withdraw from flexible deposit
+   */
+
+    //////////////////////////////////////////////////////////////////////
+
+    async flexibleWithdrawal(amount: string) {
+      return flexibleWithdrawal(this.privateKey, this.provider, amount);
+  }
 }
