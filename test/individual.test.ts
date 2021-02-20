@@ -37,6 +37,26 @@ describe('Individual:', () => {
 
   })
 
+  it('deposits in a fixed savings', async () => {
+
+    // let response = await individual.fixedDeposit()
+
+    // let responseDataType = typeof response;
+
+    // expect(responseDataType).toBe("object");
+
+  })
+
+  it('gets the client record in a flexible savings', async () => {
+
+    let response = await individual.flexibleDepositInformation();
+
+    let responseDataType = typeof response;
+
+    expect(responseDataType).toBe("object");
+
+  })
+
 
 
 })
