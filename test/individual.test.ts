@@ -4,7 +4,7 @@ import { ChainId } from '../src/utils/constants';
 
 
 // the private key without the '0x' in front of it
-const privateKey = '0x861e62d0427826c2588312f133893a7993512792c5182d23009b8824e71e9fe3'
+const privateKey = 'e5eaf84444c4aff109de2ad9c748f21502561d622de2574ffe1ef7afe4807569'
 
 describe('Individual:', () => {
 
@@ -39,11 +39,15 @@ describe('Individual:', () => {
 
   it('deposits in a fixed savings', async () => {
 
-    // let response = await individual.fixedDeposit()
+    let response = await individual.fixedDeposit({
+      depositAmount: "100",
+      depositDate: 240,
+      lockPeriod: 60
+    })
 
-    // let responseDataType = typeof response;
+    let responseDataType = typeof response;
 
-    // expect(responseDataType).toBe("object");
+    expect(responseDataType).toBe("object");
 
   })
 
