@@ -7,6 +7,8 @@ import esusuInfo from "./info";
 import joinEsusu from "./join";
 import member from "./member";
 import start from "./start";
+import withdrawCapital from "./withdraw.capital";
+import withdrawInterest from "./withdraw.interest";
 
 type EsusuCycleData = {
   groupId: number
@@ -113,6 +115,26 @@ export default class Esusu {
 
   async start(cycleId: number) {
     return await start(cycleId, this.provider, this.privateKey);
+  }
+
+
+
+
+  //////////////////////////////////////////////////////////////////////////
+
+
+  async withdrawInterest(cycleId: number) {
+    return await withdrawInterest(cycleId, this.provider, this.privateKey)
+  }
+
+
+
+
+  //////////////////////////////////////////////////////////////////////////
+
+
+  async withdrawCapital(cycleId: number) {
+    return await withdrawCapital(cycleId, this.provider, this.privateKey);
   }
 
 

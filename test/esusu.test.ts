@@ -1,44 +1,90 @@
-
+import Web3 from 'web3';
 import Esusu from '../src/contracts/esusu';
 import { ChainId } from '../src/utils/constants';
+import { checkChainId } from '../src/utils/helpers';
+import { ESUSU } from '../src/contracts/addresses/localhost';
+import DaiABI from '../src/contracts/abis/DaiContract.json';
+import createContract from '../src/contracts/create.contract';
 
 
 // the private key without the '0x' in front of it
-const privateKey = '7a22cfd45ebddc524cee4d0552f3255b5e42dee7b2d766fd7737ab8cd18a72d8';
-const privateKey2 = '3c55580b730a298702479f6652844d3498d3df57dd21d8f6316e5e45c59c7236';
+const privateKey = 'f6e9e581e3f768917445e8e22e61f3f62e60d09cc154459cf32a11e20b54f184';
+const privateKey2 = '1c5e010ac170a3ba7f7d888afc94d10a1faffe74de6ed3710e149acac42092b1';
 
 describe('Esusu:', () => {
 
   jest.setTimeout(300000);
 
+  const unlockedAddress = "0xdcd024536877075bfb2ffb1db9655ae331045b4e";
+  const chainID = ChainId.MAINNET;
+  const web3 = new Web3(checkChainId(chainID))
+  let esusu: Esusu;
+  let esusu2: Esusu;
+
+
+
+  // timestamp for current test. 3 minutes from current time
+  const cycleStartTimeForTest = (new Date(new Date().getTime() + (3 * 60000)).getTime() / 1000).toFixed(0);
 
 
 
 
+  // send dai to address from the unlocked address
+  async function sendDai(amount: string, recepient: string) {
+    const contract = await createContract(checkChainId(chainID), DaiABI, ESUSU.DAI_TOKEN);
+    let amountToSend = web3.utils.toWei(amount);
+    await contract.methods.transfer(recepient, amountToSend).send({ from: unlockedAddress })
+  }
+
+  // function for waiting
+  const waitTime = (minutes: number) => new Promise(resolve => setTimeout(resolve, minutes * 60 * 1000));
 
 
   // SETUP
 
-  const esusu = new Esusu(ChainId.MAINNET, privateKey);
-  const esusu2 = new Esusu(ChainId.MAINNET, privateKey2)
+  beforeAll(async () => {
 
-  const cycleStartTimeForTest = (new Date(new Date().getTime() + (4 * 60000)).getTime() / 1000).toFixed(0); // timestamp for current test. 3 minutes from current time
+    const accountsForTest = await web3.eth.getAccounts();
+
+    const firstAccount = accountsForTest[0];
+    const secondAccount = accountsForTest[1];
+
+    await sendDai("100", firstAccount) // send dai to first account
+    await sendDai("100", secondAccount) // send dai to second account
+
+    esusu = new Esusu(chainID, privateKey);
+    esusu2 = new Esusu(chainID, privateKey2)
+
+  })
 
 
 
 
 
-  ////////////////////////////////////////////////////////////
 
 
-  it.skip('creates an esusu cycle successfully', async () => {
+
+
+
+
+
+
+
+
+
+  // 1:  ////////////////////////////////////////////////////
+
+
+  it('creates an esusu cycle successfully', async () => {
+
+
 
     let response = await esusu.createEsusu({
       groupId: 1,
       depositAmount: "5",
       payoutIntervalInSeconds: 120, // 2 minutes
       maxMembers: 5,
-      startTimeInSeconds: Number(cycleStartTimeForTest), // 4 minutes from current time
+      startTimeInSeconds: Number(cycleStartTimeForTest), // 3 minutes from current time
     })
 
     let responseDataType = typeof response;
@@ -52,6 +98,7 @@ describe('Esusu:', () => {
 
 
   ////////////////////////////////////////////////////////////
+  // 2:  ////////////////////////////////////////////////////
 
 
   it('returns recently created cycle', async () => {
@@ -60,12 +107,11 @@ describe('Esusu:', () => {
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
 
     const info = await esusu.esusuInformation(esusuId);
-    console.log(info)
 
     const infoDatatype = typeof info;
 
     expect(infoDatatype).toBe("object");
-    // expect(info.CycleStartTimeInSeconds).toEqual(cycleStartTimeForTest);
+    expect(info.CycleStartTimeInSeconds).toEqual(cycleStartTimeForTest);
 
   })
 
@@ -74,9 +120,9 @@ describe('Esusu:', () => {
 
 
   ////////////////////////////////////////////////////////////
+  // 3:  ////////////////////////////////////////////////////
 
-
-  it.skip('first address joins successfully', async () => {
+  it('first address joins successfully', async () => {
 
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
@@ -92,9 +138,10 @@ describe('Esusu:', () => {
 
 
   ////////////////////////////////////////////////////////////
+  // 4:  ////////////////////////////////////////////////////
 
 
-  it.skip('second address joins successfully', async () => {
+  it('second address joins successfully', async () => {
 
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
@@ -109,22 +156,89 @@ describe('Esusu:', () => {
   })
 
 
-  it.skip('starts the esusu cycle successfully', async () => {
-    // jest.useFakeTimers();
+  ////////////////////////////////////////////////////////////////////////////////////
+  // 5:  ////////////////////////////////////////////////////
+
+
+  it('starts the esusu cycle successfully', async () => {
 
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
 
 
+    // wait for 4 minutes
+    await waitTime(4);
 
     //
     const response = await esusu.start(esusuId);
-    console.log(response, ' the start response')
 
     expect(response.status).toEqual(true);
 
 
-    // jest.runAllTimers();
+  })
+
+
+
+
+  ////////////////////////////////////////////////////////////////////////////////////
+  // 6:  ////////////////////////////////////////////////////
+
+
+
+
+  test('first account withdraws roi', async () => {
+
+    const count = await esusu.getCreatedCyclesCount();
+    const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
+
+    // wait for 3 minutes
+    await waitTime(3);
+
+    const response = await esusu.withdrawInterest(esusuId);
+
+    expect(response.status).toEqual(true);
+
+  })
+
+
+  ////////////////////////////////////////////////////////////////////////////////
+  // 7:  ////////////////////////////////////////////////////
+
+
+  test('first account withdraws capital', async () => {
+
+    const count = await esusu.getCreatedCyclesCount();
+    const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
+
+    // wait for 1 minutes
+    await waitTime(1);
+
+    const response = await esusu.withdrawCapital(esusuId);
+
+    expect(response.status).toEqual(true);
+
+  })
+
+
+
+
+
+  ////////////////////////////////////////////////////////////
+  // 8:  ////////////////////////////////////////////////////
+
+
+  it('returns recently created cycle', async () => {
+
+    const count = await esusu.getCreatedCyclesCount();
+    const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
+
+    const info = await esusu.esusuInformation(esusuId);
+
+    console.log(info, ' the last info')
+
+    const infoDatatype = typeof info;
+
+    expect(infoDatatype).toBe("object");
 
   })
 
