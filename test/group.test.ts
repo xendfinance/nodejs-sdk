@@ -4,7 +4,8 @@ import { ChainId } from '../src/utils/constants';
 const privateKey = 'f6e9e581e3f768917445e8e22e61f3f62e60d09cc154459cf32a11e20b54f184';
 
 
-describe.skip('Group tests ->', () => {
+
+describe('Group tests ->', () => {
   jest.setTimeout(300000); // increase default time
 
 
