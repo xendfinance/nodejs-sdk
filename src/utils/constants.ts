@@ -17,8 +17,8 @@ export enum SavingStrategyType  {
 export const WEI = new BigNumber('1e18');
 
 export const PROVIDERS = {
-    MAINENT : 'https://mainnet.infura.io/v3/e9c4665d91a343e295308d5995ff5a72',
+    MAINENT : 'https://eth-mainnet.alchemyapi.io/v2/2gdCD03uyFCNKcyEryqJiaPNtOGdsNLv',
     ROPSTEN : 'https://ropsten.infura.io/v3/e9c4665d91a343e295308d5995ff5a72',
     RINKEBY : 'https://rinkeby.infura.io/v3/e9c4665d91a343e295308d5995ff5a72',
-    LOCALHOST : 'HTTP://127.0.0.1:8545'
+    LOCALHOST : 'http://127.0.0.1:8545'
 }

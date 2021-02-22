@@ -20,8 +20,7 @@ describe('Individual:', () => {
 
   const individual = new Individual(ChainId.MAINNET, privateKey);
   
-
-
+console.log(individual, 'here')
 
 
   ////////////////////////////////////////////////////////////
