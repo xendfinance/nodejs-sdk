@@ -1,6 +1,6 @@
 import web3 from 'web3';
 import createContract from "../create.contract";
-import XendFinanceGroupsAbi from '../abis/new.json';
+import XendFinanceGroupsAbi from '../abis/XendFinanceGroup.json';
 import { COOPERATIVE } from '../addresses/localhost';
 import serializedSignedTransaction from "../../utils/sendSignedTransaction";
 
