@@ -5,6 +5,9 @@ import cooperativeInfo from './cooperative.info';
 import joinCooperative from './join.cooperative';
 import allCycles from './all.cooperative.info';
 import doesMemberExist from './member';
+import start from './start.cooperative';
+import withdrawOngoing from './withdraw.ongoing';
+import withdrawCompleted from './withdraw.completed';
 
 type CooperativeCycleData = {
   groupId: number;
@@ -71,10 +74,37 @@ export default class Esusu {
 
   /**
    * Check if the cycle memeber exist
-   * @param args
+   * @param cycleId
    */
 
   async doesCycleMemberExist(cycleId: number) {
     return await doesMemberExist(cycleId, this.privateKey, this.provider);
+  }
+
+    /**
+   * Check if the cycle memeber exist
+   * @param cycleId
+   */
+
+  async startCooperativeCycle(cycleId: number) {
+    return await start(cycleId, this.privateKey, this.provider);
+  }
+
+  /**
+   * withdraw from ongoing cycle
+   * @param cycle id
+   */
+
+  async withdrawFromOngoingCycle(cycleId: number) {
+    return await withdrawOngoing(cycleId, this.provider, this.privateKey);
+  }
+
+   /**
+   * withdraw from completed cycle
+   * @param cycle id
+   */
+
+  async withdrawFromCompletedCycle(cycleId: number) {
+    return await withdrawCompleted(cycleId, this.provider, this.privateKey);
   }
 }
