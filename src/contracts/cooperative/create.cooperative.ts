@@ -1,6 +1,6 @@
 import web3 from 'web3';
 import createContract from "../create.contract";
-import XendFinanceGroup from '../abis/XendFinanceGroup_Yearn_V1.json';
+import XendFinanceGroups from '../abis/XendFinanceGroup_Yearn_V1.json'
 import { COOPERATIVE } from '../addresses/localhost';
 import serializedSignedTransaction from "../../utils/sendSignedTransaction";
 
@@ -21,7 +21,7 @@ export default async function (args: CooperativeCycle) {
   //
   try {
 
-    const contract = await createContract(provider, XendFinanceGroup.abi, COOPERATIVE.YEARN_GROUP);
+    const contract = await createContract(provider, XendFinanceGroups.abi, COOPERATIVE.YEARN_GROUP);
 
     cycleStakeAmount = web3.utils.toWei(cycleStakeAmount, 'ether'); // convert to big number
 
