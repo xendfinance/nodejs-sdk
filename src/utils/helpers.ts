@@ -4,7 +4,7 @@ export const checkChainId = (chainId: ChainId) => {
 
     switch (chainId) {
         case ChainId.MAINNET:
-            return PROVIDERS.LOCALHOST;
+            return PROVIDERS.MAINENT;
 
         case ChainId.RINKEBY:
             return PROVIDERS.RINKEBY;
