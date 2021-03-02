@@ -18,11 +18,7 @@ export default async function (privateKey: string, provider: string, recordId: n
 
     let amount : string = info.amount;
 
-    let lockPeriod : number = info.lockPeriodInSeconds;
-
-    let depositDate : number = info.depositDateInSeconds;
-
-    const data = await contract.methods.WithdrawFromFixedDeposit(recordId, amount, lockPeriod, depositDate).encodeABI();
+    const data = await contract.methods.WithdrawFromFixedDeposit(recordId, amount).encodeABI();
 
     const signedTx = await sendSignedTransaction(data, INDIVIDUAL_SAVINGS.INDIVIDUAL_CONTRACT, privateKey, provider);
 

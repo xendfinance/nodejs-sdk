@@ -23,6 +23,12 @@ export default async function (
     data: data,
   });
 
+  let gasHex = web3.utils.toHex(gas)
+
+  let gasPrice = await web3.eth.getGasPrice();
+
+  let gasInHex = web3.utils.toHex(gasPrice)
+
   // const customCommon = Common.forCustomChain(
   //   'mainnet',
   //   {
@@ -35,8 +41,8 @@ export default async function (
 
   let rawTx = {
     nonce: nonce,
-    gasLimit: gas,
-    gasPrice: web3.utils.toHex(30000000), //2 gwei,
+    gasLimit: gasHex,
+    gasPrice:gasInHex,
     to: contractAddress,
     value: '0x00',
     data,
