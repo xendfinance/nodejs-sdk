@@ -4,7 +4,7 @@ import { ChainId } from '../src/utils/constants';
 
 
 // the private key without the '0x' in front of it
-const privateKey = 'b1bcbe4cc959f65a1bcceafb600b63d1bfe2a6ef754139a371bead453479674d'
+const privateKey = '2cb0bde43f413aca71c617af4f12a62ae382c9d1bb436a1cf90cdbd6525afe66'
 
 describe('Individual:', () => {
 
@@ -56,6 +56,8 @@ describe('Individual:', () => {
     const individual = new Individual(ChainId.LOCALHOST, privateKey);
 
     let response = await individual.flexibleDepositInformation();
+
+    console.log(response, 'client record info')
 
     let responseDataType = typeof response;
 
