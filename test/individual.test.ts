@@ -4,7 +4,7 @@ import { ChainId } from '../src/utils/constants';
 
 
 // the private key without the '0x' in front of it
-const privateKey = 'b1bcbe4cc959f65a1bcceafb600b63d1bfe2a6ef754139a371bead453479674d'
+const privateKey = '77198bea638643efe980dc29695ffe5ecb8562ee9d49d3cc7e46c3636b19eb53'
 
 describe('Individual:', () => {
 
@@ -25,7 +25,7 @@ describe('Individual:', () => {
 
   it('deposits in a flexible savings', async () => {
 
-    const individual = new Individual(ChainId.LOCALHOST, privateKey);
+    const individual = new Individual(ChainId.MAINNET, privateKey);
 
     let response = await individual.flexibleDeposit("100")
 
@@ -37,7 +37,7 @@ describe('Individual:', () => {
 
   it('deposits in a fixed savings', async () => {
 
-    const individual = new Individual(ChainId.LOCALHOST, privateKey);
+    const individual = new Individual(ChainId.MAINNET, privateKey);
 
     let response = await individual.fixedDeposit({
       depositAmount: "100",
@@ -53,9 +53,11 @@ describe('Individual:', () => {
 
   it('gets the client record in a flexible savings', async () => {
 
-    const individual = new Individual(ChainId.LOCALHOST, privateKey);
+    const individual = new Individual(ChainId.MAINNET, privateKey);
 
     let response = await individual.flexibleDepositInformation();
+
+    console.log(response, 'client record info')
 
     let responseDataType = typeof response;
 
