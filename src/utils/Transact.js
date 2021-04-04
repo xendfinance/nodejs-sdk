@@ -11,10 +11,10 @@ import { ethers } from 'ethers';
 // if NonceManager.sendTransaction begins to work, consider refactoring
 // https://github.com/ethers-io/ethers.js/blob/master/packages/experimental/src.ts/nonce-manager.ts#L68
 // Answer may be in here: https://github.com/ethers-io/ethers.js/issues/972
+import { NonceManager } from '@ethersproject/experimental';
 
 
-
-const sleep = async function(delay : number) {await new Promise((r) => setTimeout(r, delay*1000));};
+const sleep = async function(delay) {await new Promise((r) => setTimeout(r, delay*1000));};
 
 
 // Geometrically increasing gas price.
@@ -29,9 +29,9 @@ export class GeometricGasPrice {
   _initial_price; // wei
   _every_secs;    // seconds
   _coefficient;   // unitless
-  _max_price : any;     // wei
+  _max_price;     // wei
 
-  constructor(initial_price : number, every_secs : number, coefficient=1.125, max_price = null) {
+  constructor(initial_price, every_secs, coefficient=1.125, max_price = null) {
     this._initial_price = initial_price;
     this._every_secs = every_secs;
     this._coefficient = coefficient;
@@ -39,7 +39,7 @@ export class GeometricGasPrice {
   }
 
   //Get the Gas price in wei [integer]
-  get_gas_price(time_elapsed : any) {
+  get_gas_price(time_elapsed) {
     let result = this._initial_price;
 
     if (time_elapsed >= this._every_secs) {
@@ -63,12 +63,12 @@ export class GeometricGasPrice {
 
 export class Transact {
   _unsigned_tx;
-  _signer : any;
+  _singer;
   _timeout;     // seconds
-  _initial_time : any;
-  _gasStrategy : any;
+  _initial_time;
+  _gasStrategy;
 
-  constructor(unsigned_tx :any, signer:any, timeout = 15000, gasStrategy = null) {
+  constructor(unsigned_tx, signer, timeout = 15000, gasStrategy = null) {
     this._unsigned_tx = unsigned_tx;
     this._signer = signer;
     this._timeout = timeout * 1000; // convert to miliseconds
@@ -81,7 +81,7 @@ export class Transact {
 
     // Take into account transactions done with other wallets (i.e. MetaMask): https://github.com/makerdao/pymaker/pull/201#issuecomment-731382038
     const pendingNonce = this._signer.getTransactionCount('pending');
-    const gasLimit = this._signer.estimateGas(this._unsigned_tx);
+    const gasLimit = this._signer.estimateGas(this._unsiged_tx);
     const network = this._signer.provider.getNetwork();
 
     await Promise.all([pendingNonce, gasLimit, network]).then(values => {
