@@ -1,7 +1,7 @@
 import Group from '../src/contracts/group';
 import { ChainId } from '../src/utils/constants';
 
-const privateKey = 'f6e9e581e3f768917445e8e22e61f3f62e60d09cc154459cf32a11e20b54f184';
+const privateKey = 'e87e7d528024d260430325eed72ee88236fa9d17e6ce9d0d4a1daf6a1411a956';
 
 
 
