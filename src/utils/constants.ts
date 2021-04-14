@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js';
 
 export enum ChainId {
-  MAINNET = 1,
+  MAINNET = 56,
   ROPSTEN = 3,
   RINKEBY = 4,
   GÖRLI = 5,

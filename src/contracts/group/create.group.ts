@@ -25,7 +25,7 @@ export default async function (args: Args) {
   try {
 
     // create the data and encode abi
-    const contract = await createContract(provider, EsusuService.abi, ESUSU.ESUSU_SERVICE);
+    const contract = await createContract(provider, EsusuService, ESUSU.ESUSU_SERVICE);
 
     const data = await contract.methods.CreateGroup(groupName, groupSymbol).encodeABI();
 
