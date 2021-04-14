@@ -14,15 +14,19 @@ TSDX scaffolds your new library inside `/src`.
 
 To run APP, use:
 
-```bash
-npm start # or yarn start
-```
+## You must be running a fork of the mainnet on ganache-cli 
 
+## replace the mainnet addresses in ./src/addresses/localhost.ts
+
+```bash
+yarn test
+```
+<!-- 
 This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
 
 To do a one-off build, use `npm run build` or `yarn build`.
 
-To run tests, use `npm test` or `yarn test`.
+To run tests, use `npm test` or `yarn test`. -->
 
 ## Configuration
 
