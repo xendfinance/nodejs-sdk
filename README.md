@@ -19,6 +19,7 @@ To run APP, use:
 ## replace the mainnet addresses in ./src/addresses/localhost.ts
 
 ```bash
+yarn
 yarn test
 ```
 <!-- 
