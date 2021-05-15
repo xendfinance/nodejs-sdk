@@ -1,24 +1,34 @@
 import BigNumber from 'bignumber.js';
 
 export enum ChainId {
-  MAINNET = 56,
-  ROPSTEN = 3,
-  RINKEBY = 4,
-  GÖRLI = 5,
-  KOVAN = 42,
+  ETHEREUM_MAINNET = 56,
+  BSC_MAINNET = 97,
+  BSC_TESTNET = 97,
   LOCALHOST = 0
 }
 
-export enum SavingStrategyType  {
-    YEARN_FINANCE,
-    DEFI_DOLLARS
+export enum SavingStrategyType {
+  YEARN_FINANCE,
+  DEFI_DOLLARS
 }
 
 export const WEI = new BigNumber('1e18');
 
 export const PROVIDERS = {
-    MAINENT : 'https://eth-mainnet.alchemyapi.io/v2/2gdCD03uyFCNKcyEryqJiaPNtOGdsNLv',
-    ROPSTEN : 'https://ropsten.infura.io/v3/e9c4665d91a343e295308d5995ff5a72',
-    RINKEBY : 'https://rinkeby.infura.io/v3/e9c4665d91a343e295308d5995ff5a72',
-    LOCALHOST : 'http://127.0.0.1:8545'
+  ETHEREUM_MAINNET: {
+    currency: "DAI",
+    url: 'https://eth-mainnet.alchemyapi.io/v2/2gdCD03uyFCNKcyEryqJiaPNtOGdsNLv'
+  },
+  BSC_MAINNET: {
+    currency: "BUSD",
+    url: ""
+  },
+  BSC_TESTNET: {
+    currency: "BUSD",
+    url: ""
+  },
+  LOCALHOST: {
+    currency: "BUSD",
+    url: 'http://127.0.0.1:8545'
+  }
 }

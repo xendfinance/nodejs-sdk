@@ -1,5 +1,4 @@
-import { ChainId } from "../../utils/constants";
-import { checkChainId } from "../../utils/helpers";
+import XendFinance from "../../init";
 import createEsusu from './create';
 import createdCyclesCount from "./created.cycles.count";
 import esusuId from "./esusu.id";
@@ -10,6 +9,10 @@ import start from "./start";
 import withdrawCapital from "./withdraw.capital";
 import withdrawInterest from "./withdraw.interest";
 
+
+
+
+
 type EsusuCycleData = {
   groupId: number
   depositAmount: any
@@ -18,16 +21,9 @@ type EsusuCycleData = {
   maxMembers: number
 }
 
-export default class Esusu {
 
-  provider: string;
-  privateKey: string;
 
-  constructor(chainId: ChainId, privateKey: string) {
-    this.provider = checkChainId(chainId);
-    this.privateKey = privateKey;
-  }
-
+export default class Esusu extends XendFinance {
 
 
   //////////////////////////////////////////////////////////////////////

@@ -1,31 +1,42 @@
 
 import { ChainId } from "./utils/constants";
+import { checkChainId } from "./utils/helpers";
+import protocolSelector from "./utils/protocol-selector";
 import { CreateWallet, RetrieveWallet } from "./utils/web3";
 
-import Group from './contracts/group';
-import Esusu from "./contracts/esusu";
 
+
+const defaultInitOptions: Options = {
+  env: "testnet"
+}
 
 
 class XendFinance {
 
-  // chain id is used to help know which network to connect to
   chainId: ChainId
   privateKey: string
+  provider: string
 
-  group: Group
+  protocol: string
+  availableProtocols: any[]
+  addresses: Addresses
+  currency: string
+  shareCurrency: string
 
-  esusu: Esusu
 
-  //
-  constructor(chainId: ChainId, privateKey: string) {
+  constructor(chainId: ChainId, privateKey: string, options: Options = defaultInitOptions) {
     this.chainId = chainId
-    console.log(privateKey)
     this.privateKey = privateKey;
-    this.group = new Group(chainId, this.privateKey);
-    this.esusu = new Esusu(chainId, this.privateKey);
-  }
+    let { url, currency } = checkChainId(chainId);
+    this.provider = url;
 
+    let { name, addresses, available } = protocolSelector(options);
+    this.protocol = name;
+    this.addresses = addresses;
+    this.shareCurrency = addresses.PROTOCOL_CURRENCY
+    this.currency = currency;
+    this.availableProtocols = available;
+  }
 
 
   async createWallet() {
@@ -36,8 +47,18 @@ class XendFinance {
     return await RetrieveWallet(this.chainId, this.privateKey);
   }
 
+
+  // get current apy of the active protocol
+  async apy() { }
+
+
 }
 
 
+
+export { default as Cooperative } from "./strategies/cooperative";
+export { default as Personal } from "./strategies/individual";
+export { default as Esusu } from "./strategies/esusu";
+export { default as Group } from "./strategies/group";
 
 export default XendFinance;

@@ -6,6 +6,20 @@ This library will help developers build applications ontop of the Xend Finance s
 
 
 
+## How to use
+
+### Installation
+```
+npm install xendfinancejs
+```
+
+You can make use of xend finance sdk in 3 different ways
+- running a local instance of ganache
+- running on testnet
+- running on live (use in your production environment)
+
+
+
 > If you’re new to TypeScript, checkout [this handy cheatsheet](https://devhints.io/typescript)
 
 ## Commands

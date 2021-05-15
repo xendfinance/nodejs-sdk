@@ -4,7 +4,12 @@ import { ESUSU } from "../addresses/localhost"
 import createContract from "../create.contract"
 
 
-export default async function (cycleId: number, privateKey: string, provider: string) {
+export default async function (
+  cycleId: number,
+  privateKey: string,
+  provider: string
+) {
+
   try {
     const clientAddress = privateKeyToAddress(provider, privateKey);
 
@@ -16,7 +21,9 @@ export default async function (cycleId: number, privateKey: string, provider: st
     return Boolean(isMember);
 
   } catch (error) {
-    console.error(error)
+
+    console.error(error);
     return false;
+
   }
 }
