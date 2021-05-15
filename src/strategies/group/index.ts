@@ -1,4 +1,5 @@
 import XendFinance from '../../init';
+import { ChainId } from '../../utils/constants';
 import createGroup from './create.group';
 import getGroup from './get.groups';
 import getReward from './get.reward';
@@ -8,6 +9,10 @@ import getReward from './get.reward';
 
 class Group extends XendFinance {
 
+
+  constructor(chainId: ChainId, privateKey: string, options?: Options) {
+    super(chainId, privateKey, options);
+  }
   /////////////////////////////////////////////////////////////////////////////////////////
 
   /**

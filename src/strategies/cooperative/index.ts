@@ -7,9 +7,15 @@ import start from './start.cooperative';
 import withdrawOngoing from './withdraw.ongoing';
 import withdrawCompleted from './withdraw.completed';
 import XendFinance from '../../init';
+import { ChainId } from '../../utils/constants';
 
 
-export default class Esusu extends XendFinance {
+export default class Cooperative extends XendFinance {
+
+
+  constructor(chainId: ChainId, privateKey: string, options?: Options) {
+    super(chainId, privateKey, options);
+  }
 
   /**
    * Create an cooperative cycle cycle

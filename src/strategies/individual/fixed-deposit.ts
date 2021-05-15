@@ -1,7 +1,6 @@
 import createContract from "../create.contract";
 import web3 from 'web3';
 import XendFinanceIndividual from '../abis/XendFinanceIndividual_Yearn_V1.json';
-import { INDIVIDUAL_SAVINGS } from '../addresses/localhost';
 import DAITokenAbi from '../abis/DaiContract.json';
 import sendSignedTransaction from '../../utils/sendSignedTransaction';
 
@@ -22,7 +21,7 @@ export default async function (args: FixedDeposit, addresses: Addresses) {
 
     const contract = await createContract(provider, XendFinanceIndividual.abi, addresses.PERSONAL);
 
-    const tokenContract = await createContract(provider, DAITokenAbi, INDIVIDUAL_SAVINGS.DAI_CONTRACT);
+    const tokenContract = await createContract(provider, DAITokenAbi, addresses.TOKEN);
 
     depositAmount = web3.utils.toWei(depositAmount, 'ether'); // convert to big number
 

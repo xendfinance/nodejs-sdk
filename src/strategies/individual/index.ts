@@ -5,6 +5,7 @@ import flexibleDepositInfo from './get-flexible-deposit-record';
 import fixedWithdrawal from './fixed-withdrawal';
 import flexibleWithdrawal from './flexible-withdrawal';
 import XendFinance from '../../init';
+import { ChainId } from '../../utils/constants';
 
 type FixedDepositData = {
   depositAmount: any;
@@ -12,6 +13,12 @@ type FixedDepositData = {
   lockPeriod: number;
 };
 export default class Individual extends XendFinance {
+
+
+
+  constructor(chainId: ChainId, privateKey: string, options?: Options) {
+    super(chainId, privateKey, options);
+  }
 
   //////////////////////////////////////////////////////////////////////
 

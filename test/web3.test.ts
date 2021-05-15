@@ -1,5 +1,5 @@
 import { ChainId } from '../src/utils/constants';
-import XendFinance from '../src/init';
+import XendFinance from '../src';
 
 // const privateKey = 'fd0c10d724f6ccca84650a28ba8235e2e1a89a5240a5d5bc8ca25a688ecfc417';
 

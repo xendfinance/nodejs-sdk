@@ -11,7 +11,7 @@ import testnetProtocols from '../src/environments/testnet';
 const privateKey = 'f6e9e581e3f768917445e8e22e61f3f62e60d09cc154459cf32a11e20b54f184';
 const privateKey2 = '1c5e010ac170a3ba7f7d888afc94d10a1faffe74de6ed3710e149acac42092b1';
 
-describe('Esusu:', () => {
+describe.skip('Esusu:', () => {
 
   jest.setTimeout(300000);
 

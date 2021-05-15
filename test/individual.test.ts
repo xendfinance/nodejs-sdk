@@ -7,7 +7,7 @@ const chainid = ChainId.BSC_TESTNET;
 // the private key without the '0x' in front of it
 const privateKey = '77198bea638643efe980dc29695ffe5ecb8562ee9d49d3cc7e46c3636b19eb53'
 
-describe('Individual:', () => {
+describe.skip('Individual:', () => {
 
   jest.setTimeout(300000);
 

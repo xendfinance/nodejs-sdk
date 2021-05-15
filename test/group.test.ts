@@ -6,7 +6,7 @@ const privateKey = 'e87e7d528024d260430325eed72ee88236fa9d17e6ce9d0d4a1daf6a1411
 const chainid = ChainId.BSC_TESTNET;
 
 
-describe('Group tests ->', () => {
+describe.skip('Group tests ->', () => {
   jest.setTimeout(300000); // increase default time
 
 

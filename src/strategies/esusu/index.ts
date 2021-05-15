@@ -1,4 +1,5 @@
 import XendFinance from "../../init";
+import { ChainId } from "../../utils/constants";
 import createEsusu from './create';
 import createdCyclesCount from "./created.cycles.count";
 import esusuId from "./esusu.id";
@@ -25,6 +26,10 @@ type EsusuCycleData = {
 
 export default class Esusu extends XendFinance {
 
+
+  constructor(chainId: ChainId, privateKey: string, options?: Options) {
+    super(chainId, privateKey, options);
+  }
 
   //////////////////////////////////////////////////////////////////////
 

@@ -2,7 +2,6 @@ import createContract from "../create.contract";
 import web3 from "web3";
 import XendFinanceIndividual from '../abis/XendFinanceIndividual_Yearn_V1.json';
 import DaiLendingService from '../abis/DaiContract.json'
-import { INDIVIDUAL_SAVINGS } from '../addresses/localhost';
 import privateKeyToAddress from "../../utils/privateKeyToAddress";
 
 
@@ -18,7 +17,7 @@ export default async function (provider: string, privateKey: string, address: Ad
 
     const contract = await createContract(provider, XendFinanceIndividual.abi, address.CLIENT_RECORD);
 
-    const lendingServiceContract = await createContract(provider, DaiLendingService, INDIVIDUAL_SAVINGS.DAI_LENDING_SERVICE);
+    const lendingServiceContract = await createContract(provider, DaiLendingService, address.PROTOCOL_ADAPTER);
 
     let pricePerFullShare = await lendingServiceContract.methods.getPricePerFullShare().call();
     //get the number of record

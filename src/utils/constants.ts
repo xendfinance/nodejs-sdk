@@ -1,8 +1,8 @@
 import BigNumber from 'bignumber.js';
 
 export enum ChainId {
-  ETHEREUM_MAINNET = 56,
-  BSC_MAINNET = 97,
+  ETHEREUM_MAINNET = 1,
+  BSC_MAINNET = 56,
   BSC_TESTNET = 97,
   LOCALHOST = 0
 }
