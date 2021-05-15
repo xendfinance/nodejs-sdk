@@ -1,3 +1,5 @@
+![GitHub contributors](https://img.shields.io/github/contributors/xendfinance/XendFinanceSDK?color=orange&style=flat-square)
+
 # XendFinance SDK
 
 This SDK helps you build applications on-top of the Xend Finance smart contracts.
@@ -65,22 +67,22 @@ This is the structure of a protocol to be used by the SDK and will be helpful wh
 
 ```json
 {
-  name:"",
-  code:"",
-  addresses: {
-    PROTOCOL_ADAPTER: "",
-    PROTOCOL_SERVICE: "",
-    GROUPS: "",
-    CYCLES: "",
-    ESUSU_SERVICE: "",
-    ESUSU_STORAGE: "",
-    ESUSU_ADAPTER: "",
-    COOPERATIVE: "",
-    PERSONAL: "",
-    CLIENT_RECORD: "",
-    XEND_TOKEN: "",
-    TOKEN: "",
-    PROTOCOL_CURRENCY: "",
+  "name":"",
+  "code":"",
+  "addresses": {
+    "PROTOCOL_ADAPTER": "",
+    "PROTOCOL_SERVICE": "",
+    "GROUPS": "",
+    "CYCLES": "",
+    "ESUSU_SERVICE": "",
+    "ESUSU_STORAGE": "",
+    "ESUSU_ADAPTER": "",
+    "COOPERATIVE": "",
+    "PERSONAL": "",
+    "CLIENT_RECORD": "",
+    "XEND_TOKEN": "",
+    "TOKEN": "",
+    "PROTOCOL_CURRENCY": "",
   }
 }
 ```
