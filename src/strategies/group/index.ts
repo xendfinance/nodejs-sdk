@@ -1,17 +1,12 @@
-import { ChainId } from '../../utils/constants';
-import { checkChainId } from '../../utils/helpers';
+import XendFinance from '../../init';
 import createGroup from './create.group';
 import getGroup from './get.groups';
 import getReward from './get.reward';
 
-class Group {
-  provider: string;
-  privateKey: string;
 
-  constructor(chainId: ChainId, privateKey: string) {
-    this.provider = checkChainId(chainId);
-    this.privateKey = privateKey;
-  }
+
+
+class Group extends XendFinance {
 
   /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -26,7 +21,7 @@ class Group {
       provider: this.provider,
       groupName,
       groupSymbol,
-    });
+    }, this.addresses);
   }
 
   ///////////////////////////////////////////////////////////////////////
@@ -40,7 +35,7 @@ class Group {
     return await getGroup({
       provider: this.provider,
       groupId,
-    });
+    }, this.addresses);
   }
 
   ///////////////////////////////////////////////////////////////////////
@@ -51,7 +46,7 @@ class Group {
    */
 
   async getXendTokenReward() {
-    return await getReward(this.provider, this.privateKey);
+    return await getReward(this.provider, this.privateKey, this.addresses);
   }
 }
 

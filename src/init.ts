@@ -1,4 +1,5 @@
 
+import createContract from "./strategies/create.contract";
 import { ChainId } from "./utils/constants";
 import { checkChainId } from "./utils/helpers";
 import protocolSelector from "./utils/protocol-selector";
@@ -45,6 +46,10 @@ class XendFinance {
 
   async retrieveWallet() {
     return await RetrieveWallet(this.chainId, this.privateKey);
+  }
+
+  async createContract(abi: Array<any>, contractAddress: string) {
+    return await createContract(this.provider, abi, contractAddress);
   }
 
 

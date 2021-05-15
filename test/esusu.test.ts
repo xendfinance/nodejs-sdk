@@ -1,10 +1,10 @@
 import Web3 from 'web3';
-import Esusu from '../src/contracts/esusu';
+import Esusu from '../src/strategies/esusu';
 import { ChainId } from '../src/utils/constants';
 import { checkChainId } from '../src/utils/helpers';
-import { ESUSU } from '../src/contracts/addresses/localhost';
-import DaiABI from '../src/contracts/abis/DaiContract.json';
-import createContract from '../src/contracts/create.contract';
+import DaiABI from '../src/strategies/abis/DaiContract.json';
+import createContract from '../src/strategies/create.contract';
+import testnetProtocols from '../src/environments/testnet';
 
 
 // the private key without the '0x' in front of it
@@ -16,8 +16,8 @@ describe('Esusu:', () => {
   jest.setTimeout(300000);
 
   const unlockedAddress = "0xdcd024536877075bfb2ffb1db9655ae331045b4e";
-  const chainID = ChainId.MAINNET;
-  const web3 = new Web3(checkChainId(chainID))
+  const chainID = ChainId.BSC_TESTNET;
+  const web3 = new Web3(checkChainId(chainID).url)
   let esusu: Esusu;
   let esusu2: Esusu;
 
@@ -31,7 +31,7 @@ describe('Esusu:', () => {
 
   // send dai to address from the unlocked address
   async function sendDai(amount: string, recepient: string) {
-    const contract = await createContract(checkChainId(chainID), DaiABI, ESUSU.DAI_TOKEN);
+    const contract = await createContract(checkChainId(chainID).url, DaiABI, testnetProtocols[0].addresses.TOKEN);
     let amountToSend = web3.utils.toWei(amount);
     await contract.methods.transfer(recepient, amountToSend).send({ from: unlockedAddress })
   }

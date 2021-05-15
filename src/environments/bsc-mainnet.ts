@@ -14,10 +14,8 @@ const bscMainnetProtocols: Protocols[] = [
             COOPERATIVE: "",
             PERSONAL: "",
             CLIENT_RECORD: "",
-            PORFOLIO: "",
             XEND_TOKEN: "",
-            REWARDCONFIG: "",
-            BUSD_TOKEN: "",
+            TOKEN: "",
             PROTOCOL_CURRENCY: ""
         }
     },
@@ -35,10 +33,8 @@ const bscMainnetProtocols: Protocols[] = [
             COOPERATIVE: "",
             PERSONAL: "",
             CLIENT_RECORD: "",
-            PORFOLIO: "",
             XEND_TOKEN: "",
-            REWARDCONFIG: "",
-            BUSD_TOKEN: "",
+            TOKEN: "",
             PROTOCOL_CURRENCY: ""
         }
     },
@@ -56,10 +52,8 @@ const bscMainnetProtocols: Protocols[] = [
             COOPERATIVE: "",
             PERSONAL: "",
             CLIENT_RECORD: "",
-            PORFOLIO: "",
             XEND_TOKEN: "",
-            REWARDCONFIG: "",
-            BUSD_TOKEN: "",
+            TOKEN: "",
             PROTOCOL_CURRENCY: ""
         }
     }

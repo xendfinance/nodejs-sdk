@@ -1,7 +1,8 @@
 
-import Individual from '../src/contracts/individual';
+import Individual from '../src/strategies/individual';
 import { ChainId } from '../src/utils/constants';
 
+const chainid = ChainId.BSC_TESTNET;
 
 // the private key without the '0x' in front of it
 const privateKey = '77198bea638643efe980dc29695ffe5ecb8562ee9d49d3cc7e46c3636b19eb53'
@@ -25,7 +26,7 @@ describe('Individual:', () => {
 
   it('deposits in a flexible savings', async () => {
 
-    const individual = new Individual(ChainId.MAINNET, privateKey);
+    const individual = new Individual(chainid, privateKey);
 
     let response = await individual.flexibleDeposit("100")
 
@@ -37,7 +38,7 @@ describe('Individual:', () => {
 
   it('deposits in a fixed savings', async () => {
 
-    const individual = new Individual(ChainId.MAINNET, privateKey);
+    const individual = new Individual(chainid, privateKey);
 
     let response = await individual.fixedDeposit({
       depositAmount: "100",
@@ -53,7 +54,7 @@ describe('Individual:', () => {
 
   it('gets the client record in a flexible savings', async () => {
 
-    const individual = new Individual(ChainId.MAINNET, privateKey);
+    const individual = new Individual(chainid, privateKey);
 
     let response = await individual.flexibleDepositInformation();
 

@@ -1,16 +1,15 @@
-import { ESUSU } from "../addresses/localhost"
 import createContract from "../create.contract"
 import EsusuService from '../abis/EsusuService.json';
 import sendSignedTransaction from "../../utils/sendSignedTransaction";
 
-export default async function start(cycleId: number, provider: string, privateKey: string) {
+export default async function start(cycleId: number, provider: string, privateKey: string, addresses: Addresses) {
   try {
 
-    const contract = await createContract(provider, EsusuService.abi, ESUSU.ESUSU_SERVICE);
+    const contract = await createContract(provider, EsusuService, addresses.ESUSU_SERVICE);
 
     const data = await contract.methods.StartEsusuCycle(cycleId).encodeABI();
 
-    const signedTx = await sendSignedTransaction(data, ESUSU.ESUSU_SERVICE, privateKey, provider)
+    const signedTx = await sendSignedTransaction(data, addresses.ESUSU_SERVICE, privateKey, provider)
 
     return {
       status: true,

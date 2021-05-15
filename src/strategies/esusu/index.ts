@@ -40,7 +40,7 @@ export default class Esusu extends XendFinance {
       payoutIntevalSeconds: args.payoutIntervalInSeconds,
       privateKey: this.privateKey,
       provider: this.provider
-    })
+    }, this.addresses)
   }
 
 
@@ -55,7 +55,7 @@ export default class Esusu extends XendFinance {
    */
 
   async getCreatedCyclesCount() {
-    return await createdCyclesCount(this.provider, this.privateKey);
+    return await createdCyclesCount(this.provider, this.privateKey, this.addresses);
   }
 
 
@@ -71,7 +71,7 @@ export default class Esusu extends XendFinance {
    */
 
   async getCycleIdFromCreatedCyclesList(positionOfCycle: number) {
-    return await esusuId(positionOfCycle, this.provider, this.privateKey);
+    return await esusuId(positionOfCycle, this.provider, this.privateKey, this.addresses);
   }
 
 
@@ -85,7 +85,7 @@ export default class Esusu extends XendFinance {
    */
 
   async esusuInformation(esusuId: number) {
-    return await esusuInfo(esusuId, this.provider);
+    return await esusuInfo(esusuId, this.provider, this.addresses);
   }
 
 
@@ -100,7 +100,7 @@ export default class Esusu extends XendFinance {
    */
 
   async joinEsusu(cycleId: number) {
-    return await joinEsusu(cycleId, this.provider, this.privateKey);
+    return await joinEsusu(cycleId, this.provider, this.privateKey, this.addresses);
   }
 
 
@@ -110,7 +110,7 @@ export default class Esusu extends XendFinance {
 
 
   async start(cycleId: number) {
-    return await start(cycleId, this.provider, this.privateKey);
+    return await start(cycleId, this.provider, this.privateKey, this.addresses);
   }
 
 
@@ -120,7 +120,7 @@ export default class Esusu extends XendFinance {
 
 
   async withdrawInterest(cycleId: number) {
-    return await withdrawInterest(cycleId, this.provider, this.privateKey)
+    return await withdrawInterest(cycleId, this.provider, this.privateKey, this.addresses)
   }
 
 
@@ -130,7 +130,7 @@ export default class Esusu extends XendFinance {
 
 
   async withdrawCapital(cycleId: number) {
-    return await withdrawCapital(cycleId, this.provider, this.privateKey);
+    return await withdrawCapital(cycleId, this.provider, this.privateKey, this.addresses);
   }
 
 
@@ -142,7 +142,7 @@ export default class Esusu extends XendFinance {
 
 
   async isMemberOfCycle(cycleId: number) {
-    return member(cycleId, this.privateKey, this.provider);
+    return member(cycleId, this.privateKey, this.provider, this.addresses);
   }
 
 

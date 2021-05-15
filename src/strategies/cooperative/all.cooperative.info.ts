@@ -1,12 +1,11 @@
 import Cycles from '../abis/Cycles.json';
-import { COOPERATIVE } from "../addresses/localhost"
 import createContract from "../create.contract"
 
 
-export default async function (provider: string) {
+export default async function (provider: string, addresses: Addresses) {
   try {
 
-    const contract = await createContract(provider, Cycles.abi, COOPERATIVE.CYCLES);
+    const contract = await createContract(provider, Cycles.abi, addresses.CYCLES);
 
 
     const cycles = contract.methods.getCycles().call();

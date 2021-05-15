@@ -1,25 +1,17 @@
-import { ChainId } from '../../utils/constants';
 import flexibleDeposit from './flexible-deposit';
 import fixedDeposit from './fixed-deposit';
 import fixedDepositInfo from './get-fixed-deposit-record'
-import { checkChainId } from '../../utils/helpers';
 import flexibleDepositInfo from './get-flexible-deposit-record';
 import fixedWithdrawal from './fixed-withdrawal';
 import flexibleWithdrawal from './flexible-withdrawal';
+import XendFinance from '../../init';
 
 type FixedDepositData = {
   depositAmount: any;
   depositDate: number;
   lockPeriod: number;
 };
-export default class Individual {
-  provider: string;
-  privateKey: string;
-
-  constructor(chainId: ChainId, privateKey: string) {
-    this.provider = checkChainId(chainId);
-    this.privateKey = privateKey;
-  }
+export default class Individual extends XendFinance {
 
   //////////////////////////////////////////////////////////////////////
 
@@ -29,7 +21,7 @@ export default class Individual {
    */
 
   async flexibleDeposit(depositAmount: any) {
-    return await flexibleDeposit(this.provider, this.privateKey, depositAmount);
+    return await flexibleDeposit(this.provider, this.privateKey, depositAmount, this.addresses);
   }
 
 
@@ -48,7 +40,7 @@ export default class Individual {
       lockPeriod: args.lockPeriod,
       provider: this.provider,
       privateKey: this.privateKey,
-    });
+    }, this.addresses);
   }
 
   //////////////////////////////////////////////////////////////////////
@@ -59,34 +51,34 @@ export default class Individual {
    */
 
   async fixedDepositInformation() {
-      return fixedDepositInfo(this.privateKey, this.provider);
+    return fixedDepositInfo(this.privateKey, this.provider, this.addresses);
   }
 
-   /**
-   * Get flexible deposit information for a particular address
-   */
+  /**
+  * Get flexible deposit information for a particular address
+  */
 
   async flexibleDepositInformation() {
-    return flexibleDepositInfo(this.privateKey, this.provider);
-}
+    return flexibleDepositInfo(this.privateKey, this.provider, this.addresses);
+  }
 
   /**
    * withdraw from fixed deposit
    */
 
-    //////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
 
   async fixedDepositWithdrawal(recordId: number) {
-    return fixedWithdrawal(this.privateKey, this.provider, recordId);
-}
+    return fixedWithdrawal(this.privateKey, this.provider, recordId, this.addresses);
+  }
 
-/**
-   * withdraw from flexible deposit
-   */
+  /**
+     * withdraw from flexible deposit
+     */
 
-    //////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
 
-    async flexibleWithdrawal(amount: string) {
-      return flexibleWithdrawal(this.privateKey, this.provider, amount);
+  async flexibleWithdrawal(amount: string) {
+    return flexibleWithdrawal(this.privateKey, this.provider, amount, this.addresses);
   }
 }

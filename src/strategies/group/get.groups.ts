@@ -1,5 +1,4 @@
 
-import { ESUSU } from "../addresses/localhost";
 import EsusuAdpter from '../abis/EsusuAdapter.json';
 import createContract from "../create.contract";
 
@@ -10,14 +9,14 @@ type Args = {
 }
 
 
-export default async function (args: Args) {
+export default async function (args: Args, addresses: Addresses) {
 
   let { provider, groupId } = args;
 
   try {
 
     //
-    const contract = await createContract(provider, EsusuAdpter.abi, ESUSU.ESUSU_ADAPTER);
+    const contract = await createContract(provider, EsusuAdpter.abi, addresses.ESUSU_ADAPTER);
     const data = await contract.methods.GetGroupInformationById(groupId).call();
 
     return data;

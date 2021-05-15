@@ -16,13 +16,11 @@ interface Addresses {
     ESUSU_SERVICE: string
     ESUSU_STORAGE: string
     ESUSU_ADAPTER: string
-    COOPERATIVE: string
-    PERSONAL: string
+    COOPERATIVE: string // usually yearn group
+    PERSONAL: string // usually individual
     CLIENT_RECORD: string
-    PORFOLIO: string
     XEND_TOKEN: string
-    REWARDCONFIG: string
-    BUSD_TOKEN: string
+    TOKEN: string // usually busd token
     PROTOCOL_CURRENCY: string
 }
 
@@ -31,3 +29,13 @@ interface Protocols {
     code: string
     addresses: Addresses
 }
+
+
+
+interface CooperativeCycleData {
+    groupId: number;
+    cycleStakeAmount: any;
+    payoutIntervalInSeconds: number;
+    startTimeInSeconds: number;
+    maxMembers: number;
+};

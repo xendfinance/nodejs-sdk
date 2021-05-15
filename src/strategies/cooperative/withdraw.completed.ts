@@ -1,17 +1,16 @@
-import { COOPERATIVE } from "../addresses/localhost";
 import createContract from "../create.contract";
 import XendFinanceGroup from '../abis/XendFinanceGroup.json';
 import sendSignedTransaction from "../../utils/sendSignedTransaction";
 
-export default async function (cycleId: number, provider: string, privateKey: string) {
+export default async function (cycleId: number, provider: string, privateKey: string, addresses: Addresses) {
 
   try {
 
-    const contract = await createContract(provider, XendFinanceGroup, COOPERATIVE.YEARN_GROUP);
+    const contract = await createContract(provider, XendFinanceGroup, addresses.COOPERATIVE);
 
     const data = await contract.methods.withdrawFromCycle(cycleId).encodeABI();
 
-    const signedTx = await sendSignedTransaction(data, COOPERATIVE.YEARN_GROUP, privateKey, provider);
+    const signedTx = await sendSignedTransaction(data, addresses.COOPERATIVE, privateKey, provider);
 
     return {
       status: true,

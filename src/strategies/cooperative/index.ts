@@ -1,5 +1,3 @@
-import { ChainId } from '../../utils/constants';
-import { checkChainId } from '../../utils/helpers';
 import createCooperative from './create.cooperative';
 import cooperativeInfo from './cooperative.info';
 import joinCooperative from './join.cooperative';
@@ -8,23 +6,10 @@ import doesMemberExist from './member';
 import start from './start.cooperative';
 import withdrawOngoing from './withdraw.ongoing';
 import withdrawCompleted from './withdraw.completed';
+import XendFinance from '../../init';
 
-type CooperativeCycleData = {
-  groupId: number;
-  cycleStakeAmount: any;
-  payoutIntervalInSeconds: number;
-  startTimeInSeconds: number;
-  maxMembers: number;
-};
 
-export default class Esusu {
-  provider: string;
-  privateKey: string;
-
-  constructor(chainId: ChainId, privateKey: string) {
-    this.provider = checkChainId(chainId);
-    this.privateKey = privateKey;
-  }
+export default class Esusu extends XendFinance {
 
   /**
    * Create an cooperative cycle cycle
@@ -37,7 +22,7 @@ export default class Esusu {
       payoutIntevalSeconds: args.payoutIntervalInSeconds,
       privateKey: this.privateKey,
       provider: this.provider,
-    });
+    }, this.addresses);
   }
 
   /**
@@ -50,7 +35,8 @@ export default class Esusu {
       cycleId,
       numberOfStakes,
       this.privateKey,
-      this.provider
+      this.provider,
+      this.addresses
     );
   }
 
@@ -60,7 +46,7 @@ export default class Esusu {
    */
 
   async cooperativeCycleInformation(cycleId: number) {
-    return await cooperativeInfo(cycleId, this.provider);
+    return await cooperativeInfo(cycleId, this.provider, this.addresses);
   }
 
   /**
@@ -69,7 +55,7 @@ export default class Esusu {
    */
 
   async getAllCycles() {
-    return await allCycles(this.provider);
+    return await allCycles(this.provider, this.addresses);
   }
 
   /**
@@ -78,16 +64,16 @@ export default class Esusu {
    */
 
   async doesCycleMemberExist(cycleId: number) {
-    return await doesMemberExist(cycleId, this.privateKey, this.provider);
+    return await doesMemberExist(cycleId, this.privateKey, this.provider, this.addresses);
   }
 
-    /**
-   * Check if the cycle memeber exist
-   * @param cycleId
-   */
+  /**
+ * Check if the cycle memeber exist
+ * @param cycleId
+ */
 
   async startCooperativeCycle(cycleId: number) {
-    return await start(cycleId, this.privateKey, this.provider);
+    return await start(cycleId, this.privateKey, this.provider, this.addresses);
   }
 
   /**
@@ -96,15 +82,15 @@ export default class Esusu {
    */
 
   async withdrawFromOngoingCycle(cycleId: number) {
-    return await withdrawOngoing(cycleId, this.provider, this.privateKey);
+    return await withdrawOngoing(cycleId, this.provider, this.privateKey, this.addresses);
   }
 
-   /**
-   * withdraw from completed cycle
-   * @param cycle id
-   */
+  /**
+  * withdraw from completed cycle
+  * @param cycle id
+  */
 
   async withdrawFromCompletedCycle(cycleId: number) {
-    return await withdrawCompleted(cycleId, this.provider, this.privateKey);
+    return await withdrawCompleted(cycleId, this.provider, this.privateKey, this.addresses);
   }
 }

@@ -1,8 +1,9 @@
-import Group from '../src/contracts/group';
+import Group from '../src/strategies/group';
 import { ChainId } from '../src/utils/constants';
 
 const privateKey = 'e87e7d528024d260430325eed72ee88236fa9d17e6ce9d0d4a1daf6a1411a956';
 
+const chainid = ChainId.BSC_TESTNET;
 
 
 describe('Group tests ->', () => {
@@ -18,7 +19,7 @@ describe('Group tests ->', () => {
 
   test('returns an object with status and msg property', async () => {
 
-    const group = await new Group(ChainId.MAINNET, privateKey);
+    const group = await new Group(chainid, privateKey);
 
 
     let response = await group.createGroup(groupName, groupSymbol);
@@ -35,7 +36,7 @@ describe('Group tests ->', () => {
 
   test('should return an object', async () => {
 
-    const group = await new Group(ChainId.MAINNET, privateKey);
+    const group = await new Group(chainid, privateKey);
 
     let response = await group.getGroup(1);
 
