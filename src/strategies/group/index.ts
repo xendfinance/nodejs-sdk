@@ -20,7 +20,7 @@ class Group extends XendFinance {
    * @param groupName
    * @param groupSymbol
    */
-  async createGroup(groupName: string, groupSymbol: string) {
+  async create(groupName: string, groupSymbol: string) {
     return await createGroup({
       privateKey: this.privateKey,
       provider: this.provider,

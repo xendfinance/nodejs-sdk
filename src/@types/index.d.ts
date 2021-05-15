@@ -39,3 +39,19 @@ interface CooperativeCycleData {
     startTimeInSeconds: number;
     maxMembers: number;
 };
+
+
+interface FixedDepositData {
+    depositAmount: any;
+    depositDate: number;
+    lockPeriod: number;
+}
+
+
+interface EsusuCycleData {
+    groupId: number
+    depositAmount: any
+    payoutIntervalInSeconds: number
+    startTimeInSeconds: number
+    maxMembers: number
+}

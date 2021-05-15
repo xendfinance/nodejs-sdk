@@ -14,13 +14,6 @@ import withdrawInterest from "./withdraw.interest";
 
 
 
-type EsusuCycleData = {
-  groupId: number
-  depositAmount: any
-  payoutIntervalInSeconds: number
-  startTimeInSeconds: number
-  maxMembers: number
-}
 
 
 
@@ -39,7 +32,7 @@ export default class Esusu extends XendFinance {
    * @param args 
    */
 
-  async createEsusu(args: EsusuCycleData) {
+  async create(args: EsusuCycleData) {
     return await createEsusu({
       ...args,
       payoutIntevalSeconds: args.payoutIntervalInSeconds,
@@ -89,7 +82,7 @@ export default class Esusu extends XendFinance {
    * @param esusuId 
    */
 
-  async esusuInformation(esusuId: number) {
+  async info(esusuId: number) {
     return await esusuInfo(esusuId, this.provider, this.addresses);
   }
 
@@ -104,7 +97,7 @@ export default class Esusu extends XendFinance {
    * @param cycleId 
    */
 
-  async joinEsusu(cycleId: number) {
+  async join(cycleId: number) {
     return await joinEsusu(cycleId, this.provider, this.privateKey, this.addresses);
   }
 

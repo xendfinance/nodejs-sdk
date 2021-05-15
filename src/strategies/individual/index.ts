@@ -7,14 +7,11 @@ import flexibleWithdrawal from './flexible-withdrawal';
 import XendFinance from '../../init';
 import { ChainId } from '../../utils/constants';
 
-type FixedDepositData = {
-  depositAmount: any;
-  depositDate: number;
-  lockPeriod: number;
-};
-export default class Individual extends XendFinance {
 
 
+
+
+export default class Personal extends XendFinance {
 
   constructor(chainId: ChainId, privateKey: string, options?: Options) {
     super(chainId, privateKey, options);
@@ -57,7 +54,7 @@ export default class Individual extends XendFinance {
    * Get fixed deposit information for a particular address
    */
 
-  async fixedDepositInformation() {
+  async fixedInfo() {
     return fixedDepositInfo(this.privateKey, this.provider, this.addresses);
   }
 
@@ -65,7 +62,7 @@ export default class Individual extends XendFinance {
   * Get flexible deposit information for a particular address
   */
 
-  async flexibleDepositInformation() {
+  async flexibleInfo() {
     return flexibleDepositInfo(this.privateKey, this.provider, this.addresses);
   }
 
@@ -75,7 +72,7 @@ export default class Individual extends XendFinance {
 
   //////////////////////////////////////////////////////////////////////
 
-  async fixedDepositWithdrawal(recordId: number) {
+  async withdrawFixed(recordId: number) {
     return fixedWithdrawal(this.privateKey, this.provider, recordId, this.addresses);
   }
 
@@ -85,7 +82,7 @@ export default class Individual extends XendFinance {
 
   //////////////////////////////////////////////////////////////////////
 
-  async flexibleWithdrawal(amount: string) {
+  async withdrawFlexible(amount: string) {
     return flexibleWithdrawal(this.privateKey, this.provider, amount, this.addresses);
   }
 }

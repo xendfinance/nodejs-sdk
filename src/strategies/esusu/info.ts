@@ -12,6 +12,7 @@ export default async function (esusuId: number, provider: string, addresses: Add
     return data
 
   } catch (error) {
+    console.log(error)
     return {}
   }
 }

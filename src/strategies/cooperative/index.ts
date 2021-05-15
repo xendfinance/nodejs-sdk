@@ -22,7 +22,7 @@ export default class Cooperative extends XendFinance {
    * @param args
    */
 
-  async createCooperative(args: CooperativeCycleData) {
+  async create(args: CooperativeCycleData) {
     return await createCooperative({
       ...args,
       payoutIntevalSeconds: args.payoutIntervalInSeconds,
@@ -36,7 +36,7 @@ export default class Cooperative extends XendFinance {
    * @param args
    */
 
-  async joinCooperative(cycleId: number, numberOfStakes: number) {
+  async join(cycleId: number, numberOfStakes: number) {
     return await joinCooperative(
       cycleId,
       numberOfStakes,
@@ -51,7 +51,7 @@ export default class Cooperative extends XendFinance {
    * @param args
    */
 
-  async cooperativeCycleInformation(cycleId: number) {
+  async info(cycleId: number) {
     return await cooperativeInfo(cycleId, this.provider, this.addresses);
   }
 
@@ -78,7 +78,7 @@ export default class Cooperative extends XendFinance {
  * @param cycleId
  */
 
-  async startCooperativeCycle(cycleId: number) {
+  async start(cycleId: number) {
     return await start(cycleId, this.privateKey, this.provider, this.addresses);
   }
 
@@ -96,7 +96,7 @@ export default class Cooperative extends XendFinance {
   * @param cycle id
   */
 
-  async withdrawFromCompletedCycle(cycleId: number) {
+  async withdrawCapital(cycleId: number) {
     return await withdrawCompleted(cycleId, this.provider, this.privateKey, this.addresses);
   }
 }

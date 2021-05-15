@@ -1,26 +1,111 @@
 # XendFinance SDK
 
-This repository contains the Xend Finance Client library. XendFinanceJS makes it easy for developers, who may not be deeply familiar with smart contract development, to interact with the various components of Xend Finance Protocol.
-
-This library will help developers build applications ontop of the Xend Finance smart contract.
+This SDK helps you build applications on-top of the Xend Finance smart contracts.
 
 
 
-## How to use
-
-### Installation
+# Installation
+Using npm:
+```bash
+npm install xend-finance
 ```
-npm install xendfinancejs
+Using yarn:
+```bash
+yarn add xend-finance
 ```
 
-You can make use of xend finance sdk in 3 different ways
-- running a local instance of ganache
-- running on testnet
-- running on live (use in your production environment)
+Xend Finance has different saving strategies that helps you save your money in stable currencies;
+- Personal Savings
+- Esusu
+- Cooperative Savings
+
+You can make use of one or all of these strategies
+
+# Example
+
+```js
+import { Personal } from 'xend-finance';
+
+const instance = new Personal(chainId, privateKey, options);
+
+const makeDeposit = async () => {
+  const depositAmount = "100";
+
+  const response = await instance.flexibleDeposit(depositAmount);
+
+  return response;
+}
+```
 
 
 
-> If you’re new to TypeScript, checkout [this handy cheatsheet](https://devhints.io/typescript)
+# Parameters
+These parameters are used to create an instance of any of the saving strategies exported from the SDK
+
+Name | Description
+--- | ---
+**chainId** | Chain ID of the network in use
+**privateKey** | Private key of address
+**options** | *Optional*
+
+
+
+# Options
+When any of Xend Finance strategy is initialized without *options*, the SDK defaults to use the addresses for the testnet.
+
+Properties | Values | Description
+--- | --- | ---
+`env` | local, test, live | Required 
+`protocols` | Array of protocols objects | This can only be used when the `env` is `local`. 
+`protocolName` | | Used in the case of multiple protocols available
+
+
+# Protocol Type
+This is the structure of a protocol to be used by the SDK and will be helpful when using the SDK on your local machine with an instance of tools like ganache.
+
+```json
+{
+  name:"",
+  code:"",
+  addresses: {
+    PROTOCOL_ADAPTER: "",
+    PROTOCOL_SERVICE: "",
+    GROUPS: "",
+    CYCLES: "",
+    ESUSU_SERVICE: "",
+    ESUSU_STORAGE: "",
+    ESUSU_ADAPTER: "",
+    COOPERATIVE: "",
+    PERSONAL: "",
+    CLIENT_RECORD: "",
+    XEND_TOKEN: "",
+    TOKEN: "",
+    PROTOCOL_CURRENCY: "",
+  }
+}
+```
+
+# Some available functions
+## Personal Savings
+Name | Parameters | Description
+--- | --- | ---
+`flexibleDeposit` | depositAmount | 
+`fixedDeposit` | | 
+`fixedInfo` | | 
+`flexibleInfo` | | 
+`withdrawFixed` | recordId | 
+`withdrawFlexible` | amount |
+
+## Esusu
+Name | Parameters | Description
+--- | --- | ---
+`create` | |
+
+## Cooperative Savings
+Name | Parameters | Description
+--- | --- | ---
+`create` | |
+
 
 ## Commands
 

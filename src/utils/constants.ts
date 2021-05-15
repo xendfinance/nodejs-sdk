@@ -21,11 +21,11 @@ export const PROVIDERS = {
   },
   BSC_MAINNET: {
     currency: "BUSD",
-    url: ""
+    url: "https://bsc-dataseed.binance.org/"
   },
   BSC_TESTNET: {
     currency: "BUSD",
-    url: ""
+    url: "https://data-seed-prebsc-1-s1.binance.org:8545/"
   },
   LOCALHOST: {
     currency: "BUSD",
