@@ -79,7 +79,7 @@ describe.skip('Esusu:', () => {
 
 
 
-    let response = await esusu.createEsusu({
+    let response = await esusu.create({
       groupId: 1,
       depositAmount: "5",
       payoutIntervalInSeconds: 120, // 2 minutes
@@ -106,7 +106,7 @@ describe.skip('Esusu:', () => {
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
 
-    const info = await esusu.esusuInformation(esusuId);
+    const info = await esusu.info(esusuId);
 
     const infoDatatype = typeof info;
 
@@ -127,7 +127,7 @@ describe.skip('Esusu:', () => {
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
 
-    const response: any = await esusu.joinEsusu(esusuId);
+    const response: any = await esusu.join(esusuId);
 
     const responseDataType = typeof response;
 
@@ -146,7 +146,7 @@ describe.skip('Esusu:', () => {
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
 
-    const response2: any = await esusu2.joinEsusu(esusuId);
+    const response2: any = await esusu2.join(esusuId);
 
     const response2DataType = typeof response2;
 
@@ -232,7 +232,7 @@ describe.skip('Esusu:', () => {
     const count = await esusu.getCreatedCyclesCount();
     const esusuId = await esusu.getCycleIdFromCreatedCyclesList(count);
 
-    const info = await esusu.esusuInformation(esusuId);
+    const info = await esusu.info(esusuId);
 
     console.log(info, ' the last info')
 

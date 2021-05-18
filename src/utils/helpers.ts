@@ -19,3 +19,19 @@ export const checkChainId = (chainId: ChainId) => {
     }
 
 }
+
+
+
+export const providerToChainID = (provider: string) => {
+
+    let providers = Object.values(PROVIDERS)
+
+    const df = providers.filter(item => item.url === provider)
+
+    if (df.length > 0) {
+        return df[0].chain
+    } else {
+        return 0
+    }
+
+}

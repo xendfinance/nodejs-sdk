@@ -1,6 +1,7 @@
 import { Transaction } from 'ethereumjs-tx';
 import Common from 'ethereumjs-common';
 import Web3 from 'web3';
+import { providerToChainID } from './helpers';
 
 export default async function (
   data: any,
@@ -29,12 +30,15 @@ export default async function (
 
   let gasPriceInHex = web3.utils.toHex(gasPrice)
 
+
+  const chainId = providerToChainID(provider);
+
   const customCommon = Common.forCustomChain(
     'mainnet',
     {
-      name: 'mainnet',
-      networkId: 1,
-      chainId: 1,
+      name: 'smart chain',
+      networkId: chainId,
+      chainId: chainId,
     },
     'petersburg'
   );
@@ -42,13 +46,14 @@ export default async function (
   let rawTx = {
     nonce: nonce,
     gasLimit: gasInHex,
-    gasPrice:gasPriceInHex,
+    gasPrice: gasPriceInHex,
     to: contractAddress,
     value: '0x00',
     data,
   };
 
-  let transaction = new Transaction(rawTx, {common: customCommon});
+  // let transaction = new Transaction(rawTx, { chain: "smart chain", });
+  let transaction = new Transaction(rawTx, { common: customCommon });
 
   transaction.sign(pk);
 

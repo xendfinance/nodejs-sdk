@@ -56,7 +56,7 @@ describe.skip('Individual:', () => {
 
     const individual = new Individual(chainid, privateKey);
 
-    let response = await individual.flexibleDepositInformation();
+    let response = await individual.flexibleInfo();
 
     console.log(response, 'client record info')
 

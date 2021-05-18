@@ -23,6 +23,11 @@ Xend Finance has different saving strategies that helps you save your money in s
 
 You can make use of one or all of these strategies
 
+# Scenario
+You can use Xend Finance in as many scenario's you can come up with, but there are 2 examples
+1. Use one general address for all your transactions
+2. Create a new address for each of your users and use for their transactions
+
 # Example
 
 ```js

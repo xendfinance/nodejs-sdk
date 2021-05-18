@@ -22,7 +22,7 @@ describe.skip('Group tests ->', () => {
     const group = await new Group(chainid, privateKey);
 
 
-    let response = await group.createGroup(groupName, groupSymbol);
+    let response = await group.create(groupName, groupSymbol);
 
     let responseDataType = typeof response;
 

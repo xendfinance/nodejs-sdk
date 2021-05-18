@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.0.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -31,8 +31,6 @@
     "trailingComma": "es5"
   },
   "name": "xendfinance-sdk",
-  "author": "“Njoku",
-  "module": "dist/xendfinance-sdk.esm.js",
   "size-limit": [
     {
       "path": "dist/xendfinance-sdk.cjs.production.min.js",
@@ -52,7 +50,6 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "bignumber.js": "^9.0.1",
     "ethereumjs-common": "^1.5.2",
     "ethereumjs-tx": "^2.1.2",
     "ethers": "^5.1.0",

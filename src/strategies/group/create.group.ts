@@ -36,6 +36,7 @@ export default async function (args: Args, addresses: Addresses) {
       data: signedTx
     }
 
+
   } catch (error) {
 
     console.error(error);
