@@ -4,6 +4,7 @@ import EsusuStorage from '../abis/EsusuStorage.json';
 import privateKeyToAddress from '../../utils/privateKeyToAddress';
 
 
+
 export default async function (provider: string, privateKey: string, addresses: Addresses) {
 
   try {
@@ -19,4 +20,20 @@ export default async function (provider: string, privateKey: string, addresses: 
     console.log(err)
     return 0;
   }
+}
+
+
+export const interest = async (cycleId: number, provider: string, privateKey: string, addresses: Addresses) => {
+  //
+  const contract = await createContract(provider, EsusuStorage.abi, addresses.ESUSU_STORAGE)
+
+  const client = privateKeyToAddress(provider, privateKey);
+
+  let capital = await contract.methods.GetMemberWithdrawnCapitalInEsusuCycle(cycleId, client).call();
+
+  let interest = await contract.methods.GetMemberCycleToBeneficiaryMapping(cycleId, client).call();
+
+
+  return { capital, interest }
+
 }

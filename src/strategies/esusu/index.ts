@@ -1,7 +1,7 @@
 import XendFinance from "../../init";
 import { ChainId } from "../../utils/constants";
 import createEsusu from './create';
-import createdCyclesCount from "./created.cycles.count";
+import createdCyclesCount, { interest } from "./created.cycles.count";
 import esusuId from "./esusu.id";
 import esusuInfo from "./info";
 import joinEsusu from "./join";
@@ -141,6 +141,17 @@ export default class Esusu extends XendFinance {
 
   async isMemberOfCycle(cycleId: number) {
     return member(cycleId, this.privateKey, this.provider, this.addresses);
+  }
+
+
+  //////////////////////////////////////////////////////////
+
+  async roiAndCapital(cycleId: number) {
+
+    return await interest(cycleId, this.provider, this.privateKey, this.addresses);
+
+
+
   }
 
 

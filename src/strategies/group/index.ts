@@ -1,7 +1,8 @@
 import XendFinance from '../../init';
 import { ChainId } from '../../utils/constants';
 import createGroup from './create.group';
-import getGroup from './get.groups';
+import getGroup from './get.group';
+import getGroups from './get.groups';
 import getReward from './get.reward';
 
 
@@ -13,6 +14,9 @@ class Group extends XendFinance {
   constructor(chainId: ChainId, privateKey: string, options?: Options) {
     super(chainId, privateKey, options);
   }
+
+
+
   /////////////////////////////////////////////////////////////////////////////////////////
 
   /**
@@ -29,6 +33,9 @@ class Group extends XendFinance {
     }, this.addresses);
   }
 
+
+
+
   ///////////////////////////////////////////////////////////////////////
 
   /**
@@ -42,6 +49,16 @@ class Group extends XendFinance {
       groupId,
     }, this.addresses);
   }
+
+
+
+
+  async getGroups() {
+    return await getGroups(this.privateKey, this.provider, this.addresses);
+  }
+
+
+
 
   ///////////////////////////////////////////////////////////////////////
 

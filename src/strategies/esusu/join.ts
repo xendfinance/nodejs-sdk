@@ -2,7 +2,6 @@ import createContract from "../create.contract";
 import EsusuService from '../abis/EsusuService.json';
 import DAITokenAbi from '../abis/DaiContract.json';
 import sendSignedTransaction from '../../utils/sendSignedTransaction';
-import privateKeyToAddress from "../../utils/privateKeyToAddress";
 import esusuInfo from './info';
 
 
@@ -17,7 +16,6 @@ export default async function (
 
     const tokenContract = await createContract(provider, DAITokenAbi, addresses.TOKEN);
 
-    const clientAddress = privateKeyToAddress(provider, privateKey);
 
 
 
@@ -37,7 +35,7 @@ export default async function (
 
 
 
-    const data = await contract.methods.JoinEsusu(cycleId, clientAddress).encodeABI();
+    const data = await contract.methods.JoinEsusu(cycleId).encodeABI();
 
 
     const signedTx = await sendSignedTransaction(data, addresses.ESUSU_SERVICE, privateKey, provider);

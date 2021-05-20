@@ -10,6 +10,8 @@ export default async function (
   provider: string
 ) {
 
+
+
   let pk = Buffer.from(privateKey, 'hex');
   let web3 = new Web3(provider);
 
@@ -23,6 +25,7 @@ export default async function (
     to: contractAddress,
     data: data,
   });
+  // let gas = await web3.eth.estimateGas({});
 
   let gasInHex = web3.utils.toHex(gas)
 
@@ -43,6 +46,7 @@ export default async function (
     'petersburg'
   );
 
+
   let rawTx = {
     nonce: nonce,
     gasLimit: gasInHex,
@@ -52,7 +56,7 @@ export default async function (
     data,
   };
 
-  // let transaction = new Transaction(rawTx, { chain: "smart chain", });
+
   let transaction = new Transaction(rawTx, { common: customCommon });
 
   transaction.sign(pk);
@@ -61,8 +65,14 @@ export default async function (
 
   return new Promise((resolve, reject) => {
     web3.eth.sendSignedTransaction('0x' + serializedTransaction.toString("hex"))
-      .once('receipt', resolve)
-      .catch(reject)
+      .once('receipt', (e) => {
+        console.log(e);
+        return resolve;
+      })
+      .catch((re) => {
+        console.log(re)
+        return reject
+      })
   })
 
 }

@@ -1,31 +1,36 @@
-
-import EsusuAdpter from '../abis/EsusuAdapter.json';
 import createContract from "../create.contract";
+import abi from '../abis/Groups.json';
+import privateKeyToAddress from "../../utils/privateKeyToAddress";
+import getGroup from "./get.group";
 
+const getGroups = async (privateKey: string, provider: string, addresses: Addresses) => {
 
-type Args = {
-  provider: string
-  groupId: number
+    try {
+
+        const client = privateKeyToAddress(provider, privateKey);
+
+        const contract = await createContract(provider, abi, addresses.GROUPS)
+        const len = await contract.methods.getRecordIndexLengthForCreator(client).call()
+        console.log(len)
+        console.log(client, ' client')
+
+        let groups = [];
+        for (let start = len - 1; start > -1; start--) {
+            let exist = await contract.methods.getGroupForCreatorIndexer(client, start).call();
+            console.log(exist, ' before exist check')
+            if (exist.exist) {
+                const group = await getGroup({ provider, groupId: start + 1 }, addresses)
+                groups.push(group);
+            }
+        }
+
+        return groups;
+
+    } catch (e) {
+        console.error(e)
+        return []
+    }
 }
 
 
-export default async function (args: Args, addresses: Addresses) {
-
-  let { provider, groupId } = args;
-
-  try {
-
-    //
-    const contract = await createContract(provider, EsusuAdpter.abi, addresses.ESUSU_ADAPTER);
-    const data = await contract.methods.GetGroupInformationById(groupId).call();
-
-    return data;
-
-  } catch (err) {
-
-    console.error(err);
-    return {}
-
-  }
-
-}
+export default getGroups;

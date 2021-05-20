@@ -21,8 +21,8 @@ export default async function (provider: string,
     // there has to be some way of granting permission for transaction
     const approvalData = await tokenContract.methods.approve(addresses.PERSONAL, depositAmount).encodeABI();
 
-
     await sendSignedTransaction(approvalData, addresses.PERSONAL, privateKey, provider);
+
 
     const data = await contract.methods.deposit().encodeABI();
 
