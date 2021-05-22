@@ -17,13 +17,14 @@ export default async function (privateKey: string, provider: string, recordId: n
 
     let amount: string = info.amount;
 
-    const data = await contract.methods.WithdrawFromFixedDeposit(recordId, amount).encodeABI();
+    const data = await contract.methods.WithdrawFromFixedDeposit(recordId, amount)
 
-    const signedTx = await sendSignedTransaction(data, addresses.PERSONAL, privateKey, provider);
+    const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.PERSONAL)
+
 
     return {
       status: true,
-      data: signedTx
+      data: receipt
     }
 
   } catch (error) {

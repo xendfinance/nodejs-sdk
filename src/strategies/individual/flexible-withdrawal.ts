@@ -14,13 +14,13 @@ export default async function (privateKey: string, provider: string, amount: str
 
     const contract = await createContract(provider, XendFinanceIndividual.abi, addresses.PERSONAL);
 
-    const data = await contract.methods.withdraw(amount).encodeABI();
+    const data = await contract.methods.withdraw(amount)
 
-    const signedTx = await sendSignedTransaction(data, addresses.PERSONAL, privateKey, provider);
+    const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.PERSONAL)
 
     return {
       status: true,
-      data: signedTx
+      data: receipt
     }
 
   } catch (error) {

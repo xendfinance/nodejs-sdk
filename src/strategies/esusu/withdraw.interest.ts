@@ -8,9 +8,9 @@ export default async function (esusuId: number, provider: string, privateKey: st
 
     const contract = await createContract(provider, EsusuService, addresses.ESUSU_SERVICE);
 
-    const data = await contract.methods.WithdrawROIFromEsusuCycle(esusuId).encodeABI();
+    const data = await contract.methods.WithdrawROIFromEsusuCycle(esusuId)
 
-    const signedTx = await sendSignedTransaction(data, addresses.ESUSU_SERVICE, privateKey, provider);
+    const signedTx = await sendSignedTransaction(privateKey, provider, data, addresses.ESUSU_SERVICE)
 
     return {
       status: true,

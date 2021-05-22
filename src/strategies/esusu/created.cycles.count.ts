@@ -8,7 +8,7 @@ import privateKeyToAddress from '../../utils/privateKeyToAddress';
 export default async function (provider: string, privateKey: string, addresses: Addresses) {
 
   try {
-    const contract = await createContract(provider, EsusuStorage.abi, addresses.ESUSU_STORAGE)
+    const contract = await createContract(provider, EsusuStorage, addresses.ESUSU_STORAGE)
 
     const clientAddress = privateKeyToAddress(provider, privateKey);
 
@@ -25,7 +25,7 @@ export default async function (provider: string, privateKey: string, addresses: 
 
 export const interest = async (cycleId: number, provider: string, privateKey: string, addresses: Addresses) => {
   //
-  const contract = await createContract(provider, EsusuStorage.abi, addresses.ESUSU_STORAGE)
+  const contract = await createContract(provider, EsusuStorage, addresses.ESUSU_STORAGE)
 
   const client = privateKeyToAddress(provider, privateKey);
 

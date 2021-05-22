@@ -2,6 +2,7 @@ import XendFinance from "../../init";
 import { ChainId } from "../../utils/constants";
 import createEsusu from './create';
 import createdCyclesCount, { interest } from "./created.cycles.count";
+import { createEsusuGroups, getEsusuGroups } from "./esusu.groups";
 import esusuId from "./esusu.id";
 import esusuInfo from "./info";
 import joinEsusu from "./join";
@@ -83,7 +84,10 @@ export default class Esusu extends XendFinance {
    */
 
   async info(esusuId: number) {
-    return await esusuInfo(esusuId, this.provider, this.addresses);
+    return await esusuInfo(
+      esusuId,
+      this.provider,
+      this.addresses);
   }
 
 
@@ -98,7 +102,11 @@ export default class Esusu extends XendFinance {
    */
 
   async join(cycleId: number) {
-    return await joinEsusu(cycleId, this.provider, this.privateKey, this.addresses);
+    return await joinEsusu(
+      cycleId,
+      this.provider,
+      this.privateKey,
+      this.addresses);
   }
 
 
@@ -108,7 +116,11 @@ export default class Esusu extends XendFinance {
 
 
   async start(cycleId: number) {
-    return await start(cycleId, this.provider, this.privateKey, this.addresses);
+    return await start(
+      cycleId,
+      this.provider,
+      this.privateKey,
+      this.addresses);
   }
 
 
@@ -118,7 +130,11 @@ export default class Esusu extends XendFinance {
 
 
   async withdrawInterest(cycleId: number) {
-    return await withdrawInterest(cycleId, this.provider, this.privateKey, this.addresses)
+    return await withdrawInterest(
+      cycleId,
+      this.provider,
+      this.privateKey,
+      this.addresses)
   }
 
 
@@ -128,7 +144,11 @@ export default class Esusu extends XendFinance {
 
 
   async withdrawCapital(cycleId: number) {
-    return await withdrawCapital(cycleId, this.provider, this.privateKey, this.addresses);
+    return await withdrawCapital(
+      cycleId,
+      this.provider,
+      this.privateKey,
+      this.addresses);
   }
 
 
@@ -140,7 +160,11 @@ export default class Esusu extends XendFinance {
 
 
   async isMemberOfCycle(cycleId: number) {
-    return member(cycleId, this.privateKey, this.provider, this.addresses);
+    return member(
+      cycleId,
+      this.privateKey,
+      this.provider,
+      this.addresses);
   }
 
 
@@ -148,10 +172,25 @@ export default class Esusu extends XendFinance {
 
   async roiAndCapital(cycleId: number) {
 
-    return await interest(cycleId, this.provider, this.privateKey, this.addresses);
+    return await interest(
+      cycleId,
+      this.provider,
+      this.privateKey,
+      this.addresses);
+
+  }
 
 
 
+  // Create a Group for Esusu cycles
+  /////////////////////////////
+  async createGroup(name: string, symbol: string) {
+    return await createEsusuGroups(name, symbol, this.provider, this.privateKey, this.addresses);
+  }
+
+
+  async getGroups() {
+    return await getEsusuGroups(this.provider, this.privateKey, this.addresses)
   }
 
 

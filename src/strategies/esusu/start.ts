@@ -7,14 +7,14 @@ export default async function start(cycleId: number, provider: string, privateKe
 
     const contract = await createContract(provider, EsusuService, addresses.ESUSU_SERVICE);
 
-    const data = await contract.methods.StartEsusuCycle(cycleId).encodeABI();
+    const data = await contract.methods.StartEsusuCycle(cycleId)
+    const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.ESUSU_SERVICE)
 
-    const signedTx = await sendSignedTransaction(data, addresses.ESUSU_SERVICE, privateKey, provider)
 
     return {
       status: true,
       msg: 'cycle has started successfully',
-      data: signedTx
+      data: receipt
     }
 
   } catch (error) {

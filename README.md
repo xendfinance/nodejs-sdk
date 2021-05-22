@@ -114,6 +114,14 @@ Name | Parameters | Description
 `create` | |
 
 
+# Using Ganache
+Using Ganache to use local deployment of Xend Finance strategies
+
+1. Run a fork of the mainnet on ganache
+2. Deploy the Xend Finance strategy contracts and get deployed addresses
+3. Send Token to the addresses you will use to run operations
+4. Begin calling SDK functions
+
 ## Commands
 
 TSDX scaffolds your new library inside `/src`.

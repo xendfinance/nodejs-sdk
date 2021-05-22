@@ -1,7 +1,8 @@
 
-import serializedSignedTransaction from "../../utils/sendSignedTransaction";
 import createContract from "../create.contract";
-import EsusuService from '../abis/EsusuService.json';
+import Abi from '../abis/Groups.json';
+import privateKeyToAddress from "../../utils/privateKeyToAddress";
+import sendSignedTransaction from "../../utils/sendSignedTransaction";
 
 
 type Args = {
@@ -24,11 +25,12 @@ export default async function (args: Args, addresses: Addresses) {
   try {
 
     // create the data and encode abi
-    const contract = await createContract(provider, EsusuService, addresses.ESUSU_SERVICE);
+    const contract = await createContract(provider, Abi, addresses.GROUPS);
 
-    const data = await contract.methods.CreateGroup(groupName, groupSymbol).encodeABI();
+    const client = await privateKeyToAddress(provider, privateKey);
 
-    let signedTx = await serializedSignedTransaction(data, addresses.ESUSU_SERVICE, privateKey, provider)
+    const data = await contract.methods.createGroup(groupName, groupSymbol, client)
+    const signedTx = await sendSignedTransaction(privateKey, provider, data, addresses.GROUPS)
 
     return {
       status: true,

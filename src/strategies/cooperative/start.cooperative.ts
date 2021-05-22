@@ -7,14 +7,15 @@ export default async function start(cycleId: number, provider: string, privateKe
 
     const contract = await createContract(provider, XendFinanceGroup, addresses.COOPERATIVE);
 
-    const data = await contract.methods.activateCycle(cycleId).encodeABI();
+    const data = await contract.methods.activateCycle(cycleId)
 
-    const signedTx = await sendSignedTransaction(data, addresses.COOPERATIVE, privateKey, provider)
+    const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.COOPERATIVE)
+
 
     return {
       status: true,
       msg: 'cycle has started successfully',
-      data: signedTx
+      data: receipt
     }
 
   } catch (error) {

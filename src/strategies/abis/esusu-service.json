@@ -1,0 +1,401 @@
+    [
+        {
+            "inputs": [],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "account",
+                    "type": "address"
+                }
+            ],
+            "name": "TransferOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "adapterAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "UpdateAdapter",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "delegateAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "UpdateAdapterWithdrawalDelegate",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "name",
+                    "type": "string"
+                }
+            ],
+            "name": "GetGroupInformationByName",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "groupId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "groupName",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "groupSymbol",
+                    "type": "string"
+                },
+                {
+                    "internalType": "address",
+                    "name": "groupCreatorAddress",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function",
+            "constant": true
+        },
+        {
+            "inputs": [],
+            "name": "GetEsusuAdapterAddress",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function",
+            "constant": true
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "symbol",
+                    "type": "string"
+                }
+            ],
+            "name": "CreateGroup",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "groupId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "depositAmount",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "payoutIntervalSeconds",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "startTimeInSeconds",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "maxMembers",
+                    "type": "uint256"
+                }
+            ],
+            "name": "CreateEsusu",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "esusuCycleId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "member",
+                    "type": "address"
+                }
+            ],
+            "name": "JoinEsusu",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "memberAddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "esusuCycleId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "GetMemberCycleInfo",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "CycleId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "MemberId",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "TotalAmountDepositedInCycle",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "TotalPayoutReceivedInCycle",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "memberPosition",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function",
+            "constant": true
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "esusuCycleId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "GetEsusuCycle",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "CycleId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "DepositAmount",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "PayoutIntervalSeconds",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "CycleState",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "TotalMembers",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "TotalAmountDeposited",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "TotalShares",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "TotalCycleDurationInSeconds",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "TotalCapitalWithdrawn",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "CycleStartTimeInSeconds",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "TotalBeneficiaries",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "MaxMembers",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function",
+            "constant": true
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "esusuCycleId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "StartEsusuCycle",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "esusuCycleId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "WithdrawROIFromEsusuCycle",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "esusuCycleId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "WithdrawCapitalFromEsusuCycle",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "esusuCycleId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "member",
+                    "type": "address"
+                }
+            ],
+            "name": "IsMemberEligibleToWithdrawROI",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function",
+            "constant": true
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "esusuCycleId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "member",
+                    "type": "address"
+                }
+            ],
+            "name": "IsMemberEligibleToWithdrawCapital",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function",
+            "constant": true
+        },
+        {
+            "inputs": [],
+            "name": "GetCurrentEsusuCycleId",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function",
+            "constant": true
+        },
+        {
+            "inputs": [],
+            "name": "GetTotalDeposits",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function",
+            "constant": true
+        }
+    ]

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 import Web3 from 'web3';
 import Esusu from '../src/strategies/esusu';
 import { ChainId } from '../src/utils/constants';
@@ -8,8 +10,12 @@ import testnetProtocols from '../src/environments/testnet';
 
 
 // the private key without the '0x' in front of it
-const privateKey = 'f6e9e581e3f768917445e8e22e61f3f62e60d09cc154459cf32a11e20b54f184';
-const privateKey2 = '1c5e010ac170a3ba7f7d888afc94d10a1faffe74de6ed3710e149acac42092b1';
+const privateKey = process.env.PK1;
+const privateKey2 = process.env.PK2;
+
+
+
+
 
 describe.skip('Esusu:', () => {
 

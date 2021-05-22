@@ -27,22 +27,22 @@ export default async function (
 
 
     // there has to be some way of granting permission for transaction
-    const approvalData = await tokenContract.methods.approve(addresses.COOPERATIVE, depositAmount).encodeABI();
+    const approvalData = await tokenContract.methods.approve(addresses.COOPERATIVE, depositAmount);
 
 
-    await sendSignedTransaction(approvalData, addresses.TOKEN, privateKey, provider);
+    await sendSignedTransaction(privateKey, provider, approvalData, addresses.COOPERATIVE);
 
 
 
-    const data = await contract.methods.joinCycle(cycleId, numberOfStakes).encodeABI();
+    const data = await contract.methods.joinCycle(cycleId, numberOfStakes)
 
 
-    const signedTx = await sendSignedTransaction(data, addresses.COOPERATIVE, privateKey, provider);
+    const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.COOPERATIVE);
 
 
     return {
       status: true,
-      data: signedTx
+      data: receipt
     };
 
 

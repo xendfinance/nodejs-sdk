@@ -19,18 +19,19 @@ export default async function (provider: string,
     depositAmount = web3.utils.toWei(depositAmount, 'ether'); // convert to big number
 
     // there has to be some way of granting permission for transaction
-    const approvalData = await tokenContract.methods.approve(addresses.PERSONAL, depositAmount).encodeABI();
+    const approvalData = await tokenContract.methods.approve(addresses.PERSONAL, depositAmount)
 
-    await sendSignedTransaction(approvalData, addresses.PERSONAL, privateKey, provider);
+    await sendSignedTransaction(privateKey, provider, approvalData, addresses.TOKEN)
 
 
-    const data = await contract.methods.deposit().encodeABI();
 
-    const signedTx = await sendSignedTransaction(data, addresses.PERSONAL, privateKey, provider);
+    const data = await contract.methods.deposit()
+    const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.PERSONAL);
+
 
     return {
       status: true,
-      data: signedTx
+      data: receipt
     }
 
   } catch (error) {

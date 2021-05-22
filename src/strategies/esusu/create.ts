@@ -1,7 +1,7 @@
 import web3 from 'web3';
 import createContract from "../create.contract";
 import EsusuService from '../abis/EsusuService.json';
-import serializedSignedTransaction from "../../utils/sendSignedTransaction";
+import sendSignedTransaction from "../../utils/sendSignedTransaction";
 
 type EsusuCycle = {
   provider: string
@@ -24,11 +24,12 @@ export default async function (args: EsusuCycle, addresses: Addresses) {
 
     depositAmount = web3.utils.toWei(depositAmount, 'ether'); // convert to big number
 
-    const data = await contract.methods.CreateEsusu(groupId, depositAmount, payoutIntevalSeconds, startTimeInSeconds, maxMembers).encodeABI();
+    const data = await contract.methods.CreateEsusu(groupId, depositAmount, payoutIntevalSeconds, startTimeInSeconds, maxMembers)
 
-    const signedTx = await serializedSignedTransaction(data, addresses.ESUSU_SERVICE, privateKey, provider);
+    const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.ESUSU_SERVICE)
 
-    return signedTx;
+
+    return receipt;
 
   } catch (err) {
     console.error(err);

@@ -8,13 +8,14 @@ export default async function (cycleId: number, provider: string, privateKey: st
 
     const contract = await createContract(provider, XendFinanceGroup, addresses.COOPERATIVE);
 
-    const data = await contract.methods.withdrawFromCycleWhileItIsOngoing(cycleId).encodeABI();
+    const data = await contract.methods.withdrawFromCycleWhileItIsOngoing(cycleId)
 
-    const signedTx = await sendSignedTransaction(data, addresses.COOPERATIVE, privateKey, provider);
+    const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.COOPERATIVE)
+
 
     return {
       status: true,
-      data: signedTx
+      data: receipt
     }
 
   } catch (error) {

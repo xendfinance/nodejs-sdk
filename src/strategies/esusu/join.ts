@@ -28,22 +28,21 @@ export default async function (
 
 
     // there has to be some way of granting permission for transaction
-    const approvalData = await tokenContract.methods.approve(addresses.ESUSU_ADAPTER, esusu_cycle.DepositAmount).encodeABI();
+    const approvalData = await tokenContract.methods.approve(addresses.ESUSU_ADAPTER, esusu_cycle.DepositAmount)
 
 
-    await sendSignedTransaction(approvalData, addresses.TOKEN, privateKey, provider);
+    await sendSignedTransaction(privateKey, provider, approvalData, addresses.TOKEN)
 
 
 
-    const data = await contract.methods.JoinEsusu(cycleId).encodeABI();
+    const data = await contract.methods.JoinEsusu(cycleId)
+    const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.ESUSU_SERVICE)
 
-
-    const signedTx = await sendSignedTransaction(data, addresses.ESUSU_SERVICE, privateKey, provider);
 
 
     return {
       status: true,
-      data: signedTx
+      data: receipt
     };
 
 

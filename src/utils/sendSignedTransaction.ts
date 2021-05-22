@@ -1,78 +1,25 @@
-import { Transaction } from 'ethereumjs-tx';
-import Common from 'ethereumjs-common';
 import Web3 from 'web3';
-import { providerToChainID } from './helpers';
-
-export default async function (
-  data: any,
-  contractAddress: string,
-  privateKey: string,
-  provider: string
-) {
+import privateKeyToAddress from './privateKeyToAddress';
 
 
 
-  let pk = Buffer.from(privateKey, 'hex');
-  let web3 = new Web3(provider);
+export default async (privateKey: string, provider: string, tx: any, contractAddress: string) => {
 
-  let account = await web3.eth.accounts.privateKeyToAccount(privateKey);
+  const web3 = new Web3(provider);
+  const client = privateKeyToAddress(provider, privateKey);
+  const networkId = await web3.eth.net.getId();
+  const gas = await tx.estimateGas({ from: client })
+  const gasPrice = await web3.eth.getGasPrice();
+  const data = tx.encodeABI()
+  const nonce = await web3.eth.getTransactionCount(client)
 
-  let nonce = (await web3.eth.getTransactionCount(account.address));
-
-  let gas = await web3.eth.estimateGas({
-    from: account.address,
-    nonce: nonce,
+  const signedTx = await web3.eth.accounts.signTransaction({
     to: contractAddress,
-    data: data,
-  });
-  // let gas = await web3.eth.estimateGas({});
-
-  let gasInHex = web3.utils.toHex(gas)
-
-  let gasPrice = await web3.eth.getGasPrice();
-
-  let gasPriceInHex = web3.utils.toHex(gasPrice)
-
-
-  const chainId = providerToChainID(provider);
-
-  const customCommon = Common.forCustomChain(
-    'mainnet',
-    {
-      name: 'smart chain',
-      networkId: chainId,
-      chainId: chainId,
-    },
-    'petersburg'
-  );
-
-
-  let rawTx = {
-    nonce: nonce,
-    gasLimit: gasInHex,
-    gasPrice: gasPriceInHex,
-    to: contractAddress,
-    value: '0x00',
     data,
-  };
+    gas, gasPrice, nonce, chainId: networkId
+  }, privateKey)
 
+  const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
 
-  let transaction = new Transaction(rawTx, { common: customCommon });
-
-  transaction.sign(pk);
-
-  let serializedTransaction = transaction.serialize();
-
-  return new Promise((resolve, reject) => {
-    web3.eth.sendSignedTransaction('0x' + serializedTransaction.toString("hex"))
-      .once('receipt', (e) => {
-        console.log(e);
-        return resolve;
-      })
-      .catch((re) => {
-        console.log(re)
-        return reject
-      })
-  })
-
+  return receipt;
 }

@@ -24,9 +24,9 @@ export default async function (args: CooperativeCycle, addresses: Addresses) {
 
     cycleStakeAmount = web3.utils.toWei(cycleStakeAmount, 'ether'); // convert to big number
 
-    const data = await contract.methods.createCycle(groupId, startTimeInSeconds, payoutIntevalSeconds, maxMembers, false, cycleStakeAmount).encodeABI();
+    const data = await contract.methods.createCycle(groupId, startTimeInSeconds, payoutIntevalSeconds, maxMembers, false, cycleStakeAmount)
 
-    const signedTx = await serializedSignedTransaction(data, addresses.COOPERATIVE, privateKey, provider);
+    const signedTx = await serializedSignedTransaction(privateKey, provider, data, addresses.COOPERATIVE);
 
     return signedTx;
 

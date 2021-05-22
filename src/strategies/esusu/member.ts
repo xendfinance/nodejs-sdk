@@ -13,7 +13,7 @@ export default async function (
   try {
     const clientAddress = privateKeyToAddress(provider, privateKey);
 
-    const contract = await createContract(provider, EsusuStorage.abi, addresses.ESUSU_STORAGE);
+    const contract = await createContract(provider, EsusuStorage, addresses.ESUSU_STORAGE);
 
 
     const isMember = contract.methods.IsMemberInCycle(clientAddress, cycleId).call();

@@ -8,13 +8,13 @@ export default async function (cycleId: number, provider: string, privateKey: st
 
     const contract = await createContract(provider, EsusuService, addresses.ESUSU_SERVICE);
 
-    const data = await contract.methods.WithdrawCapitalFromEsusuCycle(cycleId).encodeABI();
+    const data = await contract.methods.WithdrawCapitalFromEsusuCycle(cycleId)
 
-    const signedTx = await sendSignedTransaction(data, addresses.ESUSU_SERVICE, privateKey, provider);
+    const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.ESUSU_SERVICE);
 
     return {
       status: true,
-      data: signedTx
+      data: receipt
     }
 
   } catch (error) {
