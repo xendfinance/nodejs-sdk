@@ -31,6 +31,10 @@
     "trailingComma": "es5"
   },
   "name": "@xend-finance/web-sdk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xendfinance/XendFinanceSDK"
+  },
   "size-limit": [
     {
       "path": "dist/xendfinance-sdk.cjs.production.min.js",
