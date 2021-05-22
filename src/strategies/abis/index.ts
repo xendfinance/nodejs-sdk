@@ -9,6 +9,7 @@ const ABIS = {
     testnet: {
         esusu_service: require('./esusu-service.json'),
         groups: require('./groups.json'),
+        fortubeAdapter: require('./FortubeAdapterTestnet.json'),
     }
 }
 

@@ -4,12 +4,13 @@ import createEsusu from './create';
 import createdCyclesCount, { interest } from "./created.cycles.count";
 import { createEsusuGroups, getEsusuGroups } from "../group/groups";
 import esusuId from "./esusu.id";
-import esusuInfo from "./info";
+import esusuInfo, { esusuCyclesInAGroup } from "./info";
 import joinEsusu from "./join";
 import member from "./member";
 import start from "./start";
 import withdrawCapital from "./withdraw.capital";
 import withdrawInterest from "./withdraw.interest";
+import { esusuContributions, numberOfContributions } from "./contributions";
 
 
 
@@ -48,8 +49,7 @@ export default class Esusu extends XendFinance {
 
 
   /**
-   * Get number of cycles an address creates
-   * retrieve the number of cycles the account with the initialized 
+   * Retrieve the number of cycles the account with the initialized 
    * private key has created
    */
 
@@ -191,6 +191,24 @@ export default class Esusu extends XendFinance {
 
   async getGroups() {
     return await getEsusuGroups(this.provider, this.privateKey, this.addresses)
+  }
+
+
+
+
+  async contributionsCount() {
+    return await numberOfContributions(this.provider, this.privateKey, this.addresses);
+  }
+
+
+  async contrubution() {
+    return await esusuContributions(this.provider, this.privateKey, this.addresses)
+  }
+
+
+
+  async cyclesInGroup(groupId: number) {
+    return await esusuCyclesInAGroup(groupId, this.provider, this.addresses);
   }
 
 

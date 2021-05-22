@@ -9,11 +9,11 @@ Build applications on-top of the Xend Finance smart contracts.
 # Installation
 Using npm:
 ```bash
-npm install xend-finance
+npm install @xend-finance/web-sdk
 ```
 Using yarn:
 ```bash
-yarn add xend-finance
+yarn add @xend-finance/web-sdk
 ```
 
 Xend Finance has different saving strategies that helps you save your money in stable currencies;

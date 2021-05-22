@@ -1,0 +1,587 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "address payable",
+                "name": "serviceContract",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "a",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "b",
+                "type": "uint256"
+            }
+        ],
+        "name": "addExp",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "result",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "a",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "b",
+                "type": "uint256"
+            }
+        ],
+        "name": "divExp",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "a",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "scalar",
+                "type": "uint256"
+            }
+        ],
+        "name": "divScalar",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "scalar",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "divisor",
+                "type": "uint256"
+            }
+        ],
+        "name": "divScalarByExp",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "scalar",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "divisor",
+                "type": "uint256"
+            }
+        ],
+        "name": "divScalarByExpTruncate",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "num",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "denom",
+                "type": "uint256"
+            }
+        ],
+        "name": "getDiv",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "rational",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "num",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "denom",
+                "type": "uint256"
+            }
+        ],
+        "name": "getExp",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "rational",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "a",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "b",
+                "type": "uint256"
+            }
+        ],
+        "name": "mulExp",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "a",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "b",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "c",
+                "type": "uint256"
+            }
+        ],
+        "name": "mulExp3",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "a",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "scalar",
+                "type": "uint256"
+            }
+        ],
+        "name": "mulScalar",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "scaled",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "a",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "scalar",
+                "type": "uint256"
+            }
+        ],
+        "name": "mulScalarTruncate",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "a",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "scalar",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "addend",
+                "type": "uint256"
+            }
+        ],
+        "name": "mulScalarTruncateAddUInt",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+            {
+                "internalType": "address payable",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [],
+        "name": "serviceContract",
+        "outputs": [
+            {
+                "internalType": "address payable",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "a",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "b",
+                "type": "uint256"
+            }
+        ],
+        "name": "subExp",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "result",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address payable",
+                "name": "newServiceContract",
+                "type": "address"
+            }
+        ],
+        "name": "transferContractOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address payable",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "exp",
+                "type": "uint256"
+            }
+        ],
+        "name": "truncate",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "Save",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            }
+        ],
+        "name": "Withdraw",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "sharesAmount",
+                "type": "uint256"
+            }
+        ],
+        "name": "WithdrawBySharesOnly",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "sharesAmount",
+                "type": "uint256"
+            }
+        ],
+        "name": "WithdrawByShares",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "member",
+                "type": "address"
+            }
+        ],
+        "name": "GetBUSDBalance",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "member",
+                "type": "address"
+            }
+        ],
+        "name": "GetFBUSDBalance",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "member",
+                "type": "address"
+            }
+        ],
+        "name": "CalculateTotalBUSDEarned",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "exchangeRate",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [],
+        "name": "ExchangeRateCurrentBUSD",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "exchangeRate",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [],
+        "name": "ExchangeRateStoredBUSD",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "exchangeRate",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    }
+]

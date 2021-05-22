@@ -1,5 +1,5 @@
 {
-  "version": "0.0.4",
+  "version": "0.0.1-beta.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -30,7 +30,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@ncally/xendfinance-sdk",
+  "name": "@xend-finance/web-sdk",
   "size-limit": [
     {
       "path": "dist/xendfinance-sdk.cjs.production.min.js",

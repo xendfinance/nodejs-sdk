@@ -51,13 +51,46 @@ describe('Esusu', () => {
     })
 
 
-    describe('.groups()', () => {
+    describe.skip('.groups()', () => {
         it('should return data', async () => {
             const esusu = new Esusu(56, privateKey, { env: "live" })
-            console.log(esusu.addresses)
             const result = await esusu.getGroups();
             console.log(result, ' from esusu')
             expect(typeof result).toBe("object")
+        })
+    })
+
+
+    describe('.contributionsCount()', () => {
+        it('should be a number', async () => {
+
+            const esusu = new Esusu(56, privateKey, { env: "live" })
+            const result = await esusu.contributionsCount();
+
+            expect(typeof result).toBe("number");
+        })
+    })
+
+
+    describe.skip('.contributions()', () => {
+        it('should return an array', async () => {
+
+            const esusu = new Esusu(56, privateKey, { env: "live" })
+            const result = await esusu.contrubution();
+
+            expect(typeof result).toBe("object");
+        })
+    })
+
+
+    describe('.cyclesInGroup()', () => {
+
+        it('should return an array', async () => {
+
+            const esusu = new Esusu(56, privateKey, { env: "live" })
+            const result = await esusu.cyclesInGroup(6);
+
+            expect(typeof result).toBe('object');
         })
     })
 
@@ -69,7 +102,7 @@ describe('Esusu', () => {
 
 // Cooperative Tests
 
-describe('Cooperative', () => {
+describe.skip('Cooperative', () => {
 
     jest.setTimeout(300000);
 
