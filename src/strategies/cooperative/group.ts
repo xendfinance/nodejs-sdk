@@ -1,4 +1,3 @@
-import privateKeyToAddress from "../../utils/privateKeyToAddress";
 import sendSignedTransaction from "../../utils/sendSignedTransaction";
 import ABIS from "../abis"
 import createContract from "../create.contract"
@@ -39,27 +38,5 @@ export const createCooperativeGroup = async (
             msg: '',
             data: err
         }
-    }
-}
-
-
-
-
-
-
-export const getCooperativeGroups = async (provider: string, privateKey: string, addresses: Addresses) => {
-    try {
-        const client = privateKeyToAddress(provider, privateKey);
-
-        const groupsContract = await createContract(provider, ABIS.GROUPS, addresses.GROUPS)
-        // const contract
-
-        const count = await groupsContract.methods.getRecordIndexLengthForCreator(client).call()
-        console.log(count, ' the group count')
-
-        return {}
-    } catch (e) {
-
-        return {}
     }
 }

@@ -2,7 +2,7 @@ import XendFinance from "../../init";
 import { ChainId } from "../../utils/constants";
 import createEsusu from './create';
 import createdCyclesCount, { interest } from "./created.cycles.count";
-import { createEsusuGroups, getEsusuGroups } from "./esusu.groups";
+import { createEsusuGroups, getEsusuGroups } from "../group/groups";
 import esusuId from "./esusu.id";
 import esusuInfo from "./info";
 import joinEsusu from "./join";

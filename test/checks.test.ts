@@ -36,7 +36,7 @@ describe.skip('Personal', () => {
 
 
 /// Esusu tests
-describe.skip('Esusu', () => {
+describe('Esusu', () => {
     jest.setTimeout(300000);
 
     describe.skip('.info()', () => {
@@ -53,9 +53,10 @@ describe.skip('Esusu', () => {
 
     describe('.groups()', () => {
         it('should return data', async () => {
-            const esusu = new Esusu(97, privateKey)
+            const esusu = new Esusu(56, privateKey, { env: "live" })
+            console.log(esusu.addresses)
             const result = await esusu.getGroups();
-            console.log(result)
+            console.log(result, ' from esusu')
             expect(typeof result).toBe("object")
         })
     })
@@ -72,7 +73,7 @@ describe('Cooperative', () => {
 
     jest.setTimeout(300000);
 
-    describe('.createGroup()', () => {
+    describe.skip('.createGroup()', () => {
         it('should work successfully', async () => {
             const groupName = "Speedometer";
             const groupSymble = "SPG";
@@ -84,11 +85,11 @@ describe('Cooperative', () => {
         })
     })
 
-    describe.skip('.groups()', () => {
+    describe('.groups()', () => {
         it('should return object data', async () => {
-            const cooperative = new Cooperative(97, privateKey)
+            const cooperative = new Cooperative(56, privateKey, { env: "live" })
             const result = await cooperative.groups();
-            console.log(result)
+            console.log(result, ' from cooperative')
             expect(typeof result).toBe("object");
         })
     })

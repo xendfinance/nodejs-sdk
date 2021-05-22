@@ -62,7 +62,7 @@ export const getEsusuGroups = async (
         const esusuAdapter = await createContract(provider, ABIS.ESUSU_ADAPTER, addresses.ESUSU_ADAPTER);
 
         const groupsCount = await contract.methods.getRecordIndexLengthForCreator(client).call();
-        console.log(groupsCount, ' the count')
+
         let createdGroups: Array<any> = [];
         for (let start = groupsCount - 1; start > 1; start--) {
 

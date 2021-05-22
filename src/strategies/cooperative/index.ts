@@ -8,7 +8,8 @@ import withdrawOngoing from './withdraw.ongoing';
 import withdrawCompleted from './withdraw.completed';
 import XendFinance from '../../init';
 import { ChainId } from '../../utils/constants';
-import { createCooperativeGroup, getCooperativeGroups } from './group';
+import { createCooperativeGroup } from './group';
+import { getEsusuGroups as getGroups } from '../group/groups';
 
 
 export default class Cooperative extends XendFinance {
@@ -113,7 +114,7 @@ export default class Cooperative extends XendFinance {
 
   // get cooperative Groups
   async groups() {
-    return await getCooperativeGroups(this.provider, this.privateKey, this.addresses)
+    return await getGroups(this.provider, this.privateKey, this.addresses)
   }
 
 

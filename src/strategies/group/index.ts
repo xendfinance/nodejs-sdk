@@ -2,7 +2,7 @@ import XendFinance from '../../init';
 import { ChainId } from '../../utils/constants';
 import createGroup from './create.group';
 import getGroup from './get.group';
-import getGroups from './get.groups';
+import { getEsusuGroups as getGroups } from './groups';
 import getReward from './get.reward';
 
 
@@ -54,7 +54,7 @@ class Group extends XendFinance {
 
 
   async getGroups() {
-    return await getGroups(this.privateKey, this.provider, this.addresses);
+    return await getGroups(this.provider, this.privateKey, this.addresses);
   }
 
 
