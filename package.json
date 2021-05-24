@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1-beta.1",
+  "version": "0.0.1-beta.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -31,6 +31,9 @@
     "trailingComma": "es5"
   },
   "name": "@xend-finance/web-sdk",
+  "keywords": [
+    "web3"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/xendfinance/XendFinanceSDK"

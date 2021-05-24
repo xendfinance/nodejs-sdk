@@ -19,6 +19,13 @@ export default class Cooperative extends XendFinance {
     super(chainId, privateKey, options);
   }
 
+
+
+
+  protocols() {
+    return this.availableProtocols;
+  }
+
   /**
    * Create an cooperative cycle cycle
    * @param args

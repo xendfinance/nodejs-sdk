@@ -17,6 +17,13 @@ export default class Personal extends XendFinance {
     super(chainId, privateKey, options);
   }
 
+
+
+
+  protocols() {
+    return this.availableProtocols;
+  }
+
   //////////////////////////////////////////////////////////////////////
 
   /**

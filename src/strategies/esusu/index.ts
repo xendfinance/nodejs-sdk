@@ -26,6 +26,13 @@ export default class Esusu extends XendFinance {
     super(chainId, privateKey, options);
   }
 
+
+
+
+  protocols() {
+    return this.availableProtocols;
+  }
+
   //////////////////////////////////////////////////////////////////////
 
 

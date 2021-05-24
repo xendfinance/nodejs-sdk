@@ -1,15 +1,21 @@
+import GROUPS from "./Groups.json";
+import ESUSU_SERVICE from "./EsusuService.json";
+import ESUSU_ADAPTER from "./EsusuAdapter.json";
+import ESUSU_STORAGE from "./EsusuStorage.json";
+import COOPERATIVE from "./XendFinanceGroup.json";
+import FADAPTER from "./FortubeAdapterTestnet.json";
 
 const ABIS = {
-    GROUPS: require('./Groups.json'),
-    ESUSU_SERVICE: require('./EsusuService.json'),
-    ESUSU_ADAPTER: require('./EsusuAdapter.json'),
-    ESUSU_STORAGE: require('./EsusuStorage.json'),
-    COOPERATIVE: require('./XendFinanceGroup.json'),
+    GROUPS,
+    ESUSU_SERVICE,
+    ESUSU_ADAPTER,
+    ESUSU_STORAGE,
+    COOPERATIVE,
 
     testnet: {
-        esusu_service: require('./esusu-service.json'),
-        groups: require('./groups.json'),
-        fortubeAdapter: require('./FortubeAdapterTestnet.json'),
+        esusu_service: ESUSU_SERVICE,
+        groups: GROUPS,
+        fortubeAdapter: FADAPTER,
     }
 }
 

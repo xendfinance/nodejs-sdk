@@ -1,4 +1,4 @@
-import { Cooperative, Esusu, Personal } from '../src';
+import XF, { Cooperative, Esusu, Personal } from '../src';
 require('dotenv').config()
 
 
@@ -36,7 +36,7 @@ describe.skip('Personal', () => {
 
 
 /// Esusu tests
-describe('Esusu', () => {
+describe.skip('Esusu', () => {
     jest.setTimeout(300000);
 
     describe.skip('.info()', () => {
@@ -126,4 +126,19 @@ describe.skip('Cooperative', () => {
             expect(typeof result).toBe("object");
         })
     })
+})
+
+
+
+describe('General', () => {
+
+    describe('.availableProtocols', () => {
+        it('should return array of protocols', async () => {
+            const sdk = new XF(56, privateKey);
+            const result = sdk.availableProtocols;
+            console.log(result)
+            expect(typeof result).toBe('object')
+        })
+    })
+
 })
