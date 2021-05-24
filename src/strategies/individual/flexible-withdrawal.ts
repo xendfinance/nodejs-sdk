@@ -1,7 +1,7 @@
 import createContract from "../create.contract";
-import XendFinanceIndividual from '../abis/XendFinanceIndividual_Yearn_V1.json';
 import web3 from 'web3';
 import sendSignedTransaction from '../../utils/sendSignedTransaction';
+import ABIS from "../abis";
 
 
 
@@ -12,7 +12,7 @@ export default async function (privateKey: string, provider: string, amount: str
 
     amount = web3.utils.toWei(amount, 'ether'); // convert to big number
 
-    const contract = await createContract(provider, XendFinanceIndividual.abi, addresses.PERSONAL);
+    const contract = await createContract(provider, ABIS.PERSONAL, addresses.PERSONAL);
 
     const data = await contract.methods.withdraw(amount)
 

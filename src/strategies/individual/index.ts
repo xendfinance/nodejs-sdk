@@ -45,8 +45,6 @@ export default class Personal extends XendFinance {
 
   async fixedDeposit(args: FixedDepositData) {
     return await fixedDeposit({
-      ...args,
-      depositDate: args.depositDate,
       depositAmount: args.depositAmount,
       lockPeriod: args.lockPeriod,
       provider: this.provider,

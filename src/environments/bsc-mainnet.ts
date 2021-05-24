@@ -4,8 +4,8 @@ const bscMainnetProtocols: Protocols[] = [
         name: "Venus",
         code: "venus",
         addresses: {
-            PROTOCOL_ADAPTER: "",
-            PROTOCOL_SERVICE: "",
+            PROTOCOL_ADAPTER: "0x655ca90baa0936A056eFC5E389Baf97026DfFdA3",
+            PROTOCOL_SERVICE: "0xd99d68d7d01Af99F3089d0EFBB12C1A02658d436",
             GROUPS: "0x41E95e88c0dCEaCe4159f4118217B67038aaE6F0",
             CYCLES: "0x0884d96d51dDF544865af8eE3fF5a354e815CC32",
             ESUSU_SERVICE: "0x5a32A13770Db90Da7DEA78005Ce110BBBdA8Aac3",

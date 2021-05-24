@@ -43,7 +43,6 @@ interface CooperativeCycleData {
 
 interface FixedDepositData {
     depositAmount: any;
-    depositDate: number;
     lockPeriod: number;
 }
 

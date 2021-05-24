@@ -34,21 +34,21 @@ describe.skip('Individual:', () => {
 
   })
 
-  it('deposits in a fixed savings', async () => {
+  // it('deposits in a fixed savings', async () => {
 
-    const individual = new Individual(chainid, privateKey);
+  //   const individual = new Individual(chainid, privateKey);
 
-    let response = await individual.fixedDeposit({
-      depositAmount: "100",
-      depositDate: 240,
-      lockPeriod: 60
-    })
+  //   let response = await individual.fixedDeposit({
+  //     depositAmount: "100",
+  //     depositDate: 240,
+  //     lockPeriod: 60
+  //   })
 
-    let responseDataType = typeof response;
+  //   let responseDataType = typeof response;
 
-    expect(responseDataType).toBe("object");
+  //   expect(responseDataType).toBe("object");
 
-  })
+  // })
 
   it('gets the client record in a flexible savings', async () => {
 

@@ -6,7 +6,7 @@ let privateKey = process.env.PK;
 
 
 
-describe.skip('Personal', () => {
+describe('Personal', () => {
 
 
     jest.setTimeout(300000);
@@ -26,6 +26,17 @@ describe.skip('Personal', () => {
             const personal = new Personal(97, privateKey);
             const dep = await personal.withdrawFlexible("15");
             expect(dep.status).toBe(true);
+        })
+    })
+
+    describe.only('.flexibleInfo()', () => {
+        it('should show info', async () => {
+
+            const personal = new Personal(56, privateKey, { env: "live" });
+            const result = await personal.flexibleInfo();
+            console.log(result, ' flesx ')
+            expect(typeof result).toBe("object")
+
         })
     })
 

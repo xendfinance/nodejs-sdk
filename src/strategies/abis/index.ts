@@ -5,6 +5,9 @@ import ESUSU_STORAGE from "./EsusuStorage.json";
 import COOPERATIVE from "./XendFinanceGroup.json";
 import FADAPTER from "./FortubeAdapterTestnet.json";
 import TOKEN from "./DaiContract.json";
+import PERSONAL from "./XendFinanceIndividual_Yearn_V1.json";
+import CLIENT_RECORD from "./ClientRecord.json";
+import PROTOCOL_ADAPTER from "./ProtocolAdapter.json";
 
 const ABIS = {
     GROUPS,
@@ -13,6 +16,9 @@ const ABIS = {
     ESUSU_STORAGE,
     COOPERATIVE,
     TOKEN,
+    PERSONAL,
+    CLIENT_RECORD,
+    PROTOCOL_ADAPTER,
 
     testnet: {
         esusu_service: ESUSU_SERVICE,

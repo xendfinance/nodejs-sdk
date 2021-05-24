@@ -1,25 +1,24 @@
 import createContract from "../create.contract";
 import web3 from 'web3';
-import XendFinanceIndividual from '../abis/XendFinanceIndividual_Yearn_V1.json';
 import DAITokenAbi from '../abis/DaiContract.json';
 import sendSignedTransaction from '../../utils/sendSignedTransaction';
+import ABIS from "../abis";
 
-type FixedDeposit = {
+type Fixed = {
   provider: string
   privateKey: string
   depositAmount: any
-  depositDate: number
   lockPeriod: number
 }
 
-export default async function (args: FixedDeposit, addresses: Addresses) {
+export default async function (args: Fixed, addresses: Addresses) {
 
-  let { provider, privateKey, depositAmount, depositDate, lockPeriod } = args
+  let { provider, privateKey, depositAmount, lockPeriod } = args
 
   //
   try {
 
-    const contract = await createContract(provider, XendFinanceIndividual.abi, addresses.PERSONAL);
+    const contract = await createContract(provider, ABIS.PERSONAL, addresses.PERSONAL);
 
     const tokenContract = await createContract(provider, DAITokenAbi, addresses.TOKEN);
 
@@ -31,7 +30,7 @@ export default async function (args: FixedDeposit, addresses: Addresses) {
 
     await sendSignedTransaction(privateKey, provider, approvalData, addresses.TOKEN);
 
-    const data = await contract.methods.FixedDeposit(depositDate, lockPeriod)
+    const data = await contract.methods.FixedDeposit(lockPeriod)
 
     const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.PERSONAL);
 

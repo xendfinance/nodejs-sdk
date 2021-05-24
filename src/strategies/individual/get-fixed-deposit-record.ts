@@ -1,6 +1,6 @@
 import createContract from "../create.contract";
-import XendFinanceIndividual from '../abis/XendFinanceIndividual_Yearn_V1.json';
 import privateKeyToAddress from "../../utils/privateKeyToAddress";
+import ABIS from "../abis";
 
 
 
@@ -13,7 +13,7 @@ export default async function (provider: string, privateKey: string, address: Ad
     //
     const clientAddress = privateKeyToAddress(provider, privateKey);
 
-    const contract = await createContract(provider, XendFinanceIndividual.abi, address.CLIENT_RECORD);
+    const contract = await createContract(provider, ABIS.CLIENT_RECORD, address.CLIENT_RECORD);
 
     //get the number of record
     const individualDepositRecordLength = await contract.methods.GetRecordIndexFromDepositor(clientAddress).call();

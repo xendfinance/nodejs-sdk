@@ -1,8 +1,8 @@
 import createContract from "../create.contract";
 import web3 from 'web3';
-import XendFinanceIndividual from '../abis/XendFinanceIndividual_Yearn_V1.json';
 import DAITokenAbi from '../abis/DaiContract.json';
 import sendSignedTransaction from '../../utils/sendSignedTransaction';
+import ABIS from "../abis";
 
 
 export default async function (provider: string,
@@ -12,7 +12,7 @@ export default async function (provider: string,
   //
   try {
 
-    const contract = await createContract(provider, XendFinanceIndividual.abi, addresses.PERSONAL);
+    const contract = await createContract(provider, ABIS.PERSONAL, addresses.PERSONAL);
 
     const tokenContract = await createContract(provider, DAITokenAbi, addresses.TOKEN);
 

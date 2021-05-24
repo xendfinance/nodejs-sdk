@@ -1,8 +1,7 @@
 import createContract from "../create.contract";
 import web3 from "web3";
-import XendFinanceIndividual from '../abis/XendFinanceIndividual_Yearn_V1.json';
-import DaiLendingService from '../abis/DaiContract.json'
 import privateKeyToAddress from "../../utils/privateKeyToAddress";
+import ABIS from "../abis";
 
 
 
@@ -15,26 +14,25 @@ export default async function (provider: string, privateKey: string, address: Ad
     //
     const clientAddress = privateKeyToAddress(provider, privateKey);
 
-    const contract = await createContract(provider, XendFinanceIndividual.abi, address.CLIENT_RECORD);
+    const contract = await createContract(provider, ABIS.CLIENT_RECORD, address.CLIENT_RECORD);
 
-    const lendingServiceContract = await createContract(provider, DaiLendingService, address.PROTOCOL_ADAPTER);
-
-    let pricePerFullShare = await lendingServiceContract.methods.getPricePerFullShare().call();
     //get the number of record
-    const record = await contract.methods.getClientRecord(clientAddress).call();
-
-
+    const record = await contract.methods.getClientRecordByAddress(clientAddress).call();
 
     let shareBalance = record.derivativeBalance
 
     let initiaDerivativeBalance = web3.utils.fromWei(shareBalance.toString(), "ether");
+
+
+    const lendingServiceContract = await createContract(provider, ABIS.PROTOCOL_ADAPTER, address.PROTOCOL_ADAPTER);
+
+    let pricePerFullShare = await lendingServiceContract.methods.GetPricePerFullShare().call();
 
     pricePerFullShare = web3.utils.fromWei(pricePerFullShare.toString(), "ether");
 
     let balance = pricePerFullShare * Number(initiaDerivativeBalance);
 
     if (record) {
-
 
       return { balance, derivativeWithdrawn: record.derivativeTotalWithdrawn, shareBalance }
     }

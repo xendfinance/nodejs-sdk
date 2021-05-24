@@ -1,6 +1,6 @@
 import createContract from "../create.contract";
-import XendFinanceIndividual from '../abis/XendFinanceIndividual_Yearn_V1.json';
 import sendSignedTransaction from '../../utils/sendSignedTransaction';
+import ABIS from "../abis";
 
 
 
@@ -9,9 +9,9 @@ export default async function (privateKey: string, provider: string, recordId: n
   //
   try {
 
-    const contract = await createContract(provider, XendFinanceIndividual.abi, addresses.PERSONAL);
+    const contract = await createContract(provider, ABIS.PERSONAL, addresses.PERSONAL);
 
-    const fixedDepositInfo = await createContract(provider, XendFinanceIndividual.abi, addresses.CLIENT_RECORD);
+    const fixedDepositInfo = await createContract(provider, ABIS.CLIENT_RECORD, addresses.CLIENT_RECORD);
 
     const info = fixedDepositInfo.methods.GetRecordById(recordId);
 
