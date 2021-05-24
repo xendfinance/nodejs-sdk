@@ -62,7 +62,7 @@ export default class Personal extends XendFinance {
    */
 
   async fixedInfo() {
-    return fixedDepositInfo(this.privateKey, this.provider, this.addresses);
+    return fixedDepositInfo(this.provider, this.privateKey, this.addresses);
   }
 
   /**
@@ -70,7 +70,7 @@ export default class Personal extends XendFinance {
   */
 
   async flexibleInfo() {
-    return flexibleDepositInfo(this.privateKey, this.provider, this.addresses);
+    return flexibleDepositInfo(this.provider, this.privateKey, this.addresses);
   }
 
   /**

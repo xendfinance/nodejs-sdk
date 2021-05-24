@@ -11,6 +11,7 @@ export default async (privateKey: string, provider: string, tx: any, contractAdd
   const gas = await tx.estimateGas({ from: client })
   const gasPrice = await web3.eth.getGasPrice();
   const data = tx.encodeABI()
+  console.log(data, ' encoded')
   const nonce = await web3.eth.getTransactionCount(client)
 
   const signedTx = await web3.eth.accounts.signTransaction({

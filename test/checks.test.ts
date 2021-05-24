@@ -36,7 +36,7 @@ describe.skip('Personal', () => {
 
 
 /// Esusu tests
-describe.skip('Esusu', () => {
+describe('Esusu', () => {
     jest.setTimeout(300000);
 
     describe.skip('.info()', () => {
@@ -83,7 +83,7 @@ describe.skip('Esusu', () => {
     })
 
 
-    describe('.cyclesInGroup()', () => {
+    describe.skip('.cyclesInGroup()', () => {
 
         it('should return an array', async () => {
 
@@ -91,6 +91,34 @@ describe.skip('Esusu', () => {
             const result = await esusu.cyclesInGroup(6);
 
             expect(typeof result).toBe('object');
+        })
+    })
+
+
+    describe.skip('.create()', () => {
+        it('should create successfully', async () => {
+
+            const esusu = new Esusu(97, privateKey)
+            const result = await esusu.create({
+                groupId: 18,
+                depositAmount: "11",
+                payoutIntervalInSeconds: 300,
+                startTimeInSeconds: 1621840519,
+                maxMembers: 4
+            })
+            console.log(result, ' the result')
+        })
+    })
+
+
+    describe.only('.walletBalance()', () => {
+        it('should return the users wallet balance', async () => {
+
+            const esusu = new Esusu(97, privateKey)
+            const result = await esusu.walletBalance();
+
+            console.log(result, ' balance')
+            expect(typeof result).toBe("string")
         })
     })
 
@@ -130,7 +158,7 @@ describe.skip('Cooperative', () => {
 
 
 
-describe('General', () => {
+describe.skip('General', () => {
 
     describe('.availableProtocols', () => {
         it('should return array of protocols', async () => {
@@ -138,6 +166,17 @@ describe('General', () => {
             const result = sdk.availableProtocols;
             console.log(result)
             expect(typeof result).toBe('object')
+        })
+    })
+
+
+
+    describe('.walletBalance()', () => {
+        it('should return wallet balance in string', async () => {
+            const sdk = new XF(97, privateKey);
+            const result = await sdk.walletBalance();
+            console.log(result)
+            expect(typeof result).toBe('string')
         })
     })
 

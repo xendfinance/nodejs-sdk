@@ -66,6 +66,8 @@ Properties | Values | Description
 `protocols` | Array of protocols objects | This can only be used when the `env` is `local`. 
 `protocolName` | | Used in the case of multiple protocols available
 
+Note: whenever you use the *options* argument you have to provide value for the `env` property even if it is "testnet"
+
 
 # Protocol Type
 This is the structure of a protocol to be used by the SDK and will be helpful when using the SDK on your local machine with an instance of tools like ganache.
@@ -102,16 +104,19 @@ Name | Parameters | Description
 `flexibleInfo` | | 
 `withdrawFixed` | recordId | 
 `withdrawFlexible` | amount |
+`walletBalance` | |
 
 ## Esusu
 Name | Parameters | Description
 --- | --- | ---
 `create` | |
+`walletBalance` | |
 
 ## Cooperative Savings
 Name | Parameters | Description
 --- | --- | ---
 `create` | |
+`walletBalance` | |
 
 
 # Using Ganache

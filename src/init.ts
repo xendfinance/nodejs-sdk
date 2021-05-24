@@ -1,5 +1,4 @@
-
-import createContract from "./strategies/create.contract";
+import getBalance from "./utils/balance";
 import { ChainId } from "./utils/constants";
 import { checkChainId } from "./utils/helpers";
 import protocolSelector from "./utils/protocol-selector";
@@ -48,13 +47,14 @@ class XendFinance {
     return await RetrieveWallet(this.chainId, this.privateKey);
   }
 
-  async createContract(abi: Array<any>, contractAddress: string) {
-    return await createContract(this.provider, abi, contractAddress);
+
+  async walletBalance() {
+    return getBalance(this.provider, this.privateKey, this.addresses)
   }
 
 
   // get current apy of the active protocol
-  async apy() { }
+  // async apy() { }
 
 
 }

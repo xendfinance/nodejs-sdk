@@ -1,7 +1,7 @@
 import web3 from 'web3';
 import createContract from "../create.contract";
-import EsusuService from '../abis/EsusuService.json';
 import sendSignedTransaction from "../../utils/sendSignedTransaction";
+import ABIS from '../abis';
 
 type EsusuCycle = {
   provider: string
@@ -20,7 +20,7 @@ export default async function (args: EsusuCycle, addresses: Addresses) {
   //
   try {
 
-    const contract = await createContract(provider, EsusuService, addresses.ESUSU_SERVICE);
+    const contract = await createContract(provider, ABIS.ESUSU_SERVICE, addresses.ESUSU_SERVICE);
 
     depositAmount = web3.utils.toWei(depositAmount, 'ether'); // convert to big number
 

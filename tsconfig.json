@@ -3,7 +3,8 @@
   "include": [
     "src",
     "types",
-    "test/init.test.ts"
+    "test/init.test.ts",
+    "use.js"
   ],
   "compilerOptions": {
     "module": "esnext",
