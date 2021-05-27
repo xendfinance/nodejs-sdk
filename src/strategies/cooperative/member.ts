@@ -7,7 +7,7 @@ export default async function (cycleId: number, privateKey: string, provider: st
   try {
     const clientAddress = privateKeyToAddress(provider, privateKey);
 
-    const contract = await createContract(provider, Cycles.abi, addresses.CYCLES);
+    const contract = await createContract(provider, Cycles, addresses.CYCLES);
 
 
     const memberExist = contract.methods.doesCycleMemberExist(cycleId, clientAddress).call();

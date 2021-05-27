@@ -33,7 +33,7 @@ You can use Xend Finance in as many scenario's you can come up with, but there a
 ```js
 import { Personal } from '@xend-finance/web-sdk';
 
-const instance = new Personal(chainId, privateKey, options);
+const instance = new Personal(chainId, privateKey, { env:"mainnet" });
 
 const makeDeposit = async () => {
   const depositAmount = "100";
@@ -117,13 +117,3 @@ Name | Parameters | Description
 --- | --- | ---
 `create` | |
 `walletBalance` | |
-
-
-# Using Ganache
-Using Ganache to use local deployment of Xend Finance strategies
-
-1. Run a fork of the mainnet on ganache
-2. Deploy the Xend Finance strategy contracts and get deployed addresses
-3. Send Token to the addresses you will use to run operations
-4. Begin calling SDK functions
-

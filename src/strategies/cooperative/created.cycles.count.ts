@@ -7,7 +7,7 @@ import privateKeyToAddress from '../../utils/privateKeyToAddress';
 export default async function (provider: string, privateKey: string, addresses: Addresses) {
 
   try {
-    const contract = await createContract(provider, Cycles.abi, addresses.CYCLES)
+    const contract = await createContract(provider, Cycles, addresses.CYCLES)
 
     const clientAddress = privateKeyToAddress(provider, privateKey);
 
