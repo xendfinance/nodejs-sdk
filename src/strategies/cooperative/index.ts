@@ -1,7 +1,6 @@
 import createCooperative from './create.cooperative';
 import cooperativeInfo from './cooperative.info';
 import joinCooperative from './join.cooperative';
-import allCycles from './all.cooperative.info';
 import doesMemberExist from './member';
 import start from './start.cooperative';
 import withdrawOngoing from './withdraw.ongoing';
@@ -10,6 +9,7 @@ import XendFinance from '../../init';
 import { ChainId } from '../../utils/constants';
 import { createCooperativeGroup } from './group';
 import { getEsusuGroups as getGroups } from '../group/groups';
+import { contributions, cyclesInGroup } from './cooperatives';
 
 
 export default class Cooperative extends XendFinance {
@@ -20,11 +20,6 @@ export default class Cooperative extends XendFinance {
   }
 
 
-
-
-  protocols() {
-    return this.availableProtocols;
-  }
 
   /**
    * Create an cooperative cycle cycle
@@ -64,14 +59,6 @@ export default class Cooperative extends XendFinance {
     return await cooperativeInfo(cycleId, this.provider, this.addresses);
   }
 
-  /**
-   * gets all cooperative cycle
-   * @param args
-   */
-
-  async getAllCycles() {
-    return await allCycles(this.provider, this.addresses);
-  }
 
   /**
    * Check if the cycle memeber exist
@@ -122,6 +109,16 @@ export default class Cooperative extends XendFinance {
   // get cooperative Groups
   async groups() {
     return await getGroups(this.provider, this.privateKey, this.addresses)
+  }
+
+
+  async contributions() {
+    return await contributions(this.provider, this.privateKey, this.addresses)
+  }
+
+
+  async cyclesInGroup(groupId: string) {
+    return await cyclesInGroup(groupId, this.provider, this.addresses)
   }
 
 

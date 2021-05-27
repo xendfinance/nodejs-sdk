@@ -1,9 +1,10 @@
 require('dotenv').config()
 
-import Individual from '../src/strategies/individual';
+import { Personal } from '../src';
 import { ChainId } from '../src/utils/constants';
+require('dotenv').config()
 
-const chainid = ChainId.BSC_TESTNET;
+const chainid = ChainId.BSC_MAINNET;
 
 
 
@@ -11,56 +12,101 @@ const chainid = ChainId.BSC_TESTNET;
 // the private key without the '0x' in front of it
 const privateKey = process.env.PK;
 
-describe.skip('Individual:', () => {
+describe.skip('Personal', () => {
 
   jest.setTimeout(300000);
 
   // SETUP
 
 
-
   ////////////////////////////////////////////////////////////
 
 
-  it('deposits in a flexible savings', async () => {
+  // tested and fine
+  describe('.flexibleDeposit()', () => {
 
-    const individual = new Individual(chainid, privateKey);
+    it('should happen successfully', async () => {
+      const personal = new Personal(chainid, privateKey, { env: "mainnet" });
+      const dep = await personal.flexibleDeposit("5");
 
-    let response = await individual.flexibleDeposit("100")
+      console.log(dep, ' flexible deposite')
 
-    let responseDataType = typeof response;
-
-    expect(responseDataType).toBe("object");
+      expect(typeof dep).toBe("object")
+    })
 
   })
 
-  // it('deposits in a fixed savings', async () => {
+  describe('.withdrawFlexible', () => {
 
-  //   const individual = new Individual(chainid, privateKey);
+    it('should withdraw success', async () => {
+      const amount = "205";
+      const personal = new Personal(chainid, privateKey);
+      const dep = await personal.withdrawFlexible(amount);
+      console.log(dep)
 
-  //   let response = await individual.fixedDeposit({
-  //     depositAmount: "100",
-  //     depositDate: 240,
-  //     lockPeriod: 60
-  //   })
+      expect(dep.status).toBe(true);
+    })
+  })
 
-  //   let responseDataType = typeof response;
 
-  //   expect(responseDataType).toBe("object");
+  // tested. and fine
+  describe('.flexibleInfo()', () => {
+    it('should show info', async () => {
 
-  // })
+      const personal = new Personal(chainid, privateKey, { env: "mainnet" });
+      console.log(personal.protocol, ' the current protocol')
+      const result = await personal.flexibleInfo();
+      console.log(result, ' flesx ')
+      expect(typeof result).toBe("object")
 
-  it('gets the client record in a flexible savings', async () => {
+    })
+  })
 
-    const individual = new Individual(chainid, privateKey);
 
-    let response = await individual.flexibleInfo();
+  // tested and fine
+  describe('.fixedInfo()', () => {
 
-    console.log(response, 'client record info')
+    it('should return data', async () => {
 
-    let responseDataType = typeof response;
+      const personal = new Personal(chainid, privateKey, { env: "mainnet" });
+      const result = await personal.fixedInfo();
+      console.log(result, ' fixed info')
 
-    expect(responseDataType).toBe("object");
+      expect(typeof result).toBe("object");
+    })
+
+  })
+
+
+  // tested and works
+  describe('.fixedDeposit()', () => {
+
+    it('should deposit into fixed savings successfully', async () => {
+      const amount = "1";
+      const lockPeriod = 1622059800;
+      const personal = new Personal(chainid, privateKey, { env: "mainnet" })
+      const result = await personal.fixedDeposit(amount, lockPeriod);
+
+      console.log(result, ' fixed deposit');
+
+      expect(typeof result).toBe("object")
+    })
+
+  })
+
+
+  // not confirmed yet
+  describe('.withdrawFixed()', () => {
+
+    it('successfully withdraws fixed deposit', async () => {
+      const recordId = 220;
+      const personal = new Personal(chainid, privateKey, { env: "mainnet" })
+      const result = await personal.withdrawFixed(recordId);
+
+      console.log(result, ' withdrawal of fixed');
+
+      expect(typeof result).toBe("object")
+    })
 
   })
 

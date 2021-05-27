@@ -1,53 +1,16 @@
-import XF, { Cooperative, Esusu, Personal } from '../src';
+import XF, { Cooperative, Esusu } from '../src';
+import { ChainId } from '../src/utils/constants';
 require('dotenv').config()
 
 
 let privateKey = process.env.PK;
-
-
-
-describe('Personal', () => {
-
-
-    jest.setTimeout(300000);
-    describe('.flexibleDeposit()', () => {
-
-        it('should happen successfully', async () => {
-            const personal = new Personal(97, privateKey);
-            const dep = await personal.flexibleDeposit("10");
-            expect(typeof dep).toBe("object")
-        })
-
-    })
-
-    describe('.withdrawFlexible', () => {
-
-        it('should withdraw success', async () => {
-            const personal = new Personal(97, privateKey);
-            const dep = await personal.withdrawFlexible("15");
-            expect(dep.status).toBe(true);
-        })
-    })
-
-    describe.only('.flexibleInfo()', () => {
-        it('should show info', async () => {
-
-            const personal = new Personal(56, privateKey, { env: "live" });
-            const result = await personal.flexibleInfo();
-            console.log(result, ' flesx ')
-            expect(typeof result).toBe("object")
-
-        })
-    })
-
-
-})
+const chainId = ChainId.BSC_MAINNET;
 
 
 
 
 /// Esusu tests
-describe('Esusu', () => {
+describe.skip('Esusu', () => {
     jest.setTimeout(300000);
 
     describe.skip('.info()', () => {
@@ -64,7 +27,7 @@ describe('Esusu', () => {
 
     describe.skip('.groups()', () => {
         it('should return data', async () => {
-            const esusu = new Esusu(56, privateKey, { env: "live" })
+            const esusu = new Esusu(56, privateKey, { env: "mainnet" })
             const result = await esusu.getGroups();
             console.log(result, ' from esusu')
             expect(typeof result).toBe("object")
@@ -75,7 +38,7 @@ describe('Esusu', () => {
     describe('.contributionsCount()', () => {
         it('should be a number', async () => {
 
-            const esusu = new Esusu(56, privateKey, { env: "live" })
+            const esusu = new Esusu(56, privateKey, { env: "mainnet" })
             const result = await esusu.contributionsCount();
 
             expect(typeof result).toBe("number");
@@ -86,7 +49,7 @@ describe('Esusu', () => {
     describe.skip('.contributions()', () => {
         it('should return an array', async () => {
 
-            const esusu = new Esusu(56, privateKey, { env: "live" })
+            const esusu = new Esusu(56, privateKey, { env: "mainnet" })
             const result = await esusu.contrubution();
 
             expect(typeof result).toBe("object");
@@ -98,7 +61,7 @@ describe('Esusu', () => {
 
         it('should return an array', async () => {
 
-            const esusu = new Esusu(56, privateKey, { env: "live" })
+            const esusu = new Esusu(56, privateKey, { env: "mainnet" })
             const result = await esusu.cyclesInGroup(6);
 
             expect(typeof result).toBe('object');
@@ -122,7 +85,7 @@ describe('Esusu', () => {
     })
 
 
-    describe.only('.walletBalance()', () => {
+    describe.skip('.walletBalance()', () => {
         it('should return the users wallet balance', async () => {
 
             const esusu = new Esusu(97, privateKey)
@@ -141,11 +104,11 @@ describe('Esusu', () => {
 
 // Cooperative Tests
 
-describe.skip('Cooperative', () => {
+describe('Cooperative', () => {
 
     jest.setTimeout(300000);
 
-    describe.skip('.createGroup()', () => {
+    describe('.createGroup()', () => {
         it('should work successfully', async () => {
             const groupName = "Speedometer";
             const groupSymble = "SPG";
@@ -159,13 +122,54 @@ describe.skip('Cooperative', () => {
 
     describe('.groups()', () => {
         it('should return object data', async () => {
-            const cooperative = new Cooperative(56, privateKey, { env: "live" })
+            const cooperative = new Cooperative(chainId, privateKey, { env: "mainnet" })
             const result = await cooperative.groups();
             console.log(result, ' from cooperative')
             expect(typeof result).toBe("object");
         })
     })
+
+
+
+    // tested and works
+    describe('.contributions()', () => {
+
+        it('should return array of contributions', async () => {
+
+            const cooperative = new Cooperative(chainId, privateKey, { env: "mainnet" })
+
+            const result = await cooperative.contributions();
+            console.log(result)
+
+            expect(typeof result).toBe("object");
+        })
+
+    })
+
+
+
+    // tested and working
+    describe.only('.cyclesInGroup()', () => {
+
+        it('should return array of contributions', async () => {
+            const groupId = "8";
+            const cooperative = new Cooperative(chainId, privateKey, { env: "mainnet" })
+
+            const result = await cooperative.cyclesInGroup(groupId);
+            console.log(result)
+
+            expect(typeof result).toBe("object");
+        })
+
+    })
 })
+
+
+
+
+
+
+
 
 
 
@@ -190,5 +194,8 @@ describe.skip('General', () => {
             expect(typeof result).toBe('string')
         })
     })
+
+
+
 
 })

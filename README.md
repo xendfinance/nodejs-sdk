@@ -62,7 +62,7 @@ When any of Xend Finance strategy is initialized without *options*, the SDK defa
 
 Properties | Values | Description
 --- | --- | ---
-`env` | local, test, live | Required 
+`env` | local, test, mainnet | Required 
 `protocols` | Array of protocols objects | This can only be used when the `env` is `local`. 
 `protocolName` | | Used in the case of multiple protocols available
 

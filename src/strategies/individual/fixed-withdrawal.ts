@@ -11,13 +11,7 @@ export default async function (privateKey: string, provider: string, recordId: n
 
     const contract = await createContract(provider, ABIS.PERSONAL, addresses.PERSONAL);
 
-    const fixedDepositInfo = await createContract(provider, ABIS.CLIENT_RECORD, addresses.CLIENT_RECORD);
-
-    const info = fixedDepositInfo.methods.GetRecordById(recordId);
-
-    let amount: string = info.amount;
-
-    const data = await contract.methods.WithdrawFromFixedDeposit(recordId, amount)
+    const data = await contract.methods.WithdrawFromFixedDeposit(recordId)
 
     const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.PERSONAL)
 

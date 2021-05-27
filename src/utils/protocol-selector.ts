@@ -24,7 +24,7 @@ const protocolSelector = (options: Options) => {
             //
         } else throw Error('Provide the protocols to be used')
 
-    } else if (environment === "live") {
+    } else if (environment === "mainnet") {
         //
 
         return getProtocolEssentials(bscMainnet, protcolName);

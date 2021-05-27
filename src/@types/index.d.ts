@@ -1,7 +1,7 @@
 
 
 interface Options {
-    env: 'testnet' | 'local' | 'live'
+    env: 'testnet' | 'local' | 'mainnet'
     protocols?: Protocols[]
     protocolName?: string
     [key: string]: any
@@ -39,12 +39,6 @@ interface CooperativeCycleData {
     startTimeInSeconds: number;
     maxMembers: number;
 };
-
-
-interface FixedDepositData {
-    depositAmount: any;
-    lockPeriod: number;
-}
 
 
 interface EsusuCycleData {

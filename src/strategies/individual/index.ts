@@ -40,13 +40,14 @@ export default class Personal extends XendFinance {
 
   /**
    * Deposit in Fixed savings
-   * @param args
+   * @param depositAmount should be in BUSD eg 100
+   * @param lockPeriod is the lock period in seconds
    */
 
-  async fixedDeposit(args: FixedDepositData) {
+  async fixedDeposit(depositAmount: string, lockPeriod: number) {
     return await fixedDeposit({
-      depositAmount: args.depositAmount,
-      lockPeriod: args.lockPeriod,
+      depositAmount: depositAmount,
+      lockPeriod: lockPeriod,
       provider: this.provider,
       privateKey: this.privateKey,
     }, this.addresses);

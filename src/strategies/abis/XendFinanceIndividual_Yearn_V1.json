@@ -1,462 +1,522 @@
-  [
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "lendingServiceAddress",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "tokenAddress",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "clientRecordStorageAddress",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "savingsConfigAddress",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "derivativeTokenAddress",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "rewardConfigAddress",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "xendTokenAddress",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "treasuryAddress",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "internalType": "address payable",
-          "name": "user",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "underlyingAmount",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "derivativeAmount",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "balance",
-          "type": "uint256"
-        }
-      ],
-      "name": "DerivativeAssetWithdrawn",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "internalType": "address payable",
-          "name": "user",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "underlyingAmount",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "derivativeAmount",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "balance",
-          "type": "uint256"
-        }
-      ],
-      "name": "UnderlyingAssetDeposited",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "date",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "address payable",
-          "name": "recipient",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "XendTokenReward",
-      "type": "event"
-    },
-    {
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
-        {
-          "internalType": "address payable",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address payable",
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "setAdapterAddress",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "minimumLockPeriod",
-          "type": "uint256"
-        }
-      ],
-      "name": "setMinimumLockPeriod",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "GetTotalTokenRewardDistributed",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "newServiceAddress",
-          "type": "address"
-        }
-      ],
-      "name": "deprecateContract",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "member",
-          "type": "address"
-        }
-      ],
-      "name": "GetMemberXendTokenReward",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "depositor",
-          "type": "address"
-        }
-      ],
-      "name": "doesClientRecordExist",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "depositor",
-          "type": "address"
-        }
-      ],
-      "name": "getClientRecord",
-      "outputs": [
-        {
-          "internalType": "address payable",
-          "name": "_address",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalWithdrawn",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeBalance",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalWithdrawn",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getClientRecord",
-      "outputs": [
-        {
-          "internalType": "address payable",
-          "name": "_address",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalWithdrawn",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeBalance",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalWithdrawn",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "index",
-          "type": "uint256"
-        }
-      ],
-      "name": "getClientRecordByIndex",
-      "outputs": [
-        {
-          "internalType": "address payable",
-          "name": "_address",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalWithdrawn",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeBalance",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalWithdrawn",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "derivativeAmount",
-          "type": "uint256"
-        }
-      ],
-      "name": "withdraw",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address payable",
-          "name": "recipient",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeAmount",
-          "type": "uint256"
-        }
-      ],
-      "name": "withdrawDelegate",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "recordId",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeAmount",
-          "type": "uint256"
-        }
-      ],
-      "name": "WithdrawFromFixedDeposit",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "deposit",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address payable",
-          "name": "depositorAddress",
-          "type": "address"
-        }
-      ],
-      "name": "depositDelegate",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "depositDateInSeconds",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "lockPeriodInSeconds",
-          "type": "uint256"
-        }
-      ],
-      "name": "FixedDeposit",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }
-  ]
+[
+  {
+    "inputs": [],
+    "name": "deposit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "depositorAddress",
+        "type": "address"
+      }
+    ],
+    "name": "depositDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newServiceAddress",
+        "type": "address"
+      }
+    ],
+    "name": "deprecateContract",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "depositor",
+        "type": "address"
+      }
+    ],
+    "name": "getClientRecord",
+    "outputs": [
+      {
+        "internalType": "address payable",
+        "name": "_address",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalWithdrawn",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalWithdrawn",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "setAdapterAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "lendingServiceAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "tokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "clientRecordStorageAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "groupStorageAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "savingsConfigAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "derivativeTokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "rewardConfigAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "xendTokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "treasuryAddress",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address payable",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "underlyingAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "derivativeAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "balance",
+        "type": "uint256"
+      }
+    ],
+    "name": "DerivativeAssetWithdrawn",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "lockPeriodInSeconds",
+        "type": "uint256"
+      }
+    ],
+    "name": "FixedDeposit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getClientRecord",
+    "outputs": [
+      {
+        "internalType": "address payable",
+        "name": "_address",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalWithdrawn",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalWithdrawn",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getClientRecordByIndex",
+    "outputs": [
+      {
+        "internalType": "address payable",
+        "name": "_address",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalWithdrawn",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalWithdrawn",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "minimumLockPeriod",
+        "type": "uint256"
+      }
+    ],
+    "name": "setMinimumLockPeriod",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address payable",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "underlyingAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "derivativeAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "balance",
+        "type": "uint256"
+      }
+    ],
+    "name": "UnderlyingAssetDeposited",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "derivativeAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "withdraw",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "recipient",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "withdrawDelegate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "recordId",
+        "type": "uint256"
+      }
+    ],
+    "name": "WithdrawFromFixedDeposit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "date",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address payable",
+        "name": "recipient",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "XendTokenReward",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "currentTimeStamp",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "depositor",
+        "type": "address"
+      }
+    ],
+    "name": "doesClientRecordExist",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "recordId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getFixedDepositRecord",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "recordId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address payable",
+            "name": "depositorId",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "hasWithdrawn",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "depositDateInSeconds",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lockPeriodInSeconds",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "derivativeBalance",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct IClientRecordSchema.FixedDepositRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "member",
+        "type": "address"
+      }
+    ],
+    "name": "GetMemberXendTokenReward",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "GetTotalTokenRewardDistributed",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address payable",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

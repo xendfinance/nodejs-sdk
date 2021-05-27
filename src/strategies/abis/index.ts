@@ -7,6 +7,7 @@ import FADAPTER from "./FortubeAdapterTestnet.json";
 import TOKEN from "./DaiContract.json";
 import PERSONAL from "./XendFinanceIndividual_Yearn_V1.json";
 import CLIENT_RECORD from "./ClientRecord.json";
+import CYCLES from "./Cycles.json";
 import PROTOCOL_ADAPTER from "./ProtocolAdapter.json";
 
 const ABIS = {
@@ -17,6 +18,7 @@ const ABIS = {
     COOPERATIVE,
     TOKEN,
     PERSONAL,
+    CYCLES,
     CLIENT_RECORD,
     PROTOCOL_ADAPTER,
 

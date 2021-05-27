@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 import Web3 from 'web3';
-import Esusu from '../src/strategies/esusu';
+import { Esusu } from '../src';
 import { ChainId } from '../src/utils/constants';
 import { checkChainId } from '../src/utils/helpers';
 import DaiABI from '../src/strategies/abis/DaiContract.json';
@@ -10,8 +10,97 @@ import testnetProtocols from '../src/environments/testnet';
 
 
 // the private key without the '0x' in front of it
-const privateKey = process.env.PK1;
+const privateKey = process.env.PK;
 const privateKey2 = process.env.PK2;
+
+
+
+const chainId = ChainId.BSC_MAINNET;
+
+
+
+
+
+describe.skip('Esusu Tests', () => {
+
+  jest.setTimeout(300000);
+
+  // tested and works fine
+  describe('.createGroup()', () => {
+
+    it('creates a group successful', async () => {
+
+      const groupName = "HouseDisco" + "888b";
+      const groupSymbol = "HDG"
+
+      const esusu = new Esusu(chainId, privateKey, { env: "mainnet" });
+
+      const result = await esusu.createGroup(groupName, groupSymbol);
+      console.log(result)
+
+      expect(typeof result).toBe("object");
+
+    })
+
+  })
+
+
+  // tested and fine
+  describe('.getGroups()', () => {
+
+    it('returns all the groups created', async () => {
+
+      const esusu = new Esusu(chainId, privateKey, { env: "mainnet" });
+
+      const result = await esusu.getGroups();
+      console.log(result)
+
+      expect(typeof result).toBe("object")
+
+
+    })
+
+  })
+
+
+
+  // tested and okay
+  describe('.create()', () => {
+
+    it('should create esusu cycle successfully', async () => {
+
+      const start = (new Date(new Date().getTime() + (3 * 60000)).getTime() / 1000).toFixed(0);
+
+      const cycle = {
+        depositAmount: "10",
+        groupId: 335,
+        payoutIntervalInSeconds: 120, // 2 mins
+        startTimeInSeconds: Number(start),
+        maxMembers: 5
+      }
+
+      const esusu = new Esusu(chainId, privateKey, { env: "mainnet" })
+
+      const result = await esusu.create(cycle);
+      console.log(result)
+
+      expect(typeof result).toBe("object")
+
+    })
+
+  })
+
+
+
+})
+
+
+
+
+
+
+
+
 
 
 
