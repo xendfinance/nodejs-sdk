@@ -104,7 +104,7 @@ describe.skip('Esusu', () => {
 
 // Cooperative Tests
 
-describe('Cooperative', () => {
+describe.skip('Cooperative', () => {
 
     jest.setTimeout(300000);
 
@@ -149,7 +149,7 @@ describe('Cooperative', () => {
 
 
     // tested and working
-    describe.only('.cyclesInGroup()', () => {
+    describe('.cyclesInGroup()', () => {
 
         it('should return array of contributions', async () => {
             const groupId = "8";

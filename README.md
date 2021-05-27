@@ -1,9 +1,9 @@
-![GitHub contributors](https://img.shields.io/github/contributors/xendfinance/XendFinanceSDK?color=orange&style=flat-square)
 
 # XendFinance SDK
 
 Build applications on-top of the Xend Finance smart contracts.
 
+<!-- ![GitHub contributors](https://img.shields.io/github/contributors/xendfinance/XendFinanceSDK?color=orange&style=flat-square) -->
 
 
 # Installation

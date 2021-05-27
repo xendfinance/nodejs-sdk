@@ -89,6 +89,6 @@ export default class Personal extends XendFinance {
   //////////////////////////////////////////////////////////////////////
 
   async withdrawFlexible(amount: string) {
-    return flexibleWithdrawal(this.privateKey, this.provider, amount, this.addresses);
+    return flexibleWithdrawal(this.privateKey, this.provider, amount, this.addresses, this.protocol);
   }
 }

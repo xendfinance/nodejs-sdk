@@ -36,11 +36,12 @@ describe.skip('Personal', () => {
 
   })
 
-  describe('.withdrawFlexible', () => {
+  // tested and working
+  describe('.withdrawFlexible()', () => {
 
     it('should withdraw success', async () => {
-      const amount = "205";
-      const personal = new Personal(chainid, privateKey);
+      const amount = "330";
+      const personal = new Personal(chainid, privateKey, { env: "mainnet" });
       const dep = await personal.withdrawFlexible(amount);
       console.log(dep)
 

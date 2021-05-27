@@ -8,10 +8,11 @@ export default async (privateKey: string, provider: string, tx: any, contractAdd
   const web3 = new Web3(provider);
   const client = privateKeyToAddress(provider, privateKey);
   const networkId = await web3.eth.net.getId();
-  const gas = await tx.estimateGas({ from: client })
+  const gas = (await tx.estimateGas({ from: client }));
   const gasPrice = await web3.eth.getGasPrice();
   const data = tx.encodeABI()
   const nonce = await web3.eth.getTransactionCount(client)
+
 
   const signedTx = await web3.eth.accounts.signTransaction({
     to: contractAddress,
