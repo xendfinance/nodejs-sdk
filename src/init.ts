@@ -3,6 +3,7 @@ import { ChainId } from "./utils/constants";
 import { checkChainId } from "./utils/helpers";
 import protocolSelector from "./utils/protocol-selector";
 import { CreateWallet, RetrieveWallet } from "./utils/web3";
+import privateKeyToAddress from "./utils/privateKeyToAddress";
 
 
 
@@ -53,8 +54,38 @@ class XendFinance {
   }
 
 
+  getClientAddress(){
+    return privateKeyToAddress(this.provider, this.privateKey);
+  }
+
+
   // get current apy of the active protocol
-  // async apy() { }
+  async apys() {
+    if(this.chainId === ChainId.BSC_MAINNET){
+      
+      return new Promise((resolve) => {
+
+        const url = "https://api.xend.finance/xend-finance/apys";
+
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = 'json';
+
+
+        xhr.onreadystatechange = () => {
+          if(xhr.readyState === XMLHttpRequest.DONE){
+            if(xhr.response){
+              resolve(xhr.response.data)
+            }
+          }        }
+
+        xhr.open('GET', url);
+        xhr.send()
+        
+      })
+
+
+    } else Error('can only get apy for mainnet')
+  }
 
 
 }

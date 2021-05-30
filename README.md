@@ -94,7 +94,14 @@ This is the structure of a protocol to be used by the SDK and will be helpful wh
 }
 ```
 
-# Some available functions
+# Some available 
+## General
+Name | Parameters | Description
+--- | --- | ---
+`getClientAddress` | | address of account used to initialize SDK
+`apys` | | will only return values if you are on mainnet
+
+
 ## Personal Savings
 Name | Parameters | Description
 --- | --- | ---
