@@ -198,8 +198,9 @@ describe.skip('General', () => {
     describe('.apy()', () => {
 
         it('should return array of apys', async () => {
-            const sdk = new XF(56, privateKey, {env:"mainnet"})
-            console.log(sdk.getClientAddress())
+            const sdk = new XF(56, privateKey, { env: "mainnet" })
+            const ee = await sdk.getClientAddress()
+            console.log(ee)
             const result = await sdk.apys();
             console.log(result, 'kj')
             expect(typeof result).toBe("object")

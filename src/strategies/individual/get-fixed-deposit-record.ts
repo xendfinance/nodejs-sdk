@@ -41,7 +41,7 @@ export default async function (provider: string, privateKey: string, address: Ad
   } catch (err) {
 
     console.error(err);
-    return {}
+    return []
 
   }
 

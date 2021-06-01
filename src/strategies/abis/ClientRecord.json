@@ -1,581 +1,596 @@
-  [
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "name": "ClientRecordIndexer",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "exists",
-          "type": "bool"
-        },
-        {
-          "internalType": "uint256",
-          "name": "index",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "oracle",
-          "type": "address"
-        }
-      ],
-      "name": "activateStorageOracle",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "oracle",
-          "type": "address"
-        }
-      ],
-      "name": "deactivateStorageOracle",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "newOracle",
-          "type": "address"
-        }
-      ],
-      "name": "reAssignStorageOracle",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address payable",
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "depositor",
-          "type": "address"
-        }
-      ],
-      "name": "doesClientRecordExist",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "depositor",
-          "type": "address"
-        }
-      ],
-      "name": "getRecordIndex",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address payable",
-          "name": "_address",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalWithdrawn",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeBalance",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalWithdrawn",
-          "type": "uint256"
-        }
-      ],
-      "name": "createClientRecord",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address payable",
-          "name": "_address",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalWithdrawn",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeBalance",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalWithdrawn",
-          "type": "uint256"
-        }
-      ],
-      "name": "updateClientRecord",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getLengthOfClientRecords",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "index",
-          "type": "uint256"
-        }
-      ],
-      "name": "getClientRecordByIndex",
-      "outputs": [
-        {
-          "internalType": "address payable",
-          "name": "_address",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalWithdrawn",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeBalance",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalWithdrawn",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "depositor",
-          "type": "address"
-        }
-      ],
-      "name": "getClientRecordByAddress",
-      "outputs": [
-        {
-          "internalType": "address payable",
-          "name": "_address",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "underlyingTotalWithdrawn",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeBalance",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalDeposits",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "derivativeTotalWithdrawn",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "member",
-          "type": "address"
-        }
-      ],
-      "name": "GetRecordIndexFromDepositor",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "recordIndex",
-          "type": "uint256"
-        },
-        {
-          "internalType": "address",
-          "name": "depositor",
-          "type": "address"
-        }
-      ],
-      "name": "GetRecordIdFromRecordIndexAndDepositorRecord",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "lockPeriodInSeconds",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "depositDateInSeconds",
-          "type": "uint256"
-        },
-        {
-          "internalType": "address payable",
-          "name": "depositor",
-          "type": "address"
-        },
-        {
-          "internalType": "bool",
-          "name": "hasWithdrawn",
-          "type": "bool"
-        }
-      ],
-      "name": "CreateDepositRecordMapping",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "DepositRecordId",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "lockPeriodInSeconds",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "depositDateInSeconds",
-          "type": "uint256"
-        },
-        {
-          "internalType": "address payable",
-          "name": "depositor",
-          "type": "address"
-        },
-        {
-          "internalType": "bool",
-          "name": "hasWithdrawn",
-          "type": "bool"
-        }
-      ],
-      "name": "UpdateDepositRecordMapping",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "GetRecordId",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "depositRecordId",
-          "type": "uint256"
-        }
-      ],
-      "name": "GetRecordById",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "recordId",
-          "type": "uint256"
-        },
-        {
-          "internalType": "address payable",
-          "name": "depositorId",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "depositDateInSeconds",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "lockPeriodInSeconds",
-          "type": "uint256"
-        },
-        {
-          "internalType": "bool",
-          "name": "hasWithdrawn",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [],
-      "name": "GetRecords",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "uint256",
-              "name": "recordId",
-              "type": "uint256"
-            },
-            {
-              "internalType": "address payable",
-              "name": "depositorId",
-              "type": "address"
-            },
-            {
-              "internalType": "bool",
-              "name": "hasWithdrawn",
-              "type": "bool"
-            },
-            {
-              "internalType": "uint256",
-              "name": "amount",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "depositDateInSeconds",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "lockPeriodInSeconds",
-              "type": "uint256"
-            }
-          ],
-          "internalType": "struct IClientRecordSchema.FixedDepositRecord[]",
-          "name": "",
-          "type": "tuple[]"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address payable",
-          "name": "depositor",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "recordId",
-          "type": "uint256"
-        }
-      ],
-      "name": "CreateDepositorToDepositRecordIndexToRecordIDMapping",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address payable",
-          "name": "depositor",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "recordId",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "amountDeposited",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "lockPeriodInSeconds",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "depositDateInSeconds",
-          "type": "uint256"
-        },
-        {
-          "internalType": "bool",
-          "name": "hasWithdrawn",
-          "type": "bool"
-        }
-      ],
-      "name": "CreateDepositorAddressToDepositRecordMapping",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }
-  ]
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "ClientRecordIndexer",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "exists",
+        "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "lockPeriodInSeconds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "depositDateInSeconds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address payable",
+        "name": "depositor",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "hasWithdrawn",
+        "type": "bool"
+      }
+    ],
+    "name": "CreateDepositRecordMapping",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "depositor",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "recordId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amountDeposited",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "lockPeriodInSeconds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "depositDateInSeconds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "hasWithdrawn",
+        "type": "bool"
+      }
+    ],
+    "name": "CreateDepositorAddressToDepositRecordMapping",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "depositor",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "recordId",
+        "type": "uint256"
+      }
+    ],
+    "name": "CreateDepositorToDepositRecordIndexToRecordIDMapping",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "depositRecordId",
+        "type": "uint256"
+      }
+    ],
+    "name": "GetRecordById",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "recordId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address payable",
+        "name": "depositorId",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "depositDateInSeconds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "lockPeriodInSeconds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "hasWithdrawn",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "GetRecordId",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "recordIndex",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "depositor",
+        "type": "address"
+      }
+    ],
+    "name": "GetRecordIdFromRecordIndexAndDepositorRecord",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "member",
+        "type": "address"
+      }
+    ],
+    "name": "GetRecordIndexFromDepositor",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "GetRecords",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "recordId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address payable",
+            "name": "depositorId",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "hasWithdrawn",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "depositDateInSeconds",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lockPeriodInSeconds",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "derivativeBalance",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct IClientRecordSchema.FixedDepositRecord[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "depositRecordId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "lockPeriodInSeconds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "depositDateInSeconds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address payable",
+        "name": "depositor",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "hasWithdrawn",
+        "type": "bool"
+      }
+    ],
+    "name": "UpdateDepositRecordMapping",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "oracle",
+        "type": "address"
+      }
+    ],
+    "name": "activateStorageOracle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "_address",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalWithdrawn",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalWithdrawn",
+        "type": "uint256"
+      }
+    ],
+    "name": "createClientRecord",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "oracle",
+        "type": "address"
+      }
+    ],
+    "name": "deactivateStorageOracle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "depositor",
+        "type": "address"
+      }
+    ],
+    "name": "doesClientRecordExist",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "depositor",
+        "type": "address"
+      }
+    ],
+    "name": "getClientRecordByAddress",
+    "outputs": [
+      {
+        "internalType": "address payable",
+        "name": "_address",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalWithdrawn",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalWithdrawn",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getClientRecordByIndex",
+    "outputs": [
+      {
+        "internalType": "address payable",
+        "name": "_address",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalWithdrawn",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalWithdrawn",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getLengthOfClientRecords",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "depositor",
+        "type": "address"
+      }
+    ],
+    "name": "getRecordIndex",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOracle",
+        "type": "address"
+      }
+    ],
+    "name": "reAssignStorageOracle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "_address",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingTotalWithdrawn",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalDeposits",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "derivativeTotalWithdrawn",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateClientRecord",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
