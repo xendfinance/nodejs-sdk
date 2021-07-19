@@ -1,9 +1,10 @@
 import getBalance from "./utils/balance";
 import { ChainId } from "./utils/constants";
-import { checkChainId } from "./utils/helpers";
+import { checkChainId, capitalizeFirstLetter, getAddressByName } from "./utils/helpers";
 import protocolSelector from "./utils/protocol-selector";
 import { CreateWallet, RetrieveWallet } from "./utils/web3";
 
+import axios from 'axios';
 
 
 const defaultInitOptions: Options = {
@@ -13,6 +14,7 @@ const defaultInitOptions: Options = {
 
 class XendFinance {
 
+  options: Options;
   chainId: ChainId
   privateKey: string
   provider: string
@@ -23,19 +25,61 @@ class XendFinance {
   currency: string
   shareCurrency: string
 
-
   constructor(chainId: ChainId, privateKey: string, options: Options = defaultInitOptions) {
+    this.options = options;
     this.chainId = chainId
     this.privateKey = privateKey;
     let { url, currency } = checkChainId(chainId);
     this.provider = url;
+    this.currency = currency;
 
-    let { name, addresses, available } = protocolSelector(options);
+    this.init();
+  }
+
+  init(protocols: Protocols[] = []) {
+    let { name, addresses, available } = protocolSelector(this.options, protocols);
     this.protocol = name;
     this.addresses = addresses;
-    this.shareCurrency = addresses.PROTOCOL_CURRENCY
-    this.currency = currency;
+    this.shareCurrency = addresses.PROTOCOL_CURRENCY;
     this.availableProtocols = available;
+  }
+
+  async initProtocol() {
+    if (this.options.env !== "mainnet") {
+      return;
+    }
+     
+    const result = await axios.get("https://api.xend.finance/xend-finance/addresses");
+    const data = result.data.data;
+
+    const protocols: Protocols[] = [];
+
+    if (data && data.length > 0) {
+      for (const item of data) {
+        const protocol: Protocols = {
+          name: capitalizeFirstLetter(item.protocol_name),
+          code: item.protocol_name,
+          addresses: {
+            PROTOCOL_ADAPTER: getAddressByName(item.addresses, "protocol_adapter"),
+            PROTOCOL_SERVICE: getAddressByName(item.addresses, "protocol_service"),
+            GROUPS: getAddressByName(item.addresses, "groups"),
+            CYCLES: getAddressByName(item.addresses, "cycles"),
+            ESUSU_SERVICE: getAddressByName(item.addresses, "esusu_service"),
+            ESUSU_STORAGE: getAddressByName(item.addresses, "esusu_storage"),
+            ESUSU_ADAPTER: getAddressByName(item.addresses, "esusu_adapter"),
+            COOPERATIVE: getAddressByName(item.addresses, "cooperative"),
+            PERSONAL: getAddressByName(item.addresses, "individual"),
+            CLIENT_RECORD: getAddressByName(item.addresses, "client_record"),
+            XEND_TOKEN: getAddressByName(item.addresses, "xend_token"),
+            TOKEN: getAddressByName(item.addresses, "token"),
+            PROTOCOL_CURRENCY: item.protocol_name.charAt(0) + "busd"
+          }
+        };
+        protocols.push(protocol);
+      }
+    }
+
+    this.init(protocols);
   }
 
   async ifd() { return 'sdf' }
