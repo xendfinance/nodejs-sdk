@@ -58,6 +58,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "web3": "^1.3.3"
   }
 }

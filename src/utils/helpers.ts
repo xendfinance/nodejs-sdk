@@ -35,3 +35,16 @@ export const providerToChainID = (provider: string) => {
     }
 
 }
+
+
+export const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export const getAddressByName = (addresses, name) => {
+    const filter = addresses.filter(addr => addr.name === name);
+    if (filter.length > 0) {
+        return filter[0].address;
+    }
+    return "";
+}
