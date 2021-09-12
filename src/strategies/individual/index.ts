@@ -1,28 +1,33 @@
+import { Options, Addresses } from '../../types';
 import flexibleDeposit from './flexible-deposit';
 import fixedDeposit from './fixed-deposit';
 import fixedDepositInfo from './get-fixed-deposit-record'
 import flexibleDepositInfo from './get-flexible-deposit-record';
 import fixedWithdrawal from './fixed-withdrawal';
 import flexibleWithdrawal from './flexible-withdrawal';
-import XendFinance from '../../init';
-import { ChainId } from '../../utils/constants';
 
 
 
 
 
-export default class Personal extends XendFinance {
+export default class Personal {
 
-  constructor(chainId: ChainId, privateKey: string, options?: Options) {
-    super(chainId, privateKey, options);
+  options: Options;
+  privateKey: string
+  provider: string
+
+  protocol: string
+  addresses: Addresses
+
+  constructor(provider: string, privateKey: string, options: Options, addresses: Addresses, protocol: string) {
+    this.provider = provider;
+    this.privateKey = privateKey;
+    this.options = options;
+    this.addresses = addresses;
+    this.protocol = protocol;
   }
 
 
-
-
-  protocols() {
-    return this.availableProtocols;
-  }
 
   //////////////////////////////////////////////////////////////////////
 
@@ -31,7 +36,7 @@ export default class Personal extends XendFinance {
    * @param depositAmount
    */
 
-  async flexibleDeposit(depositAmount: any) {
+  async flexibleDeposit(depositAmount: string) {
     return await flexibleDeposit(this.provider, this.privateKey, depositAmount, this.addresses);
   }
 
@@ -87,7 +92,10 @@ export default class Personal extends XendFinance {
      */
 
   //////////////////////////////////////////////////////////////////////
-
+  /**
+   * 
+   * @param amount should be the share balance amount that is to be withdrawn
+   */
   async withdrawFlexible(amount: string) {
     return flexibleWithdrawal(this.privateKey, this.provider, amount, this.addresses, this.protocol);
   }

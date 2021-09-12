@@ -1,3 +1,4 @@
+import { Addresses } from '../../types';
 import createContract from "../create.contract";
 import web3 from 'web3';
 import DAITokenAbi from '../abis/DaiContract.json';
@@ -6,7 +7,7 @@ import ABIS from "../abis";
 
 
 export default async function (provider: string,
-  privateKey: string, depositAmount: any, addresses: Addresses) {
+  privateKey: string, depositAmount: string, addresses: Addresses) {
 
 
   //

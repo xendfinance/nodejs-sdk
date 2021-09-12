@@ -1,3 +1,4 @@
+import { Addresses } from '../../types';
 import createContract from "../create.contract";
 import EsusuStorage from '../abis/EsusuStorage.json';
 import privateKeyToAddress from "../../utils/privateKeyToAddress";

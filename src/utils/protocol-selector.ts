@@ -1,7 +1,9 @@
+import * as Types from '../types';
 import testnet from '../environments/testnet';
-import bscMainnet from '../environments/bsc-mainnet';
 
-const getProtocolEssentials = (protocols: Protocols[], protocolName?: string) => {
+
+
+const getProtocolEssentials = (protocols: Types.Protocols[], protocolName?: string) => {
 
     let addresses;
     let name;
@@ -9,7 +11,7 @@ const getProtocolEssentials = (protocols: Protocols[], protocolName?: string) =>
     if (protocolName) {
         let requestedProtocol = protocols.filter(item => item.code === protocolName);
 
-        if (requestedProtocol.length > 1) {
+        if (requestedProtocol.length > 0) {
             let protocolObject = requestedProtocol[0];
             addresses = protocolObject.addresses;
             name = protocolObject.name;
@@ -34,7 +36,7 @@ const getProtocolEssentials = (protocols: Protocols[], protocolName?: string) =>
 }
 
 
-const protocolSelector = (options: Options, protocols: Protocols[] = []) => {
+const protocolSelector = (options: Types.Options) => {
 
     let protcolName = options.protocolName;
     let environment = options.env;
@@ -50,7 +52,11 @@ const protocolSelector = (options: Options, protocols: Protocols[] = []) => {
             throw Error('Provide the protocols to be used');
         }
     } else if (environment === "mainnet") {
-        return getProtocolEssentials(protocols.length > 0 ? protocols : bscMainnet, protcolName);
+        if (localProtocol) {
+            return getProtocolEssentials(localProtocol, protcolName);
+        } else {
+            throw Error('Failed to initialize mainnet addresses')
+        }
     } else {
         throw Error('There is no environment selected');
     }

@@ -1,3 +1,4 @@
+import { Protocols } from '../types';
 
 const testnetProtocols: Protocols[] = [
     {

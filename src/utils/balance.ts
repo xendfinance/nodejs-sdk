@@ -1,10 +1,11 @@
+import * as Types from '../types';
 import Web3 from "web3";
 import ABIS from "../strategies/abis"
 import createContract from "../strategies/create.contract"
 import privateKeyToAddress from "./privateKeyToAddress"
 
 
-const getBalance = async (provider: string, privateKey: string, addresses: Addresses) => {
+const getBalance = async (provider: string, privateKey: string, addresses: Types.Addresses) => {
     try {
 
         const client = privateKeyToAddress(provider, privateKey);

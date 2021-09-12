@@ -1,3 +1,4 @@
+import { Addresses } from '../../types';
 import createContract from "../create.contract";
 import sendSignedTransaction from '../../utils/sendSignedTransaction';
 import ABIS from "../abis";

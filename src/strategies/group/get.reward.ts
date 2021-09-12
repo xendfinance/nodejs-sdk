@@ -1,4 +1,5 @@
 
+import { Addresses } from '../../types';
 import Groups from '../abis/Groups.json';
 import privateKeyToAddress from "../../utils/privateKeyToAddress";
 import createContract from "../create.contract";

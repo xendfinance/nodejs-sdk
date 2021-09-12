@@ -1,3 +1,4 @@
+import { Addresses } from '../../types';
 import privateKeyToAddress from "../../utils/privateKeyToAddress";
 import ABIS from "../abis";
 import createContract from "../create.contract";

@@ -1,4 +1,5 @@
 
+import { Addresses } from '../../types';
 import privateKeyToAddress from '../../utils/privateKeyToAddress';
 import sendSignedTransaction from '../../utils/sendSignedTransaction';
 import ABIS from '../abis/index';
@@ -15,7 +16,6 @@ export const createEsusuGroups = async (
     try {
 
         // const client = privateKeyToAddress(provider, privateKey);
-
         const groupsContract = await createContract(provider, ABIS.GROUPS, addresses.GROUPS);
         const groupExists = await groupsContract.methods.getGroupIndexerByName(name).call();
 

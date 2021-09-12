@@ -1,5 +1,4 @@
-import XendFinance from '../../init';
-import { ChainId } from '../../utils/constants';
+import { Addresses } from '../../types';
 import createGroup from './create.group';
 import getGroup from './get.group';
 import { getEsusuGroups as getGroups } from './groups';
@@ -8,12 +7,19 @@ import getReward from './get.reward';
 
 
 
-class Group extends XendFinance {
+class Group {
 
 
-  constructor(chainId: ChainId, privateKey: string, options?: Options) {
-    super(chainId, privateKey, options);
+  privateKey: string
+  provider: string
+  addresses: Addresses
+
+  constructor(provider: string, privateKey: string, addresses: Addresses) {
+    this.provider = provider;
+    this.privateKey = privateKey;
+    this.addresses = addresses;
   }
+
 
 
 

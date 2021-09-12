@@ -1,3 +1,4 @@
+import { Addresses } from '../../types';
 import web3 from 'web3';
 import createContract from "../create.contract";
 import sendSignedTransaction from "../../utils/sendSignedTransaction";

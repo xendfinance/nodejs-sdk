@@ -1,8 +1,7 @@
+import { Addresses } from '../../types';
 import createContract from "../create.contract";
-// import web3 from 'web3';
 import sendSignedTransaction from '../../utils/sendSignedTransaction';
 import ABIS from "../abis";
-
 
 
 export default async function (privateKey: string, provider: string, amount: string, addresses: Addresses, protocol: string) {

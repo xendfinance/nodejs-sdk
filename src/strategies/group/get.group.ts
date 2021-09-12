@@ -1,4 +1,5 @@
 
+import { Addresses } from '../../types';
 import EsusuAdpter from '../abis/EsusuAdapter.json';
 import createContract from "../create.contract";
 

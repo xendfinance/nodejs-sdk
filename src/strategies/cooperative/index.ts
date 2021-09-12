@@ -1,3 +1,4 @@
+import { Addresses, Options, CooperativeCycleData } from '../../types';
 import createCooperative from './create.cooperative';
 import cooperativeInfo from './cooperative.info';
 import joinCooperative from './join.cooperative';
@@ -5,18 +6,27 @@ import doesMemberExist from './member';
 import start from './start.cooperative';
 import withdrawOngoing from './withdraw.ongoing';
 import withdrawCompleted from './withdraw.completed';
-import XendFinance from '../../init';
-import { ChainId } from '../../utils/constants';
 import { createCooperativeGroup } from './group';
 import { getEsusuGroups as getGroups } from '../group/groups';
 import { contributions, cyclesInGroup } from './cooperatives';
 
 
-export default class Cooperative extends XendFinance {
+export default class Cooperative {
 
 
-  constructor(chainId: ChainId, privateKey: string, options?: Options) {
-    super(chainId, privateKey, options);
+  options: Options;
+  privateKey: string
+  provider: string
+
+  protocol: string
+  addresses: Addresses
+
+  constructor(provider: string, privateKey: string, options: Options, addresses: Addresses, protocol: string) {
+    this.provider = provider;
+    this.privateKey = privateKey;
+    this.options = options;
+    this.addresses = addresses;
+    this.protocol = protocol;
   }
 
 

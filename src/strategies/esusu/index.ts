@@ -1,5 +1,4 @@
-import XendFinance from "../../init";
-import { ChainId } from "../../utils/constants";
+import { Addresses, Options, EsusuCycleData } from '../../types';
 import createEsusu from './create';
 import createdCyclesCount, { interest } from "./created.cycles.count";
 import { createEsusuGroups, getEsusuGroups } from "../group/groups";
@@ -19,12 +18,23 @@ import { esusuContributions, numberOfContributions } from "./contributions";
 
 
 
-export default class Esusu extends XendFinance {
+export default class Esusu {
 
+  options: Options;
+  privateKey: string
+  provider: string
 
-  constructor(chainId: ChainId, privateKey: string, options?: Options) {
-    super(chainId, privateKey, options);
+  protocol: string
+  addresses: Addresses
+
+  constructor(provider: string, privateKey: string, options: Options, addresses: Addresses, protocol: string) {
+    this.provider = provider;
+    this.privateKey = privateKey;
+    this.options = options;
+    this.addresses = addresses;
+    this.protocol = protocol;
   }
+
 
   //////////////////////////////////////////////////////////////////////
 

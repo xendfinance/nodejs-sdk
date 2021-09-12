@@ -31,14 +31,15 @@ You can use Xend Finance in as many scenario's you can come up with, but there a
 # Example
 
 ```js
-import { Personal } from '@xend-finance/web-sdk';
+import XF from '@xend-finance/web-sdk';
 
-const instance = new Personal(chainId, privateKey, { env:"mainnet" });
 
 const makeDeposit = async () => {
+  const { Personal } = await XF(chainId, privateKey, { env:"mainnet" });
+
   const depositAmount = "100";
 
-  const response = await instance.flexibleDeposit(depositAmount);
+  const response = await Personal.flexibleDeposit(depositAmount);
 
   return response;
 }
@@ -62,7 +63,7 @@ When any of Xend Finance strategy is initialized without *options*, the SDK defa
 
 Properties | Values | Description
 --- | --- | ---
-`env` | local, test, mainnet | Required 
+`env` | local, testnet, mainnet | Required 
 `protocols` | Array of protocols objects | This can only be used when the `env` is `local`. 
 `protocolName` | | Used in the case of multiple protocols available
 
@@ -94,7 +95,7 @@ This is the structure of a protocol to be used by the SDK and will be helpful wh
 }
 ```
 
-# Some available 
+# Some Available Methods
 ## General
 Name | Parameters | Description
 --- | --- | ---

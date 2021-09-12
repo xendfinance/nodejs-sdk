@@ -2,9 +2,7 @@
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "include": [
     "src",
-    "types",
-    "test/init.test.ts",
-    "use.js"
+    "types"
   ],
   "compilerOptions": {
     "module": "esnext",
@@ -20,7 +18,7 @@
     // match output dir to input dir. e.g. dist/index instead of dist/src/index
     "rootDir": "./src",
     // stricter type-checking for stronger correctness. Recommended by TS
-    "strict": false,
+    "strict": true,
     // linter checks for common issues
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -39,7 +37,6 @@
     "forceConsistentCasingInFileNames": true,
     // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
     "noEmit": true,
-    // allow importing of json files
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   }
 }

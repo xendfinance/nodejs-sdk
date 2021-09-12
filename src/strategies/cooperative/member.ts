@@ -1,3 +1,4 @@
+import { Addresses } from '../../types';
 import privateKeyToAddress from '../../utils/privateKeyToAddress';
 import Cycles from '../abis/Cycles.json';
 import createContract from "../create.contract"

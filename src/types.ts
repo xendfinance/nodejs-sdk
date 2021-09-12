@@ -1,6 +1,6 @@
 
 
-interface Options {
+export interface Options {
     env: 'testnet' | 'local' | 'mainnet'
     protocols?: Protocols[]
     protocolName?: string
@@ -8,7 +8,7 @@ interface Options {
 }
 
 
-interface Addresses {
+export interface Addresses {
     PROTOCOL_ADAPTER: string
     PROTOCOL_SERVICE: string
     GROUPS: string
@@ -24,7 +24,7 @@ interface Addresses {
     PROTOCOL_CURRENCY: string
 }
 
-interface Protocols {
+export interface Protocols {
     name: string
     code: string
     addresses: Addresses
@@ -32,16 +32,16 @@ interface Protocols {
 
 
 
-interface CooperativeCycleData {
+export interface CooperativeCycleData {
     groupId: number;
     cycleStakeAmount: any;
     payoutIntervalInSeconds: number;
     startTimeInSeconds: number;
     maxMembers: number;
-};
+}
 
 
-interface EsusuCycleData {
+export interface EsusuCycleData {
     groupId: number
     depositAmount: any
     payoutIntervalInSeconds: number

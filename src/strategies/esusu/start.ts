@@ -1,3 +1,4 @@
+import { Addresses } from '../../types';
 import createContract from "../create.contract"
 import EsusuService from '../abis/EsusuService.json';
 import sendSignedTransaction from "../../utils/sendSignedTransaction";

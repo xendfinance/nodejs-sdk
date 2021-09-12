@@ -3,7 +3,11 @@ import privateKeyToAddress from './privateKeyToAddress';
 
 
 
-export default async (privateKey: string, provider: string, tx: any, contractAddress: string) => {
+const sendSignedTransaction = async (
+  privateKey: string,
+  provider: string,
+  tx: any,
+  contractAddress: string) => {
 
   const web3 = new Web3(provider);
   const client = privateKeyToAddress(provider, privateKey);
@@ -20,7 +24,11 @@ export default async (privateKey: string, provider: string, tx: any, contractAdd
     gas, gasPrice, nonce, chainId: networkId
   }, privateKey)
 
+  // @ts-ignore
   const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
 
   return receipt;
 }
+
+
+export default sendSignedTransaction;

@@ -1,3 +1,4 @@
+import { Addresses } from '../../types';
 import createContract from "../create.contract";
 import XendFinanceGroup from '../abis/XendFinanceGroup.json';
 import DAITokenAbi from '../abis/DaiContract.json';
