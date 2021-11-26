@@ -1,3 +1,4 @@
+import Web3 from 'web3';
 import { ChainId, PROVIDERS } from './constants'
 
 export const checkChainId = (chainId: number) => {
@@ -47,4 +48,26 @@ export const getAddressByName = (addresses: any[], name: string) => {
         return filter[0].address;
     }
     return "";
+}
+
+
+
+export const formatAmount = (
+    amount: any,
+    network: number,
+    assetName: string) => {
+
+    if (network == 56) {
+        return Web3.utils.toWei(amount, 'ether');
+    } else if (network == 137) {
+
+        if (assetName === 'WBTC') {
+            return parseFloat(amount) * Math.pow(10, 8);
+        }
+        if (assetName === 'AAVE') {
+            return Web3.utils.toWei(amount, 'ether');
+        }
+        return Web3.utils.toWei(amount, 'mwei')
+    } else return amount;
+
 }

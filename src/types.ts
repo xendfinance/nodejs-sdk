@@ -1,13 +1,14 @@
 
 
 export interface Options {
-    env: 'testnet' | 'local' | 'mainnet'
+    env?: 'testnet' | 'local' | 'mainnet'
     protocols?: Protocols[]
     protocolName?: string
+    layer2?: any[]
     [key: string]: any
 }
 
-
+export interface Layer2Addresses { }
 export interface Addresses {
     PROTOCOL_ADAPTER: string
     PROTOCOL_SERVICE: string

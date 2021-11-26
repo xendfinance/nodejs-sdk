@@ -1,29 +1,30 @@
 import * as Types from '../types';
-import { ChainId } from "./constants";
 import { capitalizeFirstLetter, getAddressByName } from '../utils/helpers';
 import axios from "axios";
+// import ABIS from '../strategies/abis';
+import layer2Assets from './layer2-assets';
 
-const getMainnetAddresses = async (chainId: number) => {
-
-	if (chainId === ChainId.BSC_MAINNET) {
-		//
-		const url = "https://api.xend.finance/xend-finance/addresses";
-		const res = await axios.get(url)
-		return res.data.data;
-	} else throw Error('can only get address for mainnet')
+const getMainnetAddresses = async () => {
+	//
+	const url = "https://api.xend.finance/xend-finance/addresses";
+	const res = await axios.get(url)
+	return res.data.data;
 }
 
 
 
 
-const bscMainnetAddresses = async (chainId: number) => {
+const bscMainnetAddresses = async () => {
 
-	const data = await getMainnetAddresses(chainId);
+	const data = await getMainnetAddresses();
 
 	const protocols: Types.Protocols[] = [];
 
 	if (data && Array.isArray(data)) {
 		for (const item of data) {
+
+
+
 			const protocol: Types.Protocols = {
 				name: capitalizeFirstLetter(item.protocol_name),
 				code: item.protocol_name,
@@ -51,3 +52,53 @@ const bscMainnetAddresses = async (chainId: number) => {
 
 }
 export default bscMainnetAddresses;
+
+
+
+
+export const getLayer2Protocols = async () => {
+	try {
+		let protocols: any[] = [];
+		const url = "http://localhost:3001/xend-finance/layer2-addresses";
+		// const url = "https://api.xend.finance/xend-finance/layer2-addresses";
+		const res = await axios.get(url);
+		let serverData = res.data.data;
+		if (Array.isArray(serverData)) {
+			// console.log()
+			protocols = layer2Assets.map(asset => {
+				let filter = serverData.filter((x: any) => x.network == asset.network && x.name == asset.protocolName && x.token.toLowerCase() == asset.name.toLowerCase());
+
+				if (filter.length > 0) {
+					asset.protocolAddress = filter[0].address;
+				}
+
+				return asset;
+			})
+
+		}
+
+
+		return protocols
+
+	} catch (e) {
+		console.error(e);
+		return []
+	}
+}
+
+
+
+
+// const returnProtocolsNetwork = (protocolName: string) => {
+// 	switch (protocolName) {
+// 		case "venus":
+// 			return 56;
+// 		case "fortube":
+// 			return 56;
+// 		case "yearn":
+// 			return 1;
+
+// 		default:
+// 			return 0;
+// 	}
+// }

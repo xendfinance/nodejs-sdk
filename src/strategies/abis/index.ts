@@ -9,8 +9,13 @@ import PERSONAL from "./XendFinanceIndividual_Yearn_V1.json";
 import CLIENT_RECORD from "./ClientRecord.json";
 import CYCLES from "./Cycles.json";
 import PROTOCOL_ADAPTER from "./ProtocolAdapter.json";
+import XAUTO from './xAuto.json';
+import XVAULT from './xVault.json';
+import ERC20 from './ER20.json';
+import BUSD from './busd.json';
 
 const ABIS = {
+    BUSD,
     GROUPS,
     ESUSU_SERVICE,
     ESUSU_ADAPTER,
@@ -21,6 +26,9 @@ const ABIS = {
     CYCLES,
     CLIENT_RECORD,
     PROTOCOL_ADAPTER,
+    XAUTO,
+    XVAULT,
+    ERC20,
 
     testnet: {
         esusu_service: ESUSU_SERVICE,

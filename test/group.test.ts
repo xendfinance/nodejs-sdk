@@ -10,7 +10,34 @@ const chainId = 56;
 
 describe('Group', () => {
 
-	jest.setTimeout(300000);
+	jest.setTimeout(3000000);
+
+	describe.only('xAuto', () => {
+		it('works', async () => {
+			const { xAuto } = await XF(chainId, privateKey, { env: "mainnet" })
+			// let approval = await xAuto.approve("BUSD", "5");
+
+			// if (approval && approval.status) {
+
+			// 	let receipt = await xAuto.deposit("BUSD", "2");
+
+			// 	console.log(receipt)
+			// 	expect(typeof receipt).toBe("object")
+			// }
+			// let ppfs = await xAuto.ppfs("BUSD");
+			// console.log(ppfs, ' the ppfs')
+			// expect(typeof ppfs).toBe("string")
+
+			let shareBalance = await xAuto.shareBalance("BUSD");
+			console.log(shareBalance, ' the share')
+			expect(typeof shareBalance).toBe("string")
+
+			let receiptW = await xAuto.withdraw("BUSD", "1");
+			console.log(receiptW)
+			expect(typeof receiptW).toBe("object")
+
+		})
+	})
 
 	describe('ppfs', () => {
 		it('work', async () => {
@@ -25,15 +52,15 @@ describe('Group', () => {
 		it('should return individual record', async () => {
 			// const waitTime = (minutes: number) => new Promise(resolve => setTimeout(resolve, minutes * 60 * 1000))
 			const { Personal } = await XF(chainId, privateKey, { env: "mainnet", protocolName: "venus" })
-			const res1 = await Personal.flexibleInfo();
-			console.log(res1)
+			// const res1 = await Personal.flexibleInfo();
+			// console.log(res1)
 			// await waitTime(1)
-			// const res2 = await Personal.flexibleDeposit('2');
-			// console.log(res2)
+			const res2 = await Personal.flexibleDeposit('2');
+			console.log(res2)
 			// const res3 = await Personal.flexibleInfo();
 			// console.log(res3)
 
-			expect(typeof res1).toBe("object");
+			expect(typeof res2).toBe("object");
 		})
 	})
 

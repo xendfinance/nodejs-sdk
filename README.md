@@ -52,7 +52,7 @@ These parameters are used to create an instance of any of the saving strategies 
 
 Name | Description
 --- | ---
-**chainId** | Chain ID of the network in use
+**chainId** | Chain ID of the network in use. 56 represents the BSC Mainnet, 1 is for Ethererum Mainnet, 97 is for BSC Testnet
 **privateKey** | Private key of address
 **options** | *Optional*
 
