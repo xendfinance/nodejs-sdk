@@ -15,26 +15,26 @@ describe('Group', () => {
 	describe.only('xAuto', () => {
 		it('works', async () => {
 			const { xAuto } = await XF(chainId, privateKey, { env: "mainnet" })
-			// let approval = await xAuto.approve("BUSD", "5");
+			let approval = await xAuto.approve("BUSD", "3");
 
-			// if (approval && approval.status) {
+			if (approval && approval.status) {
 
-			// 	let receipt = await xAuto.deposit("BUSD", "2");
+				let receipt = await xAuto.deposit("BUSD", "3");
 
-			// 	console.log(receipt)
-			// 	expect(typeof receipt).toBe("object")
-			// }
+				console.log(receipt)
+				expect(typeof receipt).toBe("object")
+			}
 			// let ppfs = await xAuto.ppfs("BUSD");
 			// console.log(ppfs, ' the ppfs')
 			// expect(typeof ppfs).toBe("string")
 
-			let shareBalance = await xAuto.shareBalance("BUSD");
-			console.log(shareBalance, ' the share')
-			expect(typeof shareBalance).toBe("string")
+			// let shareBalance = await xAuto.shareBalance("BUSD");
+			// console.log(shareBalance, ' the share')
+			// expect(typeof shareBalance).toBe("string")
 
-			let receiptW = await xAuto.withdraw("BUSD", "1");
-			console.log(receiptW)
-			expect(typeof receiptW).toBe("object")
+			// let receiptW = await xAuto.withdraw("BUSD", "1");
+			// console.log(receiptW)
+			// expect(typeof receiptW).toBe("object")
 
 		})
 	})

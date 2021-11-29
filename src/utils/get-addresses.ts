@@ -59,8 +59,8 @@ export default bscMainnetAddresses;
 export const getLayer2Protocols = async () => {
 	try {
 		let protocols: any[] = [];
-		const url = "http://localhost:3001/xend-finance/layer2-addresses";
-		// const url = "https://api.xend.finance/xend-finance/layer2-addresses";
+		let base = process.env.ENV === 'development' ? 'http://localhost:3001' : 'https://api.xend.finance'
+		let url = base + "/xend-finance/layer2-addresses"
 		const res = await axios.get(url);
 		let serverData = res.data.data;
 		if (Array.isArray(serverData)) {

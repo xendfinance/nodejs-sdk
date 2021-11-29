@@ -86,7 +86,7 @@ export default class xAuto {
 			let withdrawAmount: any = (Number(share) * Number(amount)) / totalDeposit;
 
 			withdrawAmount = Math.trunc(withdrawAmount);
-			console.log(withdrawAmount, ' the withdraw at point of withdraw')
+
 			const tx = contract.methods['withdraw'](String(withdrawAmount))
 
 			const receipt = await sendSignedTransaction(this.pk, this.rpc, tx, res.protocolAddress)
