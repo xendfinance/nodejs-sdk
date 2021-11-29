@@ -81,6 +81,8 @@ export default class xAuto {
 			const ppfs = await contract.methods[res.ppfsMethod]().call();
 
 			let divisor = Math.pow(10, res.widthdrawDecimals);
+
+			// @ts-ignore
 			const totalDeposit = (Number(share) * Number(ppfs)) / Number(BigInt(divisor).toLocaleString('fullwide', { useGrouping: false }))
 
 			let withdrawAmount: any = (Number(share) * Number(amount)) / totalDeposit;
