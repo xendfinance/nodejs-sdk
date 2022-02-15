@@ -134,7 +134,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xBNB.Lender",
           "name": "lender",
           "type": "uint8"
         }
@@ -202,13 +202,6 @@
           "type": "bool"
         }
       ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "approveToken",
-      "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     },
@@ -377,7 +370,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xBNB.Lender",
           "name": "lender",
           "type": "uint8"
         }
@@ -390,7 +383,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xBNB.Lender",
           "name": "lender",
           "type": "uint8"
         }
@@ -438,16 +431,10 @@
       "type": "function"
     },
     {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_amount",
-          "type": "uint256"
-        }
-      ],
+      "inputs": [],
       "name": "deposit",
       "outputs": [],
-      "stateMutability": "nonpayable",
+      "stateMutability": "payable",
       "type": "function"
     },
     {
@@ -594,7 +581,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xBNB.Lender",
           "name": "",
           "type": "uint8"
         }
@@ -654,7 +641,7 @@
       "name": "provider",
       "outputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xBNB.Lender",
           "name": "",
           "type": "uint8"
         }
@@ -674,7 +661,7 @@
       "name": "recommend",
       "outputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xBNB.Lender",
           "name": "",
           "type": "uint8"
         }
@@ -927,7 +914,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xBNB.Lender",
           "name": "",
           "type": "uint8"
         }

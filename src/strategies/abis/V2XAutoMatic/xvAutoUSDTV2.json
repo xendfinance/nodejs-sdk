@@ -113,12 +113,25 @@
     },
     {
       "inputs": [],
-      "name": "_balanceAlpaca",
+      "name": "aave",
       "outputs": [
         {
-          "internalType": "uint256",
+          "internalType": "address",
           "name": "",
-          "type": "uint256"
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "aaveToken",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
         }
       ],
       "stateMutability": "view",
@@ -134,7 +147,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "lender",
           "type": "uint8"
         }
@@ -163,19 +176,6 @@
           "internalType": "uint256",
           "name": "",
           "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "alpacaToken",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
         }
       ],
       "stateMutability": "view",
@@ -240,20 +240,7 @@
     },
     {
       "inputs": [],
-      "name": "balanceAlpaca",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "balanceAlpacaInToken",
+      "name": "balanceAave",
       "outputs": [
         {
           "internalType": "uint256",
@@ -337,32 +324,6 @@
     },
     {
       "inputs": [],
-      "name": "balanceVenus",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "balanceVenusInToken",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
       "name": "calcPoolValueInToken",
       "outputs": [
         {
@@ -377,7 +338,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "lender",
           "type": "uint8"
         }
@@ -390,7 +351,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "lender",
           "type": "uint8"
         }
@@ -530,6 +491,19 @@
     },
     {
       "inputs": [],
+      "name": "getAave",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
       "name": "getPricePerFullShare",
       "outputs": [
         {
@@ -594,7 +568,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "",
           "type": "uint8"
         }
@@ -654,7 +628,7 @@
       "name": "provider",
       "outputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "",
           "type": "uint8"
         }
@@ -674,7 +648,7 @@
       "name": "recommend",
       "outputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "",
           "type": "uint8"
         }
@@ -749,7 +723,7 @@
           "type": "uint256"
         }
       ],
-      "name": "supplyAlpaca",
+      "name": "supplyAave",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -776,19 +750,6 @@
         }
       ],
       "name": "supplyFulcrum",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "supplyVenus",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -899,19 +860,6 @@
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "venusToken",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "inputs": [
         {
           "internalType": "uint256",
@@ -927,7 +875,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "",
           "type": "uint8"
         }

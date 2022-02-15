@@ -59,24 +59,15 @@ export default bscMainnetAddresses;
 export const getLayer2Protocols = async () => {
 	try {
 		let protocols: any[] = [];
-		let base = process.env.ENV === 'development' ? 'http://localhost:3001' : 'https://api.xend.finance'
-		let url = base + "/xend-finance/layer2-addresses"
-		const res = await axios.get(url);
-		let serverData = res.data.data;
-		if (Array.isArray(serverData)) {
-			// console.log()
-			protocols = layer2Assets.map(asset => {
-				let filter = serverData.filter((x: any) => x.network == asset.network && x.name == asset.protocolName && x.token.toLowerCase() == asset.name.toLowerCase());
-
-				if (filter.length > 0) {
-					asset.protocolAddress = filter[0].address;
-				}
-
-				return asset;
-			})
-
-		}
-
+		// let base = process.env.ENV === 'development' ? 'http://localhost:3001' : 'https://api.xend.finance'
+		// let url = base + "/xend-finance/layer2-addresses"
+		// const res = await axios.get(url);
+		// let serverData = res.data.data;
+		// if (Array.isArray(serverData)) {
+		// 	// console.log()
+		protocols = layer2Assets.map(asset => {
+			return asset;
+		})
 
 		return protocols
 

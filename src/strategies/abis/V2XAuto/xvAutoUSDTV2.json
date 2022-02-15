@@ -134,7 +134,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "lender",
           "type": "uint8"
         }
@@ -377,7 +377,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "lender",
           "type": "uint8"
         }
@@ -390,7 +390,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "lender",
           "type": "uint8"
         }
@@ -594,7 +594,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "",
           "type": "uint8"
         }
@@ -654,7 +654,7 @@
       "name": "provider",
       "outputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "",
           "type": "uint8"
         }
@@ -674,7 +674,7 @@
       "name": "recommend",
       "outputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "",
           "type": "uint8"
         }
@@ -927,7 +927,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum xBUSD.Lender",
+          "internalType": "enum xUSDT.Lender",
           "name": "",
           "type": "uint8"
         }
