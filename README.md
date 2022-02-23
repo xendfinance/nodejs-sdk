@@ -36,7 +36,7 @@ You can use Xend Finance in as many scenario's you can come up with, but there a
 1. Use one general address for all your transactions
 2. Create a new address for each of your users and use for their transactions
 
-# Example
+# Example Personal Flexible Deposit 
 
 ```js
 import XF from '@xend-finance/web-sdk';
@@ -54,6 +54,57 @@ const makeDeposit = async () => {
 ```
 
 
+# Example xAuto Deposit 
+
+```js
+import XF from '@xend-finance/web-sdk';
+
+
+const makeDeposit = async () => {
+  const { xAuto } = await XF(chainId, privateKey, { env:"mainnet" });
+
+  const depositAmount = "100";
+  let approval = await xAuto.approve("USDC", depositAmount);
+
+	if (approval && approval.status) {
+
+  const response = await xAuto.deposit("USDC",depositAmount);
+  }
+
+  return response;
+}
+```
+
+# Example xAuto Deposit BNB 
+
+```js
+import XF from '@xend-finance/web-sdk';
+
+
+const makeDeposit = async () => {
+  const { xAuto } = await XF(chainId, privateKey, { env:"mainnet" });
+
+  const depositAmount = "100";
+
+  const response = await xAuto.depositNative("BNB",depositAmount);
+
+  return response;
+}
+```
+
+# Withdraw xAuto | xVault  
+
+```js
+import XF from '@xend-finance/web-sdk';
+const withdraw = async () => {
+const { xAuto,xVault } = await XF(chainId, privateKey, { env:"mainnet" });
+
+const receiptXauto = await xAuto.withdraw("USDC", totalBUSDAdmount)
+const receiptXvault = await xVault.withdraw("BUSD", totalBUSDAdmount)
+
+
+}
+```
 
 # Parameters
 These parameters are used to create an instance of any of the saving strategies exported from the SDK
@@ -139,8 +190,6 @@ Name | Parameters | Description
 --- | --- | ---
 `deposit` | |
 `withdraw` | |
-​​
-​
 
 ## 🔗 Social Media Links
 [![gitbook](https://img.shields.io/badge/gitbook-0A66C2?style=for-the-badge&logo=gitbook&logoColor=white)](https://docs.xend.finance/)
