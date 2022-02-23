@@ -1,5 +1,6 @@
 import { checkChainId, formatAmount } from "../../utils/helpers";
 import privateKeyToAddress from "../../utils/privateKeyToAddress";
+import sendSignedNativeTransaction from "../../utils/sendSignedNativeTransaction";
 import sendSignedTransaction from "../../utils/sendSignedTransaction";
 import createContract from "../create.contract";
 
@@ -62,6 +63,27 @@ export default class xAuto {
 		} catch (e) {
 			console.log(e)
 			return null
+		}
+	}
+
+	async depositNative(tokenName: string, amount: string) {
+
+		let res = this.filterToken(tokenName, this.chainId, this.protocol);
+		if (!res) throw 'no token found'
+
+		const contract = createContract(this.rpc, res.protocolAbi, res.protocolAddress);
+
+		try {
+			let depositAmount = formatAmount(amount, this.chainId, tokenName);
+			const tx = await contract.methods['deposit']();
+			
+			const receipt = await sendSignedNativeTransaction(this.pk, this.rpc, tx, res.protocolAddress,depositAmount);
+
+			return receipt;
+
+		} catch (e) {
+			console.log(e)
+			return null; 
 		}
 	}
 

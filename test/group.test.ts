@@ -12,7 +12,7 @@ describe('Group', () => {
 
 	jest.setTimeout(3000000);
 
-	describe.only('xAuto', () => {
+	describe('xAuto', () => {
 		it('works', async () => {
 			const { xAuto } = await XF(chainId, privateKey, { env: "mainnet" })
 			let approval = await xAuto.approve("BUSD", "3");
@@ -35,6 +35,15 @@ describe('Group', () => {
 			// let receiptW = await xAuto.withdraw("BUSD", "1");
 			// console.log(receiptW)
 			// expect(typeof receiptW).toBe("object")
+
+		})
+	})
+
+	describe.only('xAuto', () => {
+		it('works', async () => {
+			const { xAuto } = await XF(chainId, privateKey, { env: "mainnet" })
+			let receipt = await xAuto.depositNative("BNB", "0.01");
+			console.log(receipt);
 
 		})
 	})
