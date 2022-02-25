@@ -1,9 +1,16 @@
 
+![Logo](https://xend.finance/assets-2/logo.svg)
+
 # XendFinance SDK
 
-Build applications on-top of the Xend Finance smart contracts.
+Build applications on-top of the Xend Finance Smart Contract Protocols.
 
-<!-- ![GitHub contributors](https://img.shields.io/github/contributors/xendfinance/XendFinanceSDK?color=orange&style=flat-square) -->
+
+## Authors
+
+- [@kayalbertus](https://github.com/KayAlbertus)
+- [@nCally](https://github.com/nCally)
+
 
 
 # Installation
@@ -20,6 +27,7 @@ Xend Finance has different saving strategies that helps you save your money in s
 - Personal Savings
 - Esusu
 - Cooperative Savings
+- Yield Aggregator(xAuto,xVault) 
 
 You can make use of one or all of these strategies
 
@@ -31,7 +39,7 @@ You can use Xend Finance in as many scenario's you can come up with, but there a
 1. Use one general address for all your transactions
 2. Create a new address for each of your users and use for their transactions
 
-# Example
+# Example Personal Flexible Deposit 
 
 ```js
 import XF from '@xend-finance/web-sdk';
@@ -49,13 +57,64 @@ const makeDeposit = async () => {
 ```
 
 
+# Example xAuto Deposit 
+
+```js
+import XF from '@xend-finance/web-sdk';
+
+
+const makeDeposit = async () => {
+  const { xAuto } = await XF(chainId, privateKey, { env:"mainnet" });
+
+  const depositAmount = "100";
+  let approval = await xAuto.approve("USDC", depositAmount);
+
+	if (approval && approval.status) {
+
+  const response = await xAuto.deposit("USDC",depositAmount);
+  }
+
+  return response;
+}
+```
+
+# Example xAuto Deposit BNB 
+
+```js
+import XF from '@xend-finance/web-sdk';
+
+
+const makeDeposit = async () => {
+  const { xAuto } = await XF(chainId, privateKey, { env:"mainnet" });
+
+  const depositAmount = "100";
+
+  const response = await xAuto.depositNative("BNB",depositAmount);
+
+  return response;
+}
+```
+
+# Withdraw xAuto | xVault  
+
+```js
+import XF from '@xend-finance/web-sdk';
+const withdraw = async () => {
+const { xAuto,xVault } = await XF(chainId, privateKey, { env:"mainnet" });
+
+const receiptXauto = await xAuto.withdraw("USDC", totalBUSDAdmount)
+const receiptXvault = await xVault.withdraw("BUSD", totalBUSDAdmount)
+
+
+}
+```
 
 # Parameters
 These parameters are used to create an instance of any of the saving strategies exported from the SDK
 
 Name | Description
 --- | ---
-**chainId** | Chain ID of the network in use
+**chainId** | Chain ID of the network in use. 56 represents the BSC Mainnet, 1 is for Ethererum Mainnet, 97 is for BSC Testnet
 **privateKey** | Private key of address
 **options** | *Optional*
 
@@ -128,3 +187,17 @@ Name | Parameters | Description
 --- | --- | ---
 `create` | |
 `walletBalance` | |
+
+## xAuto ,xVault
+​​Name | Parameters | Description
+--- | --- | ---
+`deposit` | |
+`withdraw` | |
+
+## 🔗 Social Media Links
+[![gitbook](https://img.shields.io/badge/gitbook-0A66C2?style=for-the-badge&logo=gitbook&logoColor=white)](https://docs.xend.finance/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/xend-finance/mycompany/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/xendfinance)
+[![discord](https://img.shields.io/badge/discord-0A66C2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/QPH2M3nbku)
+[![telegram](https://img.shields.io/badge/telegram-0A66C2?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/xendFinance)
+

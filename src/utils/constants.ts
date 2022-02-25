@@ -3,6 +3,8 @@ export enum ChainId {
   ETHEREUM_MAINNET = 1,
   BSC_MAINNET = 56,
   BSC_TESTNET = 97,
+  POLYGON_MAINNET = 137,
+  POLYGON_TESTNET = 80001,
   LOCALHOST = 0
 }
 
@@ -30,6 +32,18 @@ export const PROVIDERS = {
     currency: "BUSD",
     url: "https://data-seed-prebsc-1-s1.binance.org:8545/",
     chain: 97
+  },
+
+  POLYGON_MAINNET: {
+    currency: "MATIC",
+    url: "https://rpc-mainnet.matic.network/",
+    chain: 137
+  },
+
+  POYLGON_TESTNET: {
+    currency: "MATIC",
+    url: "https://rpc-mumbai.matic.today/",
+    chain: 8001
   },
 
   LOCALHOST: {

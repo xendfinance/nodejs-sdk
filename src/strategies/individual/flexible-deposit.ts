@@ -24,8 +24,6 @@ export default async function (provider: string,
 
     await sendSignedTransaction(privateKey, provider, approvalData, addresses.TOKEN)
 
-
-
     const data = await contract.methods.deposit()
     const receipt = await sendSignedTransaction(privateKey, provider, data, addresses.PERSONAL);
 
