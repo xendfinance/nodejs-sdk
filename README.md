@@ -1,16 +1,18 @@
 
 ![Logo](https://xend.finance/assets-2/logo.svg)
 
-# XendFinance SDK
+# Xend Finance SDK
 
 Build applications on-top of the Xend Finance Smart Contract Protocols.
 
+# Contributing
+These are [guidelines](/CONTRIBUTING.md) to contributing to this SDK project. We can literally not wait to see your pull requests.
 
-## Authors
+
+<!-- ## Authors
 
 - [@kayalbertus](https://github.com/KayAlbertus)
-- [@nCally](https://github.com/nCally)
-
+- [@nCally](https://github.com/nCally) -->
 
 
 # Installation
