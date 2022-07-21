@@ -40,10 +40,10 @@ export const PROVIDERS = {
     chain: 137
   },
 
-  POYLGON_TESTNET: {
+  POLYGON_TESTNET: {
     currency: "MATIC",
     url: "https://rpc-mumbai.matic.today/",
-    chain: 8001
+    chain: 80001
   },
 
   LOCALHOST: {
